@@ -1,0 +1,12 @@
+{
+  "name": "frontdesk-ai-landing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "FrontDesk AI demo landing page with embedded ElevenLabs voice agent",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

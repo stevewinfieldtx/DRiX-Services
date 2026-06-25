@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FrontDesk AI — Never Miss Another Call (HVAC)</title>
+<style>
+  :root{
+    --navy:#0f2546; --blue:#2563eb; --blue-d:#1e40af; --orange:#f97316; --orange-d:#ea580c;
+    --ink:#0f172a; --body:#334155; --muted:#64748b; --line:#e2e8f0; --bg:#ffffff;
+    --soft:#f1f5f9; --soft2:#f8fafc; --green:#16a34a; --red:#dc2626; --gold:#f59e0b;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--body);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{color:var(--ink);line-height:1.15;margin:0 0 .4em}
+  h2{font-size:30px;font-weight:800;letter-spacing:-.02em}
+  h3{font-size:19px;font-weight:700}
+  p{margin:0 0 1em}
+  a{color:var(--blue);text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+  .btn{display:inline-block;background:var(--orange);color:#fff;font-weight:700;padding:14px 26px;border-radius:10px;
+    border:none;cursor:pointer;font-size:16px;box-shadow:0 8px 20px rgba(249,115,22,.28);transition:.15s}
+  .btn:hover{background:var(--orange-d);transform:translateY(-2px)}
+  .btn.ghost{background:#fff;color:var(--blue-d);border:2px solid var(--line);box-shadow:none}
+  .btn.ghost:hover{border-color:var(--blue);background:var(--soft2)}
+  .btn.big{font-size:18px;padding:17px 34px}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav .row{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:900;color:var(--ink);font-size:18px}
+  .brand .dot{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--blue),var(--orange));display:grid;place-items:center;color:#fff;font-size:15px}
+  .brand small{display:block;font-size:10px;font-weight:600;color:var(--muted);letter-spacing:.5px;text-transform:uppercase}
+  nav .links{display:flex;gap:24px;align-items:center;font-size:14px;font-weight:600;color:var(--body)}
+  nav .links a{color:var(--body)}
+  @media(max-width:760px){nav .links a:not(.btn){display:none}}
+
+  /* HERO */
+  .hero{background:linear-gradient(180deg,#fff 0%,var(--soft2) 100%);padding:64px 0 48px;border-bottom:1px solid var(--line)}
+  .hero .eyebrow{display:inline-block;background:#fde7d4;color:var(--orange-d);font-weight:700;font-size:13px;padding:6px 13px;border-radius:999px;margin-bottom:18px}
+  .hero h1{font-size:48px;font-weight:900;letter-spacing:-.03em;max-width:14ch}
+  .hero h1 .hl{color:var(--orange)}
+  .hero p.sub{font-size:20px;max-width:46ch;color:var(--body)}
+  .hero .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
+  .hero .trust{margin-top:22px;font-size:13px;color:var(--muted)}
+  @media(max-width:760px){.hero h1{font-size:34px}.hero p.sub{font-size:17px}}
+  .statbar{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:44px}
+  @media(max-width:760px){.statbar{grid-template-columns:repeat(2,1fr)}}
+  .statbar .s{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;text-align:center;box-shadow:0 2px 10px rgba(15,37,70,.04)}
+  .statbar .n{font-size:30px;font-weight:900;color:var(--blue-d)}
+  .statbar .l{font-size:12.5px;color:var(--muted);margin-top:2px}
+
+  section{padding:58px 0}
+  .center{text-align:center}
+  .kicker{color:var(--orange);font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:13px;margin-bottom:8px}
+  .lead{font-size:18px;color:var(--body);max-width:60ch;margin:0 auto 8px}
+  .center .lead{margin:0 auto}
+
+  /* CALCULATOR */
+  .calcwrap{background:var(--navy);color:#dbe4f3;border-radius:20px;padding:34px;display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center}
+  @media(max-width:760px){.calcwrap{grid-template-columns:1fr;padding:24px}}
+  .calcwrap h2{color:#fff}
+  .calcwrap label{display:block;font-size:13px;color:#9fb3d1;margin:16px 0 6px}
+  .calcwrap input[type=range]{width:100%;accent-color:var(--orange)}
+  .calcwrap .v{color:#fff;font-weight:800}
+  .lossbox{background:linear-gradient(135deg,#3b1414,#4a1f0f);border:1px solid #7a2d2d;border-radius:16px;padding:26px;text-align:center}
+  .lossbox .big{font-size:46px;font-weight:900;color:#ff8a8a;line-height:1}
+  .lossbox .cap{color:#e7b9b9;font-size:14px;margin-top:8px}
+  .lossbox .yr{margin-top:14px;font-size:15px;color:#fff}
+  .lossbox .yr b{color:var(--gold);font-size:22px}
+
+  /* STEPS */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+  @media(max-width:760px){.steps{grid-template-columns:1fr}}
+  .step{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;position:relative}
+  .step .num{width:34px;height:34px;border-radius:9px;background:var(--blue);color:#fff;font-weight:800;display:grid;place-items:center;margin-bottom:12px}
+
+  /* STACK */
+  .stack{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:14px}
+  @media(max-width:900px){.stack{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.stack{grid-template-columns:1fr}}
+  .feat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;transition:.15s}
+  .feat:hover{border-color:var(--blue);box-shadow:0 10px 24px rgba(37,99,235,.08);transform:translateY(-2px)}
+  .feat .ic{font-size:24px}
+  .feat h3{margin:10px 0 5px;font-size:16px}
+  .feat p{font-size:14px;color:var(--muted);margin:0}
+  .feat .tagnew{display:inline-block;background:#dcfce7;color:#15803d;font-size:10px;font-weight:800;padding:2px 8px;border-radius:999px;margin-left:6px;vertical-align:middle;text-transform:uppercase;letter-spacing:.04em}
+
+  /* DEMO CALLOUT */
+  .demo{background:linear-gradient(135deg,#eff6ff,#fff7ed);border:1px solid var(--line);border-radius:20px;padding:34px;text-align:center}
+  .demo .pulse{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 18px;font-weight:700;color:var(--ink);box-shadow:0 6px 18px rgba(15,37,70,.07);margin-top:10px}
+  .demo .pulse .live{width:10px;height:10px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(22,163,74,.6);animation:lp 1.6s infinite}
+  @keyframes lp{0%{box-shadow:0 0 0 0 rgba(22,163,74,.55)}70%{box-shadow:0 0 0 12px rgba(22,163,74,0)}100%{box-shadow:0 0 0 0 rgba(22,163,74,0)}}
+
+  /* COMPARE */
+  .compare{width:100%;border-collapse:separate;border-spacing:0;margin-top:24px;font-size:15px;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .compare th,.compare td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line)}
+  .compare thead th{background:var(--soft);font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+  .compare th.col-ai{background:#eef4ff;color:var(--blue-d)}
+  .compare td.col-ai{background:#f7faff;font-weight:700;color:var(--ink)}
+  .compare .yes{color:var(--green);font-weight:800}
+  .compare .no{color:var(--red);font-weight:800}
+  .compare tr:last-child td{border-bottom:none}
+
+  /* OBJECTIONS */
+  .obj{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+  @media(max-width:760px){.obj{grid-template-columns:1fr}}
+  .obj .o{background:var(--soft2);border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:12px;padding:18px}
+  .obj .o .q{font-weight:800;color:var(--ink);margin-bottom:6px}
+  .obj .o .a{font-size:14.5px;color:var(--body);margin:0}
+
+  /* RESULTS */
+  .results{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+  @media(max-width:760px){.results{grid-template-columns:1fr}}
+  .quote{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px}
+  .quote .stars{color:var(--gold);font-size:16px}
+  .quote p{font-size:15px;color:var(--ink);font-style:italic;margin:8px 0 12px}
+  .quote .who{font-size:13px;color:var(--muted)}
+  .ph{background:#fffbeb;border:1px dashed #facc15;border-radius:8px;padding:3px 8px;font-size:11px;color:#a16207;font-weight:700;display:inline-block;margin-bottom:8px}
+
+  /* PRICING / GUARANTEE */
+  .price{background:var(--navy);color:#dbe4f3;border-radius:20px;padding:40px;text-align:center}
+  .price h2{color:#fff}
+  .price .anchor{font-size:17px;color:#9fb3d1;max-width:54ch;margin:0 auto 18px}
+  .price .guarantee{display:inline-flex;gap:10px;align-items:center;background:rgba(22,163,74,.15);border:1px solid #2f7d4f;color:#a7f3c4;padding:12px 20px;border-radius:12px;font-weight:700;margin-bottom:22px}
+
+  /* FAQ */
+  details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:4px 18px;margin-bottom:10px}
+  details summary{cursor:pointer;font-weight:700;color:var(--ink);padding:14px 0;list-style:none;display:flex;justify-content:space-between;align-items:center}
+  details summary::-webkit-details-marker{display:none}
+  details summary::after{content:"+";color:var(--orange);font-size:22px;font-weight:700}
+  details[open] summary::after{content:"–"}
+  details .ans{padding:0 0 16px;color:var(--body);font-size:15px}
+
+  footer{background:var(--ink);color:#94a3b8;padding:40px 0;font-size:13px}
+  footer a{color:#cbd5e1;text-decoration:underline}
+  footer .src{margin-top:12px;font-size:11.5px;line-height:1.7}
+  .note-wl{background:#fffbeb;border:1px dashed #f59e0b;color:#92400e;border-radius:10px;padding:12px 16px;font-size:13px;margin:0 0 0}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap row">
+    <div class="brand"><span class="dot">📞</span><div>FrontDesk&nbsp;AI<small>Automation for home-service pros</small></div></div>
+    <div class="links">
+      <a href="#cost">The cost</a>
+      <a href="#stack">What it does</a>
+      <a href="#compare">Compare</a>
+      <a href="#book" class="btn" style="padding:10px 18px;font-size:14px">Book My Demo</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Built for HVAC, plumbing, roofing &amp; the trades</span>
+    <h1>Your phone is your best salesperson. <span class="hl">Stop sending it to voicemail.</span></h1>
+    <p class="sub">FrontDesk AI answers every call in your company's name — 24/7 — books the job, fills cancellations, and chases the Google review. So the next "no-AC" emergency rings <em>your</em> register, not your competitor's.</p>
+    <div class="cta">
+      <a href="#book" class="btn big">Book My 15-Min Demo</a>
+      <a href="#hear" class="btn ghost big">▶ Hear the AI answer</a>
+    </div>
+    <div class="trust">No contracts to start · Live on your line in about a week · See your missed-call number before you pay</div>
+
+    <div class="statbar">
+      <div class="s"><div class="n">62%</div><div class="l">of calls to home-service businesses go unanswered</div></div>
+      <div class="s"><div class="n">78%</div><div class="l">of customers hire the first business that responds</div></div>
+      <div class="s"><div class="n">85%</div><div class="l">who hit voicemail never call back</div></div>
+      <div class="s"><div class="n">24/7</div><div class="l">nights, weekends &amp; while you're on a roof</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- COST OF INACTION + CALCULATOR -->
+<section id="cost">
+  <div class="wrap">
+    <div class="center" style="margin-bottom:8px">
+      <div class="kicker">The math nobody shows you</div>
+      <h2>Every missed call is a customer you already paid to get</h2>
+      <p class="lead">You spent money on the truck wrap, the Google ad, the yard sign. Then the call comes in while you're under a house — and it's gone. Drag the sliders to your real numbers.</p>
+    </div>
+    <div class="calcwrap" style="margin-top:28px">
+      <div>
+        <h2 style="font-size:22px">What you're losing right now</h2>
+        <label>Average job value: <span class="v" id="vJob">$450</span></label>
+        <input type="range" id="rJob" min="100" max="15000" step="50" value="450">
+        <label>Calls you miss per week: <span class="v" id="vMiss">8</span></label>
+        <input type="range" id="rMiss" min="1" max="40" step="1" value="8">
+        <label>Of those, roughly how many were real jobs? <span class="v" id="vRate">50%</span></label>
+        <input type="range" id="rRate" min="20" max="90" step="5" value="50">
+        <p style="font-size:12.5px;color:#9fb3d1;margin-top:14px">Conservative by design — we assume most missed calls weren't buyers. The number's still ugly.</p>
+      </div>
+      <div class="lossbox">
+        <div class="cap">Walking to your competitor every month:</div>
+        <div class="big" id="lossM">$0</div>
+        <div class="yr">That's <b id="lossY">$0</b> a year in jobs you already earned the right to win.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section style="background:var(--soft2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap center">
+    <div class="kicker">Dead simple</div>
+    <h2>It works the moment a call comes in</h2>
+    <div class="steps" style="text-align:left">
+      <div class="step"><div class="num">1</div><h3>It answers — instantly</h3><p>In your company's name, on the first ring, day or night. The caller talks to a friendly voice, never a beep.</p></div>
+      <div class="step"><div class="num">2</div><h3>It books the job</h3><p>Qualifies the call, captures the address and problem, and drops the appointment on your calendar. You get a text with the details.</p></div>
+      <div class="step"><div class="num">3</div><h3>It follows up</h3><p>Sends the reminder, fills the slot if they cancel, and asks for the Google review after the job — automatically.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE DEMO CALLOUT -->
+<section id="hear">
+  <div class="wrap">
+    <div class="demo">
+      <div class="kicker">Don't take our word for it</div>
+      <h2>Talk to the AI right now</h2>
+      <p class="lead" style="margin:0 auto">Tap the call button in the bottom-right corner and talk to it like you're a homeowner with a broken AC. It'll answer your questions and book the appointment — exactly what your customers would experience. <strong>(Turn your sound on.)</strong></p>
+      <div class="pulse"><span class="live"></span> Live AI receptionist · bottom-right corner 👉</div>
+    </div>
+  </div>
+</section>
+
+<!-- THE STACK -->
+<section id="stack" style="background:var(--soft2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="center">
+      <div class="kicker">Way more than an answering machine</div>
+      <h2>The full automation stack</h2>
+      <p class="lead">Answering the phone is table stakes. Here's everything working in the background to grow the business while you do the work.</p>
+    </div>
+    <div class="stack">
+      <div class="feat"><div class="ic">📞</div><h3>24/7 AI receptionist</h3><p>Answers every call in your name, qualifies it, and books it — nights, weekends, and overflow when the lines are jammed.</p></div>
+      <div class="feat"><div class="ic">⚡</div><h3>Missed-call text-back</h3><p>The instant a call slips through, it fires a text so the lead never has a chance to dial the next company.</p></div>
+      <div class="feat"><div class="ic">🔁</div><h3>Cancellation backfill</h3><p>The 48-hour reminder catches cancellations early and auto-offers the open slot to your waitlist. No empty trucks.<span class="tagnew">added</span></p></div>
+      <div class="feat"><div class="ic">📸</div><h3>Photo &amp; satellite estimates</h3><p>Customers send photos (or just an address) and AI sizes the job — roof square footage, parts, paint — so you roll up with the right materials.</p></div>
+      <div class="feat"><div class="ic">💸</div><h3>Quote-to-deposit in one text</h3><p>Sends the quote and a payment link, and collects a deposit before the truck rolls — fewer no-shows, cash in hand.<span class="tagnew">added</span></p></div>
+      <div class="feat"><div class="ic">🌡️</div><h3>Weather-triggered campaigns</h3><p>Heat wave? It blasts tune-up offers. Freeze warning? Pipe-protection. Storm? Roof inspections. The forecast becomes your marketing calendar.<span class="tagnew">added</span></p></div>
+      <div class="feat"><div class="ic">♻️</div><h3>Win-back &amp; reactivation</h3><p>Quietly texts customers who haven't booked in months ("time for your annual tune-up"). The cheapest revenue you'll ever make.<span class="tagnew">added</span></p></div>
+      <div class="feat"><div class="ic">⭐</div><h3>Review &amp; reputation engine</h3><p>Asks every happy customer for a Google review, routes unhappy ones to you privately first, and even drafts your review replies.<span class="tagnew">added</span></p></div>
+      <div class="feat"><div class="ic">🔗</div><h3>Referral &amp; membership builder</h3><p>After a 5-star review it asks for a referral, and enrolls customers in maintenance plans — turning one-off jobs into recurring revenue.<span class="tagnew">added</span></p></div>
+      <div class="feat"><div class="ic">🏦</div><h3>Financing at the quote</h3><p>On big-ticket installs it presents financing options the moment you quote — so price stops killing the close.<span class="tagnew">added</span></p></div>
+      <div class="feat"><div class="ic">🌎</div><h3>Bilingual answering</h3><p>Answers and books in the caller's language. You stop losing the Spanish-speaking half of your market.<span class="tagnew">added</span></p></div>
+      <div class="feat"><div class="ic">🧾</div><h3>Call summaries to your CRM</h3><p>Every call transcribed, summarized, tagged, and logged. You see what happened without listening to a single recording.<span class="tagnew">added</span></p></div>
+    </div>
+    <div class="center" style="margin-top:22px"><span style="font-size:13px;color:var(--muted)">Tags marked <span class="tagnew">added</span> go beyond basic "answer the phone" tools — this is the part competitors don't build.</span></div>
+  </div>
+</section>
+
+<!-- RESULTS / PROOF -->
+<section>
+  <div class="wrap center">
+    <div class="kicker">What it looks like in the field</div>
+    <h2>Owners stop dreading the phone</h2>
+    <p class="lead">Drop in your own customer quotes here — these are placeholders so you can swap in real wins.</p>
+    <div class="results">
+      <div class="quote"><div class="ph">PLACEHOLDER — replace</div><div class="stars">★★★★★</div><p>"We booked three extra installs the first week just from after-hours calls we used to miss."</p><div class="who">— [Owner name], [Company], [City]</div></div>
+      <div class="quote"><div class="ph">PLACEHOLDER — replace</div><div class="stars">★★★★★</div><p>"I stopped answering my phone on job sites and my close rate went UP. The AI never forgets to follow up."</p><div class="who">— [Owner name], [Company], [City]</div></div>
+      <div class="quote"><div class="ph">PLACEHOLDER — replace</div><div class="stars">★★★★★</div><p>"Went from 11 Google reviews to 80-plus in three months. We show up first now."</p><div class="who">— [Owner name], [Company], [City]</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section id="compare" style="background:var(--soft2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="center"><div class="kicker">Honest comparison</div><h2>Three ways to handle your phones</h2></div>
+    <table class="compare">
+      <thead><tr><th>What you get</th><th>Voicemail<br>(doing nothing)</th><th>Hiring a receptionist<br>(~$3,500/mo)</th><th class="col-ai">FrontDesk AI</th></tr></thead>
+      <tbody>
+        <tr><td>Answers 24/7, nights &amp; weekends</td><td class="no">✗</td><td class="no">✗</td><td class="col-ai yes">✓</td></tr>
+        <tr><td>Never sick, never quits, never on break</td><td class="no">✗</td><td class="no">✗</td><td class="col-ai yes">✓</td></tr>
+        <tr><td>Answers 5 calls at once during a rush</td><td class="no">✗</td><td class="no">✗</td><td class="col-ai yes">✓</td></tr>
+        <tr><td>Books the job &amp; texts you details</td><td class="no">✗</td><td>✓</td><td class="col-ai yes">✓</td></tr>
+        <tr><td>Fills cancellations &amp; chases reviews</td><td class="no">✗</td><td>sometimes</td><td class="col-ai yes">✓</td></tr>
+        <tr><td>Monthly cost</td><td>$0 (and lost jobs)</td><td>~$3,500+</td><td class="col-ai yes">A fraction of one</td></tr>
+      </tbody>
+    </table>
+    <p class="note-wl" style="margin-top:16px">⚙️ White-label note: "$3,500/mo" and "a fraction of one job" are illustrative — set your own pricing before you present this.</p>
+  </div>
+</section>
+
+<!-- OBJECTIONS -->
+<section>
+  <div class="wrap">
+    <div class="center"><div class="kicker">You're probably thinking…</div><h2>The four things every owner says</h2></div>
+    <div class="obj">
+      <div class="o"><div class="q">"My customers want to talk to a real person."</div><p class="a">They want their problem solved <em>fast</em> — and right now the alternative isn't you, it's your voicemail. The AI sounds natural, and anything it can't handle it routes straight to you. A booked job beats a missed call every time.</p></div>
+      <div class="o"><div class="q">"I already have someone answering the phone."</div><p class="a">Great — the AI catches what they can't: after-hours, lunch, the 3 calls that ring at once during a heat wave, and the follow-ups that never happen. It backs up your person instead of replacing them.</p></div>
+      <div class="o"><div class="q">"I'm too small for this."</div><p class="a">Small is exactly who this is for. You don't have a front office, so the phone <em>is</em> the business. One captured job a month usually covers it several times over.</p></div>
+      <div class="o"><div class="q">"I tried something like this and it was clunky."</div><p class="a">So try this one for 60 seconds — tap the button bottom-right. If it's not dramatically better than what you remember, don't buy it. We'll even show you your missed-call number first.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING / GUARANTEE / BOOK -->
+<section id="book">
+  <div class="wrap">
+    <div class="price">
+      <div class="guarantee">🛡️ See your real missed-call number before you pay a cent</div>
+      <h2>Less than the cost of the jobs you're missing</h2>
+      <p class="anchor">One receptionist runs about $3,500 a month and goes home at 5. One missed install can be thousands. FrontDesk AI costs a fraction of either — and it never sleeps. We'll pull your numbers, show you what you're losing, and you decide.</p>
+      <a href="mailto:hello@example.com?subject=FrontDesk%20AI%20Demo" class="btn big">Book My 15-Minute Demo</a>
+      <p style="font-size:13px;color:#9fb3d1;margin-top:16px">No contract to start · Cancel anytime · Setup in about a week</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:var(--soft2);border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="center"><div class="kicker">Straight answers</div><h2>Questions owners ask</h2></div>
+    <div style="margin-top:24px">
+      <details open><summary>Will it really sound like a person?</summary><div class="ans">Yes — try it bottom-right with your sound on. It speaks naturally, handles interruptions, and books a real appointment. If it ever gets stuck, it hands off to you.</div></details>
+      <details><summary>Do I have to change my phone number?</summary><div class="ans">No. It works with your existing number. Calls you can't get to are answered by the AI; you can have it back you up or take everything after hours — your call.</div></details>
+      <details><summary>How fast can I be up and running?</summary><div class="ans">Usually about a week. We load it with your services, pricing ranges, service area, and booking rules, then test it with you before it goes live.</div></details>
+      <details><summary>What if it can't answer something?</summary><div class="ans">It captures the details and routes the caller (or a text) straight to you. You never lose the lead — you just don't have to catch every call yourself.</div></details>
+      <details><summary>Is this just for HVAC?</summary><div class="ans">No — it's tuned per trade. This page is the HVAC version; plumbing, roofing, lawn care, pest control, cleaning, electrical, auto and more each get their own setup.</div></details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand" style="color:#fff;margin-bottom:10px"><span class="dot">📞</span><div style="color:#fff">FrontDesk&nbsp;AI<small style="color:#94a3b8">Automation for home-service pros</small></div></div>
+    <div>Demo landing page · brand name, pricing and quotes are placeholders — swap in your own before presenting.</div>
+    <div class="src">
+      Stats: home-service businesses miss ~62% of inbound calls; 85% of voicemail callers never call back, 62% call a competitor
+      (<a href="https://www.getaira.io/blog/missed-business-calls-statistics" target="_blank">Aira</a>,
+      <a href="https://www.invoca.com/blog/how-much-missed-sales-calls-cost-home-services-businesses" target="_blank">Invoca</a>).
+      78% hire the first business to respond; 5-min response = 100× more likely to connect
+      (<a href="https://www.chilipiper.com/article/speed-to-lead-statistics" target="_blank">Chili Piper / InsideSales</a>).
+      88% read reviews before choosing a local business
+      (<a href="https://www.brightlocal.com/research/local-consumer-review-survey/" target="_blank">BrightLocal</a>).
+      Reminders cut no-shows up to 38%
+      (<a href="https://www.klara.com/blog/text-message-appointment-reminders-reduce-no-shows-by-38-study-finds" target="_blank">Klara</a>).
+    </div>
+  </div>
+</footer>
+
+<!-- Voice agent: ONE universal agent, fed THIS page's knowledge file as dynamic variables. -->
+<!-- To make a roofing/plumbing page: clone this file and change PAGE_TRADE below. Requires internet + https. -->
+<elevenlabs-convai id="ava-widget" agent-id="agent_3701kvy7e4mqebyr89m8sryfx7bm"></elevenlabs-convai>
+<script>
+(function () {
+  var PAGE_TRADE = "hvac"; // <-- the only line that changes per trade page. Loads /kb/<trade>.json
+  // Fallback so the agent always has its facts even if the knowledge file can't be fetched (e.g. opened locally).
+  var FALLBACK = {
+    business_name: "Summit Comfort Heating & Air",
+    trade: "HVAC",
+    services: "AC and heating repair, new system installation, and maintenance tune-ups for all major brands",
+    service_area: "the greater metro area, about a 30-mile radius",
+    hours: "8am-6pm Monday-Saturday, with 24/7 emergency service for no-heat and no-cooling calls",
+    pricing_notes: "diagnostic fee around $89, waived with a booked repair; tune-up about $99; new installs get a free in-home estimate; financing available",
+    booking_notes: "usually same-day or next-day for repairs; collect name, address, problem, and preferred day and time window",
+    emergency_examples: "no AC in a heat wave, no heat in the cold, a burning smell, or a water leak"
+  };
+  function loadWidget(vars) {
+    try { document.getElementById('ava-widget').setAttribute('dynamic-variables', JSON.stringify(vars)); } catch (e) {}
+    var s = document.createElement('script');
+    s.src = "https://unpkg.com/@elevenlabs/convai-widget-embed";
+    s.async = true;
+    document.body.appendChild(s);
+  }
+  fetch('kb/' + PAGE_TRADE + '.json', { cache: 'no-store' })
+    .then(function (r) { if (!r.ok) throw new Error('kb ' + r.status); return r.json(); })
+    .then(function (profile) { loadWidget(profile); })
+    .catch(function () { loadWidget(FALLBACK); });
+})();
+</script>
+
+<script>
+  function money(n){return '$'+Math.round(n).toLocaleString();}
+  function calc(){
+    var job=+document.getElementById('rJob').value;
+    var miss=+document.getElementById('rMiss').value;
+    var rate=+document.getElementById('rRate').value;
+    document.getElementById('vJob').textContent=money(job);
+    document.getElementById('vMiss').textContent=miss;
+    document.getElementById('vRate').textContent=rate+'%';
+    var monthly=miss*4.3*job*(rate/100);
+    document.getElementById('lossM').textContent=money(monthly);
+    document.getElementById('lossY').textContent=money(monthly*12);
+  }
+  ['rJob','rMiss','rRate'].forEach(function(id){document.getElementById(id).addEventListener('input',calc);});
+  calc();
+</script>
+</body>
+</html>
