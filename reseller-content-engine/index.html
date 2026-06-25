@@ -26,7 +26,7 @@
   .hero p{color:var(--muted);max-width:760px;margin:0}
   .steps{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 4px;color:var(--muted);font-size:13px}
   .steps b{color:var(--ink)}
-  .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:18px 0 8px}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 8px}
   @media(max-width:860px){.grid{grid-template-columns:repeat(2,1fr)}}
   .trade{cursor:pointer;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;
     transition:transform .12s ease,border-color .12s ease,box-shadow .12s ease;text-align:left}
@@ -530,6 +530,85 @@ const TRADES = [
       "desc": "Prospect uploads documents or photos (accident scene, contract, filing) with a short description. AI summarizes the matter and flags whether it fits the firm's practice areas — so the attorney's limited consult time goes only to viable cases. Always attorney-reviewed; the AI never gives the prospect legal advice.",
       "intake": "If you'd like, upload any relevant documents or photos here with a brief description. We'll review confidentially before your consultation so we make the most of your time. (This isn't legal advice.)"
     }
+  },
+  {
+    "id": "gym",
+    "ico": "🏋️",
+    "name": "Gym / Fitness Studio",
+    "tagline": "Gyms, studios & personal training",
+    "avgJob": 500,
+    "missed": 8,
+    "stat": "A missed inquiry is a lost membership — and a member is worth hundreds to thousands over their lifetime, not a one-time sale.",
+    "reasons": [
+      "<b>Missed inquiries are lost memberships.</b> A 'how much is it?' call or DM that goes unanswered while your team is coaching is a recurring member joining the studio down the street.",
+      "<b>Speed to lead on trials and tours.</b> People ready to start want to book a tour or trial now, and they go with whoever answers first. AI responds in seconds, day or night.",
+      "<b>Your coaches are stuck manning the desk.</b> Every hours/pricing/class-time question your team fields is time not coaching. AI handles the FAQs and books the tour.",
+      "<b>No-show tours and quiet members cost growth.</b> Reminders cut no-shows up to 38%, and automated win-backs re-engage members who stopped showing up before they cancel.",
+      "<b>Reviews fill the class and referrals keep it full.</b> 88% read reviews before joining a gym. Automation asks happy members for reviews and referrals at the right moment."
+    ],
+    "callScript": "Hey, is this [Owner]? Quick one — I help gyms and studios stop losing membership inquiries. Real fast: how many 'how much is it' calls and DMs come in while your team is coaching on the floor? Most owners miss a bunch, and each one is a recurring member worth a thousand-plus a year. We put in an AI that answers every call, text, and DM in your gym's name, books the tour or starts the free trial, and even wins back members who stopped showing up. Owners usually add a handful of memberships the first month. Can I send you a 90-second demo?",
+    "email": {
+      "subject": "the membership inquiries your front desk is missing",
+      "body": "[Owner] — when your team is on the floor coaching, who is answering 'how much is a membership?' Those calls and DMs are recurring members, and they join whoever answers first.\n\nMost studios miss a chunk of them, and a missed inquiry is not a one-time sale — it is a member worth a thousand-plus a year. We set up an AI that answers every call, text, and Instagram DM in your gym's name, books the tour or kicks off a free trial, and re-engages members who have gone quiet before they cancel.\n\nWant a number you can call right now to hear it book a tour? Takes 90 seconds.\n\n[Your name]"
+    },
+    "sms": "Hi [Owner], it's [Your name]. I help gyms capture the membership inquiries you miss while coaching (calls, texts & DMs). AI answers, books tours, starts trials & wins back quiet members. Quick demo?",
+    "social": "Gym owners: every \"how much is a membership?\" call you miss while you're coaching is recurring revenue joining the studio down the street. 🏋️\n\nAI answers every call, text, and DM, books the tour, starts the free trial, and wins back members before they cancel.\n\nComment \"FIT\" for a demo line.",
+    "samples": {
+      "missed": "Thanks for reaching out to [Gym Name]! 💪 Want to book a free tour or start a trial? Tell me your name and a good time and I'll set it up — and answer anything about classes, hours, or pricing.",
+      "reminder": "[Gym Name]: your tour/intro session is tomorrow at 5:30pm with our team. Reply C to confirm or R to reschedule. Bring water and we'll show you around! 💪",
+      "review": "Loving your workouts, [Member]? 🙌 A quick Google review helps other locals find [Gym Name]: [review link] — thank you!"
+    },
+    "backfill": {
+      "desc": "The 48-hour reminder keeps tours, intro sessions, and personal-training slots confirmed, and the instant someone cancels, the open time is auto-offered to your waitlist or trial list — so a coach's hour never sits empty.",
+      "reminder48": "[Gym Name]: your session is booked for Saturday 9am — that's 2 days out. Reply C to confirm or R if it won't work. 💪",
+      "cancelReply": "No problem! Want Mon or Tue instead? Reply with a day. I'll open your Saturday slot for another member.",
+      "waitlistOffer": "[Gym Name]: a Saturday 9am training slot just opened — you were on the list. Want it? Reply YES. 💪"
+    },
+    "smartEstimate": {
+      "name": "Smart membership matchmaker & lead capture",
+      "desc": "Captures every call, text, and DM, qualifies the prospect's goals, recommends the right membership or class package, and books the tour or trial, then nurtures until they join.",
+      "intake": "Hey! What are you looking to work on — weight loss, strength, classes, or personal training? Tell me that and your name, and I'll recommend a plan and book your free tour. 💪"
+    }
+  },
+  {
+    "id": "therapist",
+    "ico": "🧠",
+    "name": "Therapist / Counselor",
+    "tagline": "Therapy, counseling & mental health",
+    "avgJob": 1200,
+    "missed": 5,
+    "stat": "Someone working up the courage to call for help won't leave a voicemail and try again. If no one answers warmly, they may not reach out anywhere else.",
+    "compliance": "🧠 Sensitive vertical — handle with care. A mental-health intake assistant must be warm, never diagnose or give clinical advice, protect privacy (HIPAA, signed BAA), and escalate any crisis immediately: if a caller mentions self-harm or is in distress, it shares the 988 Suicide & Crisis Lifeline (call or text 988), urges contacting emergency services or a trusted person, and offers an urgent human callback. Any tone or emotional-state read is a consented screening aid for the clinician — never a diagnosis. Review requests must follow the clinician's licensing-board rules.",
+    "reasons": [
+      "<b>A voicemail can end the search for help.</b> Someone who finally called rarely leaves a message and tries again. A warm voice that answers — day or night — can be the difference in whether they get care at all.",
+      "<b>Warmth and speed matter most when reaching out is hardest.</b> The practice that responds first, and kindly, books the client. AI answers immediately and gently gathers the basics.",
+      "<b>Clinicians shouldn't live at the front desk.</b> Returning insurance and availability calls is time not spent with clients. AI handles intake and scheduling so therapists focus on care.",
+      "<b>No-shows break continuity of care.</b> Reminders cut no-shows up to 38%, protecting the client's progress and the practice's calendar; open slots are gently re-offered to the waitlist.",
+      "<b>Trust is chosen on reputation.</b> People choose a therapist carefully. Automation requests feedback ethically (within licensing rules) and keeps clients gently engaged between sessions."
+    ],
+    "callScript": "Hi [Name], [Your name] here — I work with therapy and counseling practices. Quick, important point: when someone finally works up the nerve to call for help and gets voicemail, they often don't try again. A warm, around-the-clock intake line means no one reaching out falls through the cracks. We set up a HIPAA-conscious AI intake that answers gently, gathers the basics, books the first session, and gives you a short, consented summary of the caller's concern and emotional state before the appointment, so you walk in prepared. And if someone is in crisis, it immediately shares 988 and urges emergency help. Could I show you how it works and how we keep it compliant?",
+    "email": {
+      "subject": "the calls for help that hit your voicemail",
+      "body": "[Name] — here's the hard truth in private practice: when someone finally calls and reaches voicemail, they often don't call the next name on the list. A warm intake line that answers around the clock can be the difference in whether they get care.\n\nWe set up a HIPAA-conscious AI intake assistant that answers gently in your practice's name, gathers the basics, and books the first session — and gives you a short, consented summary of the caller's presenting concern and emotional state before the appointment, so your time together starts further along. If a caller is in crisis, it immediately shares the 988 Lifeline and urges emergency help, then flags it for an urgent human callback.\n\nCould I show you how it works, and how we keep it compliant and caring?\n\n[Your name]"
+    },
+    "sms": "Hi [Name], [Your name] here. I help counseling practices make sure no one reaching out for help hits voicemail. HIPAA-conscious AI intake answers warmly, books the first session, and escalates crises to 988. Open to a careful demo?",
+    "social": "Therapists & counselors: when someone finally calls for help and gets voicemail, they often don't try again. 🧠\n\nA warm, HIPAA-conscious AI intake answers around the clock, books the first session, summarizes the caller's concern for you (with consent), and escalates any crisis to the 988 Lifeline.\n\nComment \"CARE\" to see how it works.",
+    "samples": {
+      "missed": "Thank you for reaching out to [Practice Name]. Calling takes courage. 💙 I can help you schedule a first appointment and answer questions about availability or insurance. May I start with your first name? (If you're in crisis right now, please call or text 988 for the Suicide & Crisis Lifeline.)",
+      "reminder": "[Practice Name]: a gentle reminder of your appointment tomorrow at 2pm with [Clinician]. Reply C to confirm or R to reschedule — no problem either way. We're glad you're coming in. 💙",
+      "review": "Thank you for trusting [Practice Name], [First name]. If you're comfortable, a brief review helps others take the first step toward support: [review link]. Only if it feels right — no pressure at all."
+    },
+    "backfill": {
+      "desc": "The 48-hour reminder keeps sessions confirmed and protects continuity of care. If a client needs to cancel, the slot is gently re-offered to clients on the waitlist — so a clinician's hour stays available to someone who needs it.",
+      "reminder48": "[Practice Name]: a gentle reminder of your session Saturday at 11am with [Clinician] — 2 days away. Reply C to confirm or R to reschedule. 💙",
+      "cancelReply": "Of course — taking care of yourself comes first. Would Monday or Tuesday work better? Reply with a day and I'll open your Saturday time for another client.",
+      "waitlistOffer": "[Practice Name]: an earlier session opened Saturday at 11am with [Clinician]. You'd asked to be seen sooner — would you like it? Reply YES."
+    },
+    "smartEstimate": {
+      "name": "Tone & psychological-state analysis (a clinician's prep tool)",
+      "desc": "During intake, the assistant gently gauges the caller's tone, pacing, and word choice to sense emotional state — adapting its warmth, flagging urgency, and preparing a consented summary for the clinician. Never a diagnosis; always human-reviewed; crises escalate to 988 immediately.",
+      "intake": "Whenever you're ready, tell me a little about what's bringing you in — there's no wrong way to say it. I'll listen, help you book a first session, and (only with your okay) pass a short summary to your clinician so you don't have to start over. If you're in crisis right now, please call or text 988."
+    }
   }
 ];
 
@@ -546,7 +625,7 @@ const TABS = [
   {id:"estimate", label:"🤖 AI smart estimate"},
   {id:"homepage", label:"🏠 Example home page"}
 ];
-const HOMEPAGES = { hvac:"examples/hvac-home.html", roofing:"examples/roofing-home.html", lawn:"examples/lawn-home.html", plumbing:"examples/plumbing-home.html", electrical:"examples/electrical-home.html", pest:"examples/pest-home.html", cleaning:"examples/cleaning-home.html", painting:"examples/painting-home.html", auto:"examples/auto-home.html", law:"examples/law-home.html" };
+const HOMEPAGES = { hvac:"examples/hvac-home.html", roofing:"examples/roofing-home.html", lawn:"examples/lawn-home.html", plumbing:"examples/plumbing-home.html", electrical:"examples/electrical-home.html", pest:"examples/pest-home.html", cleaning:"examples/cleaning-home.html", painting:"examples/painting-home.html", auto:"examples/auto-home.html", law:"examples/law-home.html", gym:"examples/gym-home.html", therapist:"examples/therapist-home.html" };
 
 let current = null;
 let activeTab = "why";

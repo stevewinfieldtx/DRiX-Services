@@ -112,5 +112,27 @@ const WHY = {
       { t: "Reviews build credibility for a high-trust choice", b: "88% read reviews before choosing a firm. Automation requests reviews (within your state bar's rules) and drafts replies, building the credibility that wins the next client — always attorney-reviewed." }
     ],
     bottomLine: "In PI and family law, the first firm to respond usually signs the client — your competitors aren't better lawyers, they just answered first. A compliant AI intake line captures the after-hours and overflow retainers you're losing now. (All review and outreach automation must follow your state bar's advertising and solicitation rules.)"
+  },
+  gym: {
+    opener: `A gym or studio is a recurring-revenue business, and the phone, the texts, and the Instagram DMs are where new members are won. Every 'how much is it?' that goes unanswered while your team is coaching on the floor is a member — worth hundreds to thousands over their lifetime — signing up down the street. Here's where the money leaks.`,
+    leaks: [
+      { t: `Missed inquiries are lost memberships`, b: `62% of calls to local businesses go unanswered, and gyms add missed DMs and texts on top. 85% of voicemail callers never call back. A missed inquiry isn't a one-time sale — it's a recurring member worth a thousand-plus a year. AI answers every call, text, and DM in your gym's name and books the tour.` },
+      { t: `Speed to lead on trials and tours`, b: `78% join the first place that responds. Someone ready to start wants to book a tour or trial right now, and they go with whoever answers first. Automation responds in seconds, day or night, and gets them on the calendar before they cool off.` },
+      { t: `Your coaches are stuck manning the desk`, b: `Every hours, class-time, or pricing question your team takes is time not spent coaching and retaining members. AI handles the FAQs and books the tour, so your staff stays on the floor where they add value.` },
+      { t: `No-show tours and quiet members cost growth`, b: `A no-show tour is a lost conversion, and a member who quietly stops coming is about to cancel. Reminders cut no-shows by up to 38%, and automated win-backs re-engage at-risk members before they're gone.` },
+      { t: `Reviews fill the class and referrals keep it full`, b: `88% of people read reviews before joining a gym, and word-of-mouth drives the rest. Automation asks happy members for reviews and referrals at the right moment, turning your best members into your best marketing.` }
+    ],
+    bottomLine: `Memberships compound: a gym missing 8 inquiries a week, each a member worth $1,000-plus a year, is leaving serious recurring revenue on the table. Automation answers every inquiry, books the tour, and keeps members engaged — so the studio grows instead of leaking.`
+  },
+  therapist: {
+    opener: `Private practice is built on trust, and it often begins with one hard phone call. When someone finally works up the courage to reach out and gets a voicemail, they frequently don't try the next name on the list. So the stakes here aren't just a booked session — they're whether a person gets care at all. Here's where practices lose clients, and how automation helps when it's handled with care.`,
+    leaks: [
+      { t: `A voicemail can end the search for help`, b: `When most calls to a small practice go unanswered and someone in distress reaches voicemail, they rarely leave a message and try again. A warm voice that answers — day or night — can be the difference in whether they get care. AI answers gently and books the first session so no one reaching out falls through the cracks.` },
+      { t: `Warmth and speed matter most when reaching out is hardest`, b: `The practice that responds first, and kindly, is the one that books the client. Automation answers immediately, gathers the basics gently, and schedules the intake — without the person having to muster the courage twice.` },
+      { t: `Clinicians shouldn't live at the front desk`, b: `Time spent returning insurance and availability calls is time not spent with clients. AI handles intake and scheduling so therapists can focus on care, not admin.` },
+      { t: `No-shows break continuity of care`, b: `A missed session hurts the client's progress and the practice's calendar. Reminders cut no-shows by up to 38%, and open slots are gently re-offered to clients on the waitlist who need to be seen sooner.` },
+      { t: `Trust is chosen on reputation`, b: `People choose a therapist carefully, and reviews and responsiveness shape that choice. Automation requests feedback ethically within licensing rules and keeps clients gently engaged between sessions.` }
+    ],
+    bottomLine: `For a counseling practice, answering warmly is both the right thing and the sustainable thing: fewer people slip away in a hard moment, the caseload is fuller and steadier, and clinicians are freed to do the work only they can do. (Any intake automation must be HIPAA-handled, never diagnose, and escalate crises to the 988 Lifeline.)`
   }
 };

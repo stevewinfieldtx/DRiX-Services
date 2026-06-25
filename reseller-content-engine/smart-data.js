@@ -248,5 +248,54 @@ const SMART = {
       "Routes only qualified, in-scope intakes to your paralegals.",
       "Requests reviews within your state bar's rules after a matter closes."
     ]
+  },
+  gym: {
+    headline: `Capture every inquiry across calls, texts, and DMs — and match it to the right membership`,
+    how: [
+      `Answers every channel a prospect uses — phone, SMS, and Instagram or Facebook DMs — in your gym's name, so no inquiry is missed while your team is on the floor.`,
+      `Qualifies the prospect's goals (weight loss, strength, classes, personal training) and recommends the membership or package that fits.`,
+      `Books the tour or starts the free trial on the spot, and adds them to a nurture sequence if they're not ready yet.`,
+      `Re-engages members who've gone quiet — a drop in check-ins triggers a friendly win-back before they cancel.`,
+      `Asks for reviews and referrals after a great session, turning happy members into new members.`
+    ],
+    sample: { title: `Sample read — inbound Instagram DM`, lines: [
+      `Goal: lose weight, prefers group classes`,
+      `Recommended: unlimited classes + 1 intro PT session`,
+      `Action: free tour booked Sat 9am`,
+      `Channel: replied on Instagram within seconds`,
+      `Nurture: 3-touch sequence if no-show`,
+      `Member value flag: ~$1,200/yr`
+    ]},
+    intake: `Hey! What are you looking to work on — weight loss, strength, classes, or personal training? Tell me that and your name, and I'll recommend a plan and book your free tour. 💪`,
+    more: [
+      `Win-back texts to members who stopped checking in.`,
+      `Class waitlist management and instant fill when a spot opens.`,
+      `Auto-collects reviews and referrals from your happiest members.`
+    ]
+  },
+  therapist: {
+    headline: `Tone & psychological-state sensing during the call — a prep tool for the clinician, never a diagnosis`,
+    how: [
+      `As the caller speaks, the assistant attends to vocal cues — tone, pace, pauses, and word choice — to gently sense their emotional state (for example: calm, anxious, tearful, agitated, or flat) and adapt its own warmth and pacing in response.`,
+      `It gauges urgency and distress, and if it detects crisis indicators (thoughts of self-harm, hopelessness, panic), it immediately shares the 988 Suicide & Crisis Lifeline, urges contacting emergency services or a trusted person, and flags an urgent human callback — it never attempts to counsel.`,
+      `With the caller's consent, it prepares a short intake summary for the clinician: the presenting concern in the caller's own words, an at-a-glance read of affect and urgency, insurance and scheduling basics, and any risk flags — so the first session starts further along.`,
+      `It tracks what's already been shared so the client isn't asked to repeat their story, and notes preferences (telehealth vs. in-person, clinician gender or language).`,
+      `Everything is consented, HIPAA-handled under a signed BAA, and clearly labeled a screening aid — the clinician makes every clinical judgment.`
+    ],
+    sample: { title: `Sample intake summary (consented; for clinician review only)`, lines: [
+      `Presenting concern: "really anxious since a job loss, not sleeping"`,
+      `Observed affect: anxious, fast-paced speech, some tearfulness`,
+      `Urgency: elevated — would like to be seen this week`,
+      `Risk flags: none disclosed (no self-harm indicators)`,
+      `Logistics: prefers telehealth, evenings; has [insurer]`,
+      `Note: asked not to repeat details at the first session`
+    ]},
+    intake: `Whenever you're ready, tell me a little about what's bringing you in — there's no wrong way to say it. I'll listen, help you book a first session, and (only with your okay) pass a short summary to your clinician so you don't have to start over. If you're in crisis right now, please call or text 988 — the Suicide & Crisis Lifeline.`,
+    more: [
+      `Routes any crisis to 988 and an urgent human callback, every time — safety first.`,
+      `Sends gentle session reminders and optional check-ins between appointments (with consent).`,
+      `Answers insurance and sliding-scale questions so clinicians don't field them.`,
+      `Offers intake in the caller's language and respects clinician-match preferences.`
+    ]
   }
 };
