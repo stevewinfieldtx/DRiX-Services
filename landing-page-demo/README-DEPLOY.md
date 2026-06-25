@@ -1,13 +1,13 @@
 # FrontDesk AI — Landing Page (Railway deploy)
 
-A self-contained demo landing page with an embedded ElevenLabs voice agent (Ava) docked bottom-right.
-**One universal agent** serves every trade — each page feeds it its own knowledge file, so Ava becomes an HVAC, roofing, or plumbing receptionist depending on the page she's on.
+A self-contained demo landing page with an embedded ElevenLabs voice agent (Nick) docked bottom-right.
+**One universal agent** serves every trade — each page feeds it its own knowledge file, so Nick becomes an HVAC, roofing, or plumbing receptionist depending on the page he's on.
 
 ## How the "page-driven agent" works
 1. Each page sets one line: `var PAGE_TRADE = "hvac";` (near the bottom of `index.html`).
 2. On load, the page fetches its knowledge file — `kb/hvac.json` (this is your "hidden page that gets called").
 3. It passes that JSON to the widget as **dynamic variables**, so the single agent (`agent_3701kvy7e4mqebyr89m8sryfx7bm`) speaks as that specific business.
-4. If the fetch fails (e.g. opened as a local file), a built-in fallback keeps Ava working as HVAC.
+4. If the fetch fails (e.g. opened as a local file), a built-in fallback keeps Nick working as HVAC.
 
 **To add a trade:** drop a new `kb/<trade>.json`, clone `index.html`, change `PAGE_TRADE`. No new agent, no code.
 
@@ -28,7 +28,7 @@ No env vars. No API key — the page is static and the agent is hosted by Eleven
 ## ⚠️ Two must-dos in the ElevenLabs dashboard
 Open the agent **"FrontDesk AI — Universal Receptionist (page-driven)"** (`agent_3701kvy7e4mqebyr89m8sryfx7bm`):
 
-1. **Allowlist your domain** — Widget/Security settings → add your `…up.railway.app` domain. If Ava appears but won't talk, this is almost always why.
+1. **Allowlist your domain** — Widget/Security settings → add your `…up.railway.app` domain. If Nick appears but won't talk, this is almost always why.
 2. **Set placeholder/default values for the dynamic variables** — because the prompt now uses `{{business_name}}`, `{{trade}}`, `{{services}}`, `{{service_area}}`, `{{hours}}`, `{{pricing_notes}}`, `{{booking_notes}}`, `{{emergency_examples}}`. The pages supply these at runtime, but set defaults (use the HVAC values) so the dashboard "Test agent" button works and nothing errors if a variable is ever missing.
 
 ## Optional upgrade: true server-side fetch (your "hidden page" idea, fully)
