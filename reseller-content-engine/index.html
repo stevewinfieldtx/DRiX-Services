@@ -135,6 +135,8 @@
 </div>
 <div class="toast" id="toast">Copied ✓</div>
 
+<script src="why-data.js"></script>
+<script src="smart-data.js"></script>
 <script>
 /* ============ CONTENT LIBRARY — 10 trades ============ */
 const TRADES = [
@@ -541,8 +543,10 @@ const TABS = [
   {id:"social", label:"📣 Social post"},
   {id:"samples", label:"🎁 What their customer gets"},
   {id:"reschedule", label:"🔁 Fill empty slots"},
-  {id:"estimate", label:"🤖 AI smart estimate"}
+  {id:"estimate", label:"🤖 AI smart estimate"},
+  {id:"homepage", label:"🏠 Example home page"}
 ];
+const HOMEPAGES = { hvac:"examples/hvac-home.html", roofing:"examples/roofing-home.html", lawn:"examples/lawn-home.html", plumbing:"examples/plumbing-home.html" };
 
 let current = null;
 let activeTab = "why";
@@ -592,9 +596,20 @@ function escapeHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').repla
 function renderBody(){
   const c=current; const b=document.getElementById('tabbody');
   if(activeTab==="why"){
-    b.innerHTML = `${c.compliance?`<div class="compliance">${escapeHtml(c.compliance)}</div>`:''}
-      <ul class="reasons">${c.reasons.map(r=>`<li>${r}</li>`).join('')}</ul>
-      <div class="note">These are the talking points behind every asset in this kit. Lead with the one that stings most for this owner.</div>`;
+    var wy=(typeof WHY!=='undefined')?WHY[c.id]:null;
+    if(wy){
+      var h='';
+      if(c.compliance) h+=`<div class="compliance">${escapeHtml(c.compliance)}</div>`;
+      h+=`<div style="font-size:15px;line-height:1.65;color:var(--ink);margin-bottom:6px">${escapeHtml(wy.opener)}</div>`;
+      h+=`<div style="font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--brand2);font-weight:700;margin:14px 0 8px">The five money leaks</div>`;
+      h+=wy.leaks.map(function(l,i){return `<div class="card"><h4 style="text-transform:none;letter-spacing:0;font-size:14px;color:var(--brand2)">${i+1}. ${escapeHtml(l.t)}</h4><div style="font-size:14px;line-height:1.6;color:var(--ink)">${escapeHtml(l.b)}</div></div>`;}).join('');
+      h+=`<div class="card" style="border-color:var(--brand)"><h4 style="text-transform:none;letter-spacing:0;font-size:14px;color:var(--brand)">The bottom line</h4><div style="font-size:14px;line-height:1.6;color:var(--ink)">${escapeHtml(wy.bottomLine)}</div></div>`;
+      h+=`<div class="note" style="margin-top:10px"><b>The numbers behind it:</b> ${escapeHtml(WHY_STATS)}</div>`;
+      h+=`<button class="copybtn" style="margin-top:10px" onclick="copyWhy('${c.id}')">📋 Copy this whole pitch</button>`;
+      b.innerHTML=h;
+    } else {
+      b.innerHTML = `${c.compliance?`<div class="compliance">${escapeHtml(c.compliance)}</div>`:''}<ul class="reasons">${c.reasons.map(r=>`<li>${r}</li>`).join('')}</ul>`;
+    }
   }
   else if(activeTab==="calc"){ renderCalc(b); }
   else if(activeTab==="call"){
@@ -623,8 +638,30 @@ function renderBody(){
       + card("Waitlist auto-offer","The freed slot is instantly offered to the next customer in line.", c.backfill.waitlistOffer);
   }
   else if(activeTab==="estimate"){
-    b.innerHTML = `<div class="note" style="margin-bottom:12px">🤖 <b>${escapeHtml(c.smartEstimate.name)}.</b> ${escapeHtml(c.smartEstimate.desc)}</div>`
-      + card("What the customer receives (the intake ask)","The message that collects the photos / details the AI needs.", c.smartEstimate.intake);
+    var sm=(typeof SMART!=='undefined')?SMART[c.id]:null;
+    if(sm){
+      var h=`<div style="font-size:16px;font-weight:700;color:var(--brand2);margin-bottom:6px">🤖 ${escapeHtml(sm.headline)}</div>`;
+      h+=`<div style="font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);font-weight:700;margin:12px 0 6px">How the AI actually does it</div>`;
+      h+=`<ol style="margin:0 0 6px;padding-left:20px">`+sm.how.map(function(s){return `<li style="font-size:14px;line-height:1.6;color:var(--ink);margin-bottom:6px">${escapeHtml(s)}</li>`;}).join('')+`</ol>`;
+      h+=`<div class="card" style="background:#0c1b2e;border-color:var(--brand2)"><h4 style="text-transform:none;letter-spacing:0;color:var(--brand2);font-size:13px">${escapeHtml(sm.sample.title)}</h4><div style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;line-height:1.75;color:var(--ink)">`+sm.sample.lines.map(function(x){return '• '+escapeHtml(x);}).join('<br>')+`</div></div>`;
+      h+=card("The message that collects what the AI needs","Sent to the customer — it asks the right questions, so the estimate is real.", sm.intake);
+      h+=`<div style="font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);font-weight:700;margin:6px 0 6px">And it doesn't stop there</div>`;
+      h+=`<ul style="margin:0;padding-left:20px">`+sm.more.map(function(s){return `<li style="font-size:14px;line-height:1.6;color:var(--ink);margin-bottom:5px">${escapeHtml(s)}</li>`;}).join('')+`</ul>`;
+      h+=`<button class="copybtn" style="margin-top:12px" onclick="copySmart('${c.id}')">📋 Copy this for your pitch</button>`;
+      b.innerHTML=h;
+    } else {
+      b.innerHTML = `<div class="note">${escapeHtml(c.name)} AI estimate details.</div>`;
+    }
+  }
+  else if(activeTab==="homepage"){
+    var ex = HOMEPAGES[c.id];
+    if(ex){
+      b.innerHTML = `<div class="note" style="margin-bottom:12px">🏠 <b>The example site you show the owner.</b> This is ${escapeHtml(c.name)} as their <i>own</i> website — with a 24/7 AI receptionist (bottom-right corner) and the automations built right in. Pull it up on your laptop or send the link: "imagine this is your business."</div>`
+        + `<div style="margin-bottom:12px"><a class="copybtn" style="text-decoration:none;display:inline-block" href="${ex}" target="_blank">↗ Open full page in a new tab</a></div>`
+        + `<div style="border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff"><iframe src="${ex}" style="width:100%;height:600px;border:0;display:block" title="${escapeHtml(c.name)} example homepage"></iframe></div>`;
+    } else {
+      b.innerHTML = `<div class="note">🏠 Example homepages are built for <b>HVAC</b>, <b>Roofing</b>, <b>Lawn &amp; Landscaping</b>, and <b>Plumbing</b> so far. Want one for <b>${escapeHtml(c.name)}</b> too? It is a quick add — just ask.</div>`;
+    }
   }
 }
 
@@ -650,7 +687,7 @@ function renderCalc(b){
         <div class="lbl">potential revenue ringing your competitor every month<br>
         <span style="font-size:11px">(conservative: assumes only half of missed calls were real jobs)</span></div>
       </div>
-      <div class="note">Math: missed calls/week &times; 4.3 weeks &times; average job &times; 50% genuine. Even if it's off by half, the number still closes the deal.</div>
+      <div class="note">Math: missed calls/week &times; 4.3 weeks &times; average job &times; 50% genuine. Even if it is off by half, the number still closes the deal.</div>
     </div>`;
   const rJob=document.getElementById('rJob'), rMiss=document.getElementById('rMiss');
   function upd(){
@@ -663,6 +700,21 @@ function renderCalc(b){
 }
 
 /* ============ COPY ============ */
+function copyWhy(id){
+  var w=(typeof WHY!=='undefined')?WHY[id]:null; if(!w)return;
+  var t=w.opener+"\n\nTHE FIVE MONEY LEAKS\n\n"+w.leaks.map(function(l,i){return (i+1)+". "+l.t+"\n"+l.b;}).join("\n\n")+"\n\nTHE BOTTOM LINE\n"+w.bottomLine+"\n\nThe numbers behind it: "+WHY_STATS;
+  copyText(t);
+}
+function copySmart(id){
+  var s=(typeof SMART!=='undefined')?SMART[id]:null; if(!s)return;
+  var t=s.headline+"\n\nHOW IT WORKS\n"+s.how.map(function(x,i){return (i+1)+". "+x;}).join("\n")+"\n\n"+s.sample.title+"\n"+s.sample.lines.map(function(x){return "- "+x;}).join("\n")+"\n\nWHAT THE CUSTOMER RECEIVES\n"+s.intake+"\n\nMORE THE AI DOES\n"+s.more.map(function(x){return "- "+x;}).join("\n");
+  copyText(t);
+}
+function copyText(t){
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){toast();}).catch(function(){fallbackCopy(t);});}
+  else fallbackCopy(t);
+}
+function fallbackCopy(t){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}ta.remove();toast();}
 function copyEl(btn){
   const t=btn.parentElement.querySelector('[data-copy]').innerText;
   navigator.clipboard.writeText(t).then(()=>toast()).catch(()=>{

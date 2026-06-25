@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Summit Flow Plumbing — Fast, Honest Plumbing 24/7</title>
+<style>
+  :root{--ink:#0f172a;--body:#334155;--muted:#64748b;--line:#e2e8f0;--brand:#0e7490;--brandd:#155e75;--accent:#0891b2;--accentd:#0e7490;--soft:#ecfeff;--gold:#f59e0b;}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:var(--body);line-height:1.6}
+  h1,h2,h3{color:var(--ink);margin:0 0 .4em;line-height:1.15}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+  .btn{display:inline-block;background:var(--accent);color:#fff;font-weight:700;padding:13px 24px;border-radius:9px;text-decoration:none;border:none;cursor:pointer}
+  .btn:hover{background:var(--accentd)}
+  .btn.line{background:#fff;color:var(--brandd);border:2px solid var(--line)}
+  .ribbon{background:#ecfeff;border-bottom:1px solid #a5f3fc;color:#155e75;font-size:12.5px;text-align:center;padding:6px 10px}
+  nav{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+  nav .row{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:900;color:var(--ink);font-size:19px}
+  .logo .m{width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;color:#fff}
+  .navr{display:flex;align-items:center;gap:18px}
+  .phone{font-weight:800;color:var(--brandd);font-size:18px;text-decoration:none}
+  @media(max-width:680px){.phone{display:none}}
+  .hero{background:linear-gradient(180deg,#ecfeff,#fff);padding:60px 0;border-bottom:1px solid var(--line)}
+  .hero h1{font-size:44px;font-weight:900;letter-spacing:-.02em;max-width:16ch}
+  .hero h1 .hl{color:var(--accent)}
+  .hero p{font-size:19px;max-width:46ch;color:var(--body)}
+  .hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+  .trust{margin-top:18px;color:var(--muted);font-size:14px;font-weight:600}
+  .trust b{color:var(--gold)}
+  section{padding:54px 0}
+  .kick{color:var(--accent);font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:13px}
+  h2{font-size:28px;font-weight:800}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+  @media(max-width:760px){.grid3{grid-template-columns:1fr}}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px}
+  .card .ic{font-size:26px}.card h3{font-size:17px;margin:8px 0 4px}
+  .card p{margin:0;font-size:14.5px;color:var(--muted)}
+  .why{background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .why .grid3 .card{border-left:4px solid var(--brand)}
+  .badge{display:inline-block;background:#cffafe;color:var(--brandd);font-size:11px;font-weight:800;padding:2px 8px;border-radius:999px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+  .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+  @media(max-width:760px){.reviews{grid-template-columns:1fr}}
+  .rev{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px}
+  .rev .stars{color:var(--gold)}.rev p{font-style:italic;color:var(--ink);margin:8px 0 10px;font-size:15px}
+  .rev .who{font-size:13px;color:var(--muted)}
+  .ph{background:#fffbeb;border:1px dashed #facc15;color:#a16207;font-size:10.5px;font-weight:700;border-radius:6px;padding:2px 7px;display:inline-block;margin-bottom:6px}
+  .cta-band{background:var(--brandd);color:#fff;border-radius:18px;padding:36px;text-align:center}
+  .cta-band h2{color:#fff}.cta-band p{color:#cffafe;max-width:50ch;margin:0 auto 18px}
+  footer{background:var(--ink);color:#94a3b8;padding:30px 0;font-size:13px}
+  .demo-note{color:#cbd5e1}
+</style>
+</head>
+<body>
+<div class="ribbon">Demo example homepage — swap in the client's real name, photos &amp; number before showing it as theirs.</div>
+<nav><div class="wrap row">
+  <div class="logo"><span class="m">🚰</span> Summit Flow Plumbing</div>
+  <div class="navr"><a class="phone" href="tel:5550160">(555) 555-0160</a><a class="btn" href="#book">Book Online</a></div>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <h1>Plumbing problems? <span class="hl">We pick up.</span></h1>
+  <p>Leaks, clogs, water heaters, and emergencies — fast, upfront, and honest. Burst pipe at 2am? We answer <strong>24/7</strong> while the other guys send you to voicemail.</p>
+  <div class="cta"><a class="btn" href="#book">Book a Plumber</a><a class="btn line" href="#talk">▶ Talk to us now</a></div>
+  <div class="trust">Licensed &amp; insured · <b>★★★★★</b> 4.9 from 550+ jobs · Upfront pricing · Same-day service</div>
+</div></header>
+
+<section><div class="wrap">
+  <div class="kick">What we do</div>
+  <h2>Any plumbing problem, handled</h2>
+  <div class="grid3">
+    <div class="card"><div class="ic">💧</div><h3>Leaks &amp; Pipe Repair</h3><p>Dripping, leaking, or burst pipes — we find it and fix it fast, before it turns into water damage.</p></div>
+    <div class="card"><div class="ic">🚿</div><h3>Drains &amp; Water Heaters</h3><p>Slow drains, clogs, and water heater repair or replacement. Hot water back in no time.</p></div>
+    <div class="card"><div class="ic">🆘</div><h3>24/7 Emergencies</h3><p>Burst pipe or backup in the middle of the night? Call us — we answer and we roll.</p></div>
+  </div>
+</div></section>
+
+<section class="why"><div class="wrap">
+  <div class="kick">The Summit Flow difference</div>
+  <h2>The middle-of-the-night call? We take it</h2>
+  <div class="grid3">
+    <div class="card"><span class="badge">24/7</span><h3>We always answer</h3><p>A real voice picks up day or night — so your emergency gets handled instead of waiting until morning.</p></div>
+    <div class="card"><span class="badge">No waiting</span><h3>Miss us? Instant text back</h3><p>If we're on another job, you get a text in seconds and we get you on the schedule right away.</p></div>
+    <div class="card"><span class="badge">On time</span><h3>Reminders &amp; ETA texts</h3><p>We confirm your appointment, remind you the day before, and text when the plumber is on the way.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="kick">Customers trust us</div>
+  <h2>What our customers say</h2>
+  <div class="reviews">
+    <div class="rev"><div class="ph">SAMPLE — replace</div><div class="stars">★★★★★</div><p>"Pipe burst at midnight and Summit Flow actually answered. Plumber was here within the hour. Saved my floors."</p><div class="who">— [Customer], [Neighborhood]</div></div>
+    <div class="rev"><div class="ph">SAMPLE — replace</div><div class="stars">★★★★★</div><p>"Upfront price, no surprises, and they texted me when they were on the way. Will use again."</p><div class="who">— [Customer], [Neighborhood]</div></div>
+    <div class="rev"><div class="ph">SAMPLE — replace</div><div class="stars">★★★★★</div><p>"New water heater installed same day. Clean, friendly, and fair. Highly recommend."</p><div class="who">— [Customer], [Neighborhood]</div></div>
+  </div>
+</div></section>
+
+<section id="book"><div class="wrap">
+  <div class="cta-band">
+    <h2>Got a leak or an emergency?</h2>
+    <p>Call, book online, or talk to our AI receptionist in the corner — we'll get a plumber out to you fast.</p>
+    <a class="btn" href="tel:5550160">Call (555) 555-0160</a>
+    <p style="margin-top:14px;font-size:13px">Serving the greater metro area · 8am–6pm Mon–Sat · 24/7 emergency service</p>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <strong style="color:#fff">Summit Flow Plumbing</strong> · Licensed &amp; insured · Greater metro area
+  <div class="demo-note" style="margin-top:8px">Demo example homepage created for an automation sales conversation. Brand, reviews, and phone number are placeholders. The bottom-right assistant is a live AI receptionist demo.</div>
+</div></footer>
+
+<span id="talk"></span>
+<!-- Live AI receptionist for this example business -->
+<elevenlabs-convai agent-id="agent_3701kvy7e4mqebyr89m8sryfx7bm" dynamic-variables='{"business_name":"Summit Flow Plumbing","trade":"Plumbing","services":"leak and pipe repair, drain cleaning, water heater repair and installation, and emergency service","service_area":"the greater metro area, about a 30-mile radius","hours":"8am-6pm Monday through Saturday, with 24/7 emergency service for leaks, no water, and backups","pricing_notes":"service-call fee around 79 dollars, waived with a booked repair; water heater installs get a quick quote; never quote a firm install price over the phone","booking_notes":"find out if it is an emergency like a leak, no water, or a backup and prioritize it; collect name, address, the problem, and a preferred day and time window","emergency_examples":"a burst or leaking pipe, no hot water, a sewage backup, or water flooding a room"}'></elevenlabs-convai>
+<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+</body>
+</html>

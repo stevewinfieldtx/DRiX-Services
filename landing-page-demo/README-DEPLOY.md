@@ -36,3 +36,11 @@ Right now the *page* fetches the KB and hands it to the agent. If you'd rather t
 
 ## Swapping the brand
 In `index.html` replace: the `FrontDesk AI` name, the `$3,500/mo` pricing lines, the placeholder testimonials (marked `PLACEHOLDER — replace`), and the `mailto:hello@example.com` CTA. Business facts live in the `kb/*.json` files, not the page.
+
+## Troubleshooting: "Railpack could not determine how to build the app"
+This means Railway is pointed at the PARENT folder (`DRiX-Services`), which only holds subfolders — there is no `package.json` at that level. Fix one of two ways:
+
+- **Dashboard:** Railway service -> Settings -> set **Root Directory** to `landing-page-demo`, then redeploy.
+- **CLI:** run `railway up` from *inside* the `landing-page-demo` folder.
+
+Railpack will then find `package.json` and run `npm start` -> `node server.js`.
