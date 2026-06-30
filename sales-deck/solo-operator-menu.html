@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Solo-Operator Automation Menu — Reseller Deck</title>
+<style>
+  :root{
+    --bg:#0a111e; --bg2:#0d1526; --card:#15223a; --card2:#1a2942; --line:#243454;
+    --ink:#f8fafc; --body:#c3cee0; --muted:#8294b3; --faint:#5a6b8c;
+    --orange:#ef7a2e; --orange-h:#fb8c3f; --teal:#2dd4a7; --gold:#f5b73d; --red:#ff7a7a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  .deck{scroll-snap-type:y proximity;}
+  .slide{
+    min-height:100vh;width:100%;display:flex;flex-direction:column;justify-content:center;
+    padding:7vh 8vw;scroll-snap-align:start;position:relative;border-bottom:1px solid var(--line);
+  }
+  @media(max-width:760px){.slide{padding:6vh 7vw}}
+  .kicker{color:var(--orange);font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:13px;margin-bottom:18px}
+  h1{color:var(--ink);font-weight:900;letter-spacing:-.02em;line-height:1.05;font-size:clamp(34px,5.6vw,72px)}
+  h2{color:var(--ink);font-weight:900;letter-spacing:-.02em;line-height:1.08;font-size:clamp(28px,4.4vw,54px)}
+  h3{color:var(--ink);font-weight:800;font-size:18px;letter-spacing:-.01em}
+  .hl{color:var(--orange)}
+  .hl-t{color:var(--teal)}
+  .sub{font-size:clamp(17px,2vw,22px);color:var(--muted);margin-top:18px;max-width:56ch}
+  .lead{font-size:clamp(16px,1.6vw,19px);color:var(--body);max-width:64ch;margin-top:14px}
+  .meta{margin-top:auto;padding-top:34px;font-size:14px;color:var(--faint);display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+  .dot{width:5px;height:5px;border-radius:50%;background:var(--faint)}
+  .wl{color:var(--orange)}
+
+  /* stat row */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:46px}
+  @media(max-width:760px){.stats{grid-template-columns:1fr}}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px 26px}
+  .stat .n{font-size:clamp(40px,5vw,60px);font-weight:900;line-height:1}
+  .stat .n.o{color:var(--orange)} .stat .n.t{color:var(--teal)} .stat .n.g{color:var(--gold)}
+  .stat .l{margin-top:12px;font-size:15px;color:var(--body)}
+
+  /* leak list */
+  .leaks{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:40px}
+  @media(max-width:760px){.leaks{grid-template-columns:1fr}}
+  .leak{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:12px;padding:20px 22px}
+  .leak b{color:var(--ink);font-weight:800;display:block;margin-bottom:4px;font-size:16px}
+  .leak span{font-size:14.5px;color:var(--muted)}
+
+  /* menu groups */
+  .grouphead{display:flex;align-items:baseline;gap:14px;margin:0 0 18px}
+  .grouphead .tag{font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--teal)}
+  .grouphead .tag.o{color:var(--orange)} .grouphead .tag.g{color:var(--gold)}
+  .grouphead .gl{font-size:14px;color:var(--muted)}
+  .menu{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:30px}
+  @media(max-width:900px){.menu{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.menu{grid-template-columns:1fr}}
+  .item{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;transition:.15s}
+  .item:hover{border-color:var(--orange);transform:translateY(-2px)}
+  .item .ic{font-size:22px}
+  .item h3{margin:8px 0 5px;font-size:16px}
+  .item p{font-size:13.5px;color:var(--muted);margin:0}
+
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:42px}
+  @media(max-width:900px){.steps{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.steps{grid-template-columns:1fr}}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px}
+  .step .num{width:38px;height:38px;border-radius:10px;background:var(--orange);color:#1a0e04;font-weight:900;display:grid;place-items:center;margin-bottom:14px;font-size:18px}
+  .step h3{margin-bottom:6px}
+  .step p{font-size:14px;color:var(--muted)}
+
+  /* pricing */
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:42px}
+  @media(max-width:820px){.tiers{grid-template-columns:1fr}}
+  .tier{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px}
+  .tier.feat{border-color:var(--orange);background:linear-gradient(180deg,rgba(239,122,46,.10),var(--card))}
+  .tier .name{font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .tier.feat .name{color:var(--orange)}
+  .tier .price{font-size:30px;font-weight:900;color:var(--ink);margin:10px 0 4px}
+  .tier .price small{font-size:14px;font-weight:600;color:var(--muted)}
+  .tier .who{font-size:14px;color:var(--muted);margin-bottom:16px}
+  .tier ul{list-style:none;font-size:14.5px}
+  .tier li{padding:7px 0;border-top:1px solid var(--line);color:var(--body)}
+  .tier li:first-child{border-top:none}
+  .tier li::before{content:"✓ ";color:var(--teal);font-weight:800}
+
+  .pill{display:inline-block;background:rgba(45,212,167,.12);border:1px solid #2c6b58;color:var(--teal);
+    font-weight:700;font-size:13px;padding:7px 15px;border-radius:999px;margin-bottom:18px}
+  .note{background:rgba(245,183,61,.08);border:1px dashed #7a652b;color:var(--gold);
+    border-radius:10px;padding:13px 18px;font-size:13.5px;margin-top:26px;max-width:70ch}
+
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+  .btn{display:inline-block;background:var(--orange);color:#1a0e04;font-weight:800;padding:15px 30px;
+    border-radius:11px;font-size:16px;text-decoration:none;transition:.15s}
+  .btn:hover{background:var(--orange-h);transform:translateY(-2px)}
+  .btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+  .btn.ghost:hover{border-color:var(--orange)}
+
+  /* progress + nav */
+  .rail{position:fixed;right:22px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:11px;z-index:60}
+  @media(max-width:760px){.rail{display:none}}
+  .rail a{width:9px;height:9px;border-radius:50%;background:var(--line);transition:.2s;display:block}
+  .rail a:hover{background:var(--muted);transform:scale(1.3)}
+  .brandbar{position:fixed;top:0;left:0;right:0;height:52px;display:flex;align-items:center;justify-content:space-between;
+    padding:0 8vw;font-size:13px;color:var(--faint);z-index:55;background:linear-gradient(180deg,var(--bg),transparent);pointer-events:none}
+  .brandbar b{color:var(--body);font-weight:800;letter-spacing:.04em}
+  .pg{color:var(--faint)}
+</style>
+</head>
+<body>
+
+<div class="brandbar"><span><b>[ YOUR AGENCY ]</b> &nbsp;·&nbsp; Automation, resold</span><span class="pg">Reseller deck</span></div>
+
+<nav class="rail">
+  <a href="#s1" title="Cover"></a><a href="#s2" title="Who you sell to"></a><a href="#s3" title="Why they buy"></a>
+  <a href="#s4" title="Capture"></a><a href="#s5" title="Convert"></a><a href="#s6" title="Retain"></a>
+  <a href="#s7" title="Sales motion"></a><a href="#s8" title="Packaging"></a><a href="#s9" title="Start"></a>
+</nav>
+
+<main class="deck">
+
+  <!-- 1 · COVER -->
+  <section class="slide" id="s1">
+    <div class="kicker">For resellers selling to solo operators</div>
+    <h1>One person.<br>The whole company.<br><span class="hl">We automate the rest.</span></h1>
+    <p class="sub">A done-for-you menu of automations you can white-label and sell to solopreneurs and very small service providers — the people who answer their own phone between jobs.</p>
+    <div class="meta">
+      <span><b style="color:var(--body)">[ YOUR AGENCY ]</b></span><span class="dot"></span>
+      <span>The Solo-Operator Automation Menu</span><span class="dot"></span>
+      <span>13 services · 3 packages · live in ~1 week</span>
+    </div>
+  </section>
+
+  <!-- 2 · WHO YOU SELL TO -->
+  <section class="slide" id="s2">
+    <div class="kicker">Your buyer</div>
+    <h2>The one-person business that<br>can't afford to miss a thing.</h2>
+    <p class="lead">Solo plumbers, electricians &amp; cleaners. Mobile groomers, detailers, lawn crews of one. Therapists, trainers, tutors, coaches, freelancers. They <em>are</em> the receptionist, the marketer, the bookkeeper and the technician — all at once. When they're working, the business stops answering.</p>
+    <div class="stats">
+      <div class="stat"><div class="n o">62%</div><div class="l">of calls to small service businesses go unanswered</div></div>
+      <div class="stat"><div class="n t">78%</div><div class="l">of customers hire whoever responds first</div></div>
+      <div class="stat"><div class="n g">85%</div><div class="l">of voicemail callers never call back</div></div>
+    </div>
+  </section>
+
+  <!-- 3 · WHY THEY BUY -->
+  <section class="slide" id="s3">
+    <div class="kicker">The pitch in one sentence</div>
+    <h2>Five leaks. Every solo business<br>has all five.</h2>
+    <p class="lead">You don't sell "automation." You sell back the jobs leaking out the bottom of the bucket. Each service on the next pages plugs one of these.</p>
+    <div class="leaks">
+      <div class="leak"><b>Missed calls = lost jobs</b><span>They're under a sink or mid-session. The phone rings out. That lead just hired the next name on the list.</span></div>
+      <div class="leak"><b>Slow to respond</b><span>The first business to reply wins. A reply 5 minutes later instead of 5 hours later is the whole game.</span></div>
+      <div class="leak"><b>Drowning in "how much / when / where"</b><span>Hours a week answering the same three questions instead of doing billable work.</span></div>
+      <div class="leak"><b>No-shows &amp; empty slots</b><span>Forgotten appointments and last-minute cancellations they never backfill.</span></div>
+      <div class="leak"><b>Invisible online</b><span>Few reviews, no follow-up, no referrals. The best customers buy once and vanish.</span></div>
+    </div>
+  </section>
+
+  <!-- 4 · CAPTURE -->
+  <section class="slide" id="s4">
+    <div class="kicker">The menu · 1 of 3</div>
+    <h2>Capture — never miss the lead.</h2>
+    <div class="grouphead" style="margin-top:34px"><span class="tag o">Capture</span><span class="gl">Answer everything, in their name, around the clock.</span></div>
+    <div class="menu">
+      <div class="item"><div class="ic">📞</div><h3>24/7 AI receptionist</h3><p>Answers every call in their business name, qualifies it, and books it — nights, weekends, and while they're on the job.</p></div>
+      <div class="item"><div class="ic">⚡</div><h3>Missed-call text-back</h3><p>The instant a call slips through, it fires a friendly text so the lead never dials the next provider.</p></div>
+      <div class="item"><div class="ic">🌎</div><h3>Bilingual answering</h3><p>Answers and books in the caller's language — they stop losing half their market to a language barrier.</p></div>
+      <div class="item"><div class="ic">📅</div><h3>Instant booking</h3><p>Drops the appointment straight on their calendar and texts them the name, address, and problem.</p></div>
+      <div class="item"><div class="ic">🧾</div><h3>Call summaries to CRM</h3><p>Every call transcribed, tagged, and logged. They see what happened without replaying a single recording.</p></div>
+      <div class="item"><div class="ic">🌐</div><h3>Branded landing page</h3><p>A clean, trade-tuned web page with the AI agent built in — their storefront, ready in a day.</p></div>
+    </div>
+  </section>
+
+  <!-- 5 · CONVERT -->
+  <section class="slide" id="s5">
+    <div class="kicker">The menu · 2 of 3</div>
+    <h2>Convert — turn calls into paid work.</h2>
+    <div class="grouphead" style="margin-top:34px"><span class="tag">Convert</span><span class="gl">From "just looking" to deposit-in-hand without them lifting a finger.</span></div>
+    <div class="menu">
+      <div class="item"><div class="ic">📸</div><h3>Photo &amp; AI estimates</h3><p>Customer sends a photo or just an address; AI sizes the job so they quote fast and roll up with the right materials.</p></div>
+      <div class="item"><div class="ic">💸</div><h3>Quote-to-deposit</h3><p>Sends the quote and a payment link in one text and collects a deposit before the truck rolls.</p></div>
+      <div class="item"><div class="ic">🏦</div><h3>Financing at the quote</h3><p>On big-ticket jobs it presents financing the moment they quote — so price stops killing the close.</p></div>
+      <div class="item"><div class="ic">🔔</div><h3>Reminders + backfill</h3><p>Confirms upcoming jobs and auto-offers cancelled slots to a waitlist. Fewer no-shows, no empty days.</p></div>
+    </div>
+    <p class="note">⚙️ White-label: every service runs under <span class="wl">[ YOUR AGENCY ]</span>'s name and pricing. Mix and match — most solo clients start with 3–4.</p>
+  </section>
+
+  <!-- 6 · RETAIN -->
+  <section class="slide" id="s6">
+    <div class="kicker">The menu · 3 of 3</div>
+    <h2>Retain &amp; grow — squeeze every customer.</h2>
+    <div class="grouphead" style="margin-top:34px"><span class="tag g">Retain &amp; grow</span><span class="gl">The cheapest revenue a solo business will ever make.</span></div>
+    <div class="menu">
+      <div class="item"><div class="ic">⭐</div><h3>Review &amp; reputation engine</h3><p>Asks every happy customer for a Google review, routes unhappy ones privately first, and drafts the replies.</p></div>
+      <div class="item"><div class="ic">♻️</div><h3>Win-back &amp; reactivation</h3><p>Quietly texts customers who haven't booked in months — "time for your tune-up" — and refills the calendar.</p></div>
+      <div class="item"><div class="ic">🔗</div><h3>Referrals &amp; memberships</h3><p>After a 5-star review it asks for a referral and enrolls customers in recurring maintenance plans.</p></div>
+    </div>
+    <div class="grouphead" style="margin-top:8px"><span class="tag g">Seasonal upsell</span></div>
+    <div class="menu" style="margin-bottom:0">
+      <div class="item"><div class="ic">🌦️</div><h3>Weather &amp; seasonal campaigns</h3><p>Heat wave fires tune-up offers; freeze fires pipe-protection; storm fires inspections. The forecast becomes their marketing calendar.</p></div>
+    </div>
+  </section>
+
+  <!-- 7 · SALES MOTION -->
+  <section class="slide" id="s7">
+    <div class="kicker">How you sell it</div>
+    <h2>The four-step close.</h2>
+    <p class="lead">No technical pitch. You show them their own leaking money, then make the automation feel real in the room.</p>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>Pick their trade</h3><p>Open the demo, click their service. Instant, tailored pitch — no prep.</p></div>
+      <div class="step"><div class="num">2</div><h3>Run the calculator</h3><p>Drag the sliders to their real numbers. The dollar figure does the selling.</p></div>
+      <div class="step"><div class="num">3</div><h3>Make it real</h3><p>Fire a live "missed-call text-back" to their actual phone. That single move closes.</p></div>
+      <div class="step"><div class="num">4</div><h3>Go live in ~1 week</h3><p>Load services, pricing &amp; hours, test together, flip it on. You bill monthly.</p></div>
+    </div>
+  </section>
+
+  <!-- 8 · PACKAGING -->
+  <section class="slide" id="s8">
+    <div class="kicker">Packaging</div>
+    <h2>Three tiers. Pick a number,<br>keep the margin.</h2>
+    <div class="tiers">
+      <div class="tier">
+        <div class="name">Starter</div>
+        <div class="price">$<span>—</span><small>/mo · you set it</small></div>
+        <div class="who">The owner who just needs the phone answered.</div>
+        <ul><li>24/7 AI receptionist</li><li>Missed-call text-back</li><li>Instant booking</li><li>Call summaries</li></ul>
+      </div>
+      <div class="tier feat">
+        <div class="name">Growth · most popular</div>
+        <div class="price">$<span>—</span><small>/mo · you set it</small></div>
+        <div class="who">The solo pro ready to fill the calendar.</div>
+        <ul><li>Everything in Starter</li><li>Reminders + backfill</li><li>Review &amp; reputation engine</li><li>Photo / AI estimates</li><li>Branded landing page</li></ul>
+      </div>
+      <div class="tier">
+        <div class="name">Pro</div>
+        <div class="price">$<span>—</span><small>/mo · you set it</small></div>
+        <div class="who">The operator treating it like a growth engine.</div>
+        <ul><li>Everything in Growth</li><li>Quote-to-deposit + financing</li><li>Win-back &amp; referrals</li><li>Seasonal campaigns</li><li>Bilingual answering</li></ul>
+      </div>
+    </div>
+    <p class="note">⚙️ Prices are blank on purpose — <span class="wl">[ YOUR AGENCY ]</span> sets retail. The anchor that sells: one captured job a month usually covers the whole plan several times over, versus a $3,500/mo human receptionist who goes home at 5.</p>
+  </section>
+
+  <!-- 9 · CTA -->
+  <section class="slide" id="s9">
+    <div class="pill">● &nbsp;Your name on the front. Our engine in the back.</div>
+    <h1>Stop letting the phone<br><span class="hl">cost them customers.</span></h1>
+    <p class="sub">Hand any solo operator a front office that never sleeps — and keep the margin between what it costs you and what you charge.</p>
+    <div class="cta-row">
+      <a href="#s1" class="btn">Walk a prospect through this deck</a>
+      <a href="mailto:hello@example.com" class="btn ghost">Become a reseller</a>
+    </div>
+    <div class="meta">
+      <span class="wl">[ YOUR AGENCY ]</span><span class="dot"></span><span>[ your phone ]</span><span class="dot"></span><span>[ your email ]</span>
+    </div>
+    <p class="note">Stats are illustrative industry figures (missed-call &amp; speed-to-lead research). Set your own pricing. Regulated fields — legal, medical, financial — follow their own advertising &amp; privacy rules.</p>
+  </section>
+
+</main>
+
+<script>
+  // Keyboard arrow / PageDown navigation between slides.
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  function current(){
+    var mid = window.scrollY + window.innerHeight/2, idx = 0;
+    slides.forEach(function(s,i){ if(s.offsetTop <= mid) idx = i; });
+    return idx;
+  }
+  document.addEventListener('keydown', function(e){
+    if(['ArrowDown','PageDown',' '].includes(e.key)){ e.preventDefault(); var n=Math.min(current()+1,slides.length-1); slides[n].scrollIntoView({behavior:'smooth'}); }
+    if(['ArrowUp','PageUp'].includes(e.key)){ e.preventDefault(); var p=Math.max(current()-1,0); slides[p].scrollIntoView({behavior:'smooth'}); }
+  });
+</script>
+</body>
+</html>

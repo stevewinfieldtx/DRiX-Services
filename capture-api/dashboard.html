@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partner Report — WinTech Partners</title>
+<style>
+  :root{--navy:#0f2546;--blue:#2563eb;--blue-d:#1e40af;--orange:#f97316;--ink:#0f172a;--body:#334155;--muted:#64748b;--line:#e2e8f0;--soft2:#f8fafc;--cy:#0ea5e9}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--soft2);color:var(--body)}
+  .wrap{max-width:1000px;margin:0 auto;padding:30px 22px}
+  h1{color:var(--ink);font-size:26px;margin:0}
+  .sub{color:var(--muted);font-size:14px;margin-top:4px}
+  .gate{max-width:380px;margin:14vh auto 0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px;box-shadow:0 6px 24px rgba(15,37,70,.07)}
+  .gate h2{margin:0 0 6px;color:var(--ink)}
+  .gate p{color:var(--muted);font-size:14px;margin:0 0 16px}
+  .gate input{width:100%;border:1px solid var(--line);border-radius:11px;padding:13px;font-size:15px;outline:none}
+  .gate input:focus{border-color:var(--blue)}
+  .gate button{width:100%;margin-top:12px;background:var(--orange);color:#fff;border:none;border-radius:11px;padding:13px;font-weight:700;font-size:15px;cursor:pointer}
+  .err{color:#dc2626;font-size:13px;margin-top:10px;min-height:16px}
+  .hidden{display:none}
+  .totals{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0}
+  @media(max-width:620px){.totals{grid-template-columns:1fr 1fr}}
+  .kpi{background:#fff;border:1px solid var(--line);border-radius:13px;padding:18px}
+  .kpi .n{font-size:30px;font-weight:900;color:var(--blue-d)}
+  .kpi .l{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-top:2px}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  th,td{padding:13px 16px;text-align:left;font-size:14px;border-bottom:1px solid var(--line)}
+  th{background:#f1f5f9;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+  td.num{text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
+  td .em{color:var(--muted);font-size:12.5px}
+  tr:last-child td{border-bottom:none}
+  .refresh{float:right;background:#fff;border:1px solid var(--line);border-radius:9px;padding:8px 14px;font-size:13px;cursor:pointer;color:var(--blue-d);font-weight:600}
+  .empty{text-align:center;color:var(--muted);padding:40px}
+</style>
+</head>
+<body>
+
+<div id="gate" class="gate">
+  <h2>Partner Report</h2>
+  <p>Enter the admin key to see which prospects each partner brought in.</p>
+  <input id="key" type="password" placeholder="admin key">
+  <button id="enter">View report</button>
+  <div class="err" id="gerr"></div>
+</div>
+
+<div id="app" class="wrap hidden">
+  <button class="refresh" id="refresh">↻ Refresh</button>
+  <h1>Prospects by Partner</h1>
+  <div class="sub">Visits, ROI calcs and live voice demos from each partner's link. For reporting back — not scoring.</div>
+  <div class="totals" id="totals"></div>
+  <table>
+    <thead><tr><th>Partner</th><th style="text-align:center">Visits</th><th style="text-align:center">Calc</th><th style="text-align:center">Demos</th><th>Last seen</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <div class="empty hidden" id="empty">No partners or activity yet.</div>
+</div>
+
+<script>
+let KEY = sessionStorage.getItem('wtp_key') || '';
+const gate=document.getElementById('gate'), app=document.getElementById('app');
+async function load(){
+  const r = await fetch('/api/dashboard?key='+encodeURIComponent(KEY));
+  if(r.status===401) throw new Error('Unauthorized — check the key.');
+  if(!r.ok) throw new Error('Could not load.');
+  return r.json();
+}
+function render(d){
+  const t=d.totals||{};
+  const map=[['visit','Visits'],['calc','Calc'],['demo_start','Demos']];
+  document.getElementById('totals').innerHTML =
+    '<div class="kpi"><div class="n">'+(d.reps||[]).length+'</div><div class="l">Partners</div></div>'+
+    map.map(([k,l])=>'<div class="kpi"><div class="n">'+(t[k]||0)+'</div><div class="l">'+l+'</div></div>').join('');
+  const rows=document.getElementById('rows'); rows.innerHTML='';
+  const reps=d.reps||[];
+  document.getElementById('empty').classList.toggle('hidden', reps.length>0);
+  reps.forEach(r=>{
+    const name=((r.firstName||'')+' '+(r.lastName||'')).trim()||'—';
+    const seen=r.lastSeen?new Date(r.lastSeen).toLocaleString():'—';
+    const tr=document.createElement('tr');
+    tr.innerHTML='<td><b>'+name+'</b>'+(r.company?' · '+r.company:'')+(r.trade?' · '+r.trade:'')+'<br><span class="em">'+r.email+'</span></td>'+
+      '<td class="num">'+(r.visits||0)+'</td><td class="num">'+(r.calcs||0)+'</td><td class="num">'+(r.demos||0)+'</td>'+
+      '<td><span class="em">'+seen+'</span></td>';
+    rows.appendChild(tr);
+  });
+}
+async function go(){
+  try{ const d=await load(); gate.classList.add('hidden'); app.classList.remove('hidden'); render(d); sessionStorage.setItem('wtp_key',KEY); }
+  catch(e){ document.getElementById('gerr').textContent=e.message; gate.classList.remove('hidden'); app.classList.add('hidden'); }
+}
+document.getElementById('enter').addEventListener('click',()=>{ KEY=document.getElementById('key').value.trim(); go(); });
+document.getElementById('key').addEventListener('keydown',e=>{ if(e.key==='Enter'){ KEY=e.target.value.trim(); go(); }});
+document.getElementById('refresh').addEventListener('click',go);
+if(KEY) go();
+</script>
+</body>
+</html>

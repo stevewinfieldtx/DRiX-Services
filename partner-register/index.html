@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partner Portal — Get Your Demo Link | WinTech Partners</title>
+<meta name="description" content="Register and get your own custom link and QR code to the AI receptionist demo — send it to prospects so every demo traces back to you.">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+<style>
+  :root{
+    --navy:#0f2546; --blue:#2563eb; --blue-d:#1e40af; --orange:#f97316; --orange-d:#ea580c;
+    --ink:#0f172a; --body:#334155; --muted:#64748b; --line:#e2e8f0; --bg:#ffffff;
+    --soft:#f1f5f9; --soft2:#f8fafc; --green:#16a34a;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--body);background:var(--soft2);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{color:var(--ink);line-height:1.15;margin:0 0 .4em}
+  a{color:var(--blue);text-decoration:none}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+
+  nav{background:var(--navy)}
+  nav .row{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:900;color:#fff;font-size:18px}
+  .brand .dot{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--blue),var(--orange));display:grid;place-items:center;color:#fff;font-size:15px}
+  .brand small{display:block;font-size:10px;font-weight:600;color:#9fb3d1;letter-spacing:.5px;text-transform:uppercase}
+
+  .hero{padding:46px 0 10px}
+  .eyebrow{display:inline-block;background:#eef4ff;color:var(--blue-d);font-weight:700;font-size:13px;padding:6px 13px;border-radius:999px;margin-bottom:14px}
+  .hero h1{font-size:40px;font-weight:900;letter-spacing:-.03em;max-width:18ch}
+  .hero h1 .hl{color:var(--orange)}
+  .hero p{font-size:18px;max-width:60ch;color:var(--body)}
+
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:30px 0 60px;align-items:start}
+  @media(max-width:860px){.grid{grid-template-columns:1fr}}
+  .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px;box-shadow:0 4px 20px rgba(15,37,70,.05)}
+  .card h2{font-size:22px}
+  .card .sub{color:var(--muted);font-size:14.5px;margin-top:-2px}
+
+  .form{margin-top:20px;display:grid;gap:14px}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:420px){.row2{grid-template-columns:1fr}}
+  label{display:block;font-size:13px;color:var(--body);font-weight:600;margin-bottom:6px}
+  input,select{width:100%;background:#fff;border:1px solid var(--line);border-radius:11px;padding:13px 14px;color:var(--ink);font-size:15px;font-family:inherit;outline:none;transition:.15s}
+  input:focus,select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+  .btn{display:inline-block;background:var(--orange);color:#fff;font-weight:700;padding:15px 26px;border-radius:11px;border:none;cursor:pointer;font-size:16px;box-shadow:0 8px 20px rgba(249,115,22,.28);transition:.15s;width:100%}
+  .btn:hover{background:var(--orange-d);transform:translateY(-2px)}
+  .btn:disabled{opacity:.6;transform:none;cursor:default}
+  .err{color:#dc2626;font-size:13px;min-height:16px}
+
+  .result{min-height:340px;display:flex;flex-direction:column;justify-content:center}
+  .ph{text-align:center;color:var(--muted)}
+  .ph .ic{font-size:42px;opacity:.5}
+  .out{display:none}.out.on{display:block;animation:fade .35s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .who{font-size:14px;color:var(--muted);font-weight:600}
+  .linkbox{display:flex;gap:8px;margin-top:14px}
+  .linkbox input{color:var(--blue-d);font-weight:600;font-size:13px}
+  .copy{background:var(--navy);color:#fff;border:none;border-radius:10px;padding:0 18px;font-weight:700;cursor:pointer;font-size:14px}
+  .copy:hover{background:#16335f}
+  .qr{margin-top:18px;display:flex;gap:18px;align-items:center;background:var(--soft2);border:1px solid var(--line);border-radius:14px;padding:18px}
+  .qr canvas{background:#fff;border-radius:10px;padding:7px;width:120px;height:120px;border:1px solid var(--line)}
+  .qr .m{font-size:13.5px;color:var(--body)}
+  .dl{display:inline-block;margin-top:8px;font-size:12.5px;font-weight:700;color:var(--blue-d);border:1px solid var(--line);border-radius:8px;padding:7px 12px;background:#fff}
+  .steps{margin-top:18px;font-size:14px;color:var(--body);padding-left:18px}
+  .steps li{margin-bottom:6px}
+
+  .note{background:#fffbeb;border:1px dashed #f59e0b;color:#92400e;border-radius:12px;padding:14px 18px;font-size:13px;margin-bottom:34px}
+  footer{background:var(--ink);color:#94a3b8;padding:30px 0;font-size:13px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap row">
+    <div class="brand"><span class="dot">W</span><div>WinTech&nbsp;Partners<small>Partner portal</small></div></div>
+    <a href="https://services.getthedrix.com" target="_blank" style="color:#cdddf3;font-size:14px;font-weight:600">View the demo →</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">● For partners &amp; reps</span>
+    <h1>Get your own <span class="hl">tracked demo link</span> in 10 seconds.</h1>
+    <p>Register below and you'll get a personal link and QR code to the AI receptionist demo. Hand it to a prospect — text, email, or a QR on a leave-behind card — and every demo from your link traces back to you.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="grid">
+    <!-- FORM -->
+    <div class="card">
+      <h2>Create my link</h2>
+      <div class="sub">Your email is the tag baked into every link you share.</div>
+      <form class="form" id="form" autocomplete="on">
+        <div class="row2">
+          <div><label for="fn">First name</label><input id="fn" required placeholder="Jordan"></div>
+          <div><label for="ln">Last name</label><input id="ln" required placeholder="Avery"></div>
+        </div>
+        <div><label for="em">Work email</label><input id="em" type="email" required placeholder="jordan@yourcompany.com"></div>
+        <div><label for="co">Company <span style="color:var(--muted)">(optional)</span></label><input id="co" placeholder="Avery Solutions"></div>
+        <div><label for="tr">Pre-select a trade <span style="color:var(--muted)">(optional)</span></label>
+          <select id="tr">
+            <option value="">No preference — let them pick</option>
+            <option value="hvac">HVAC</option><option value="plumbing">Plumbing</option>
+            <option value="roofing">Roofing</option><option value="electrical">Electrical</option>
+            <option value="pest">Pest Control</option><option value="cleaning">House Cleaning</option>
+            <option value="painting">Painting</option><option value="auto">Auto Repair</option>
+            <option value="law">Law Firm</option><option value="lawn">Lawn &amp; Landscaping</option>
+          </select>
+        </div>
+        <button class="btn" type="submit" id="go">Generate my link &amp; QR code</button>
+        <div class="err" id="err"></div>
+      </form>
+    </div>
+
+    <!-- RESULT -->
+    <div class="card result">
+      <div class="ph" id="ph">
+        <div class="ic">🔗</div>
+        <p>Your personal link and QR code<br>will appear here.</p>
+      </div>
+      <div class="out" id="out">
+        <div class="who" id="who"></div>
+        <h2 style="margin-top:4px">Your demo link is ready 🎉</h2>
+        <div class="linkbox">
+          <input id="link" readonly>
+          <button class="copy" id="copy">Copy</button>
+        </div>
+        <div class="qr">
+          <canvas id="qr"></canvas>
+          <div class="m">
+            <b>Scan-to-demo QR</b><br>Print it on a card and leave it behind — a prospect scans it in the parking lot and it's still tracked to you.
+            <br><a class="dl" id="dl" download="my-demo-qr.png">Download PNG</a>
+          </div>
+        </div>
+        <ol class="steps">
+          <li>Text or email the link to a prospect.</li>
+          <li>They pick their trade and talk to the live AI.</li>
+          <li>The demo is tagged to your email for reporting.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">⚙️ Setup note: this page generates the link and QR instantly in the browser. To also <b>capture</b> each registration (build a partner list / report demos), point the form at a Google Sheet webhook or a small endpoint — ask and we'll wire it. The demo destination is set by <code>CUSTOMER_URL</code> in this file.</div>
+</div>
+
+<footer>
+  <div class="wrap">© <span id="yr"></span> WinTech Partners — Partner Portal · partners.wintechpartners.com</div>
+</footer>
+
+<script>
+  // The customer-facing demo your links point to:
+  const CUSTOMER_URL = "https://services.getthedrix.com";
+  // Capture backend that records each registration (capture-api on Railway).
+  // Leave "" to run link-only (no capture). Set to e.g. "https://capture.up.railway.app".
+  const CAPTURE_API = "";
+
+  const $ = (id)=>document.getElementById(id);
+  const form=$("form"), go=$("go"), err=$("err");
+
+  form.addEventListener("submit", async (e)=>{
+    e.preventDefault(); err.textContent="";
+    const fn=$("fn").value.trim(), ln=$("ln").value.trim(), em=$("em").value.trim(), co=$("co").value.trim(), tr=$("tr").value;
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){ err.textContent="Please enter a valid email."; return; }
+    go.disabled=true; go.textContent="Generating…";
+
+    // Default link (also the fallback if capture is off or unreachable)
+    let link = CUSTOMER_URL + "/?ref=" + encodeURIComponent(em);
+    if(tr) link += "&trade=" + tr;
+
+    if(CAPTURE_API){
+      try{
+        const r = await fetch(CAPTURE_API.replace(/\/$/,"") + "/api/reps", {
+          method:"POST", headers:{"Content-Type":"application/json"},
+          body: JSON.stringify({ firstName:fn, lastName:ln, email:em, company:co, trade:tr })
+        });
+        const data = await r.json();
+        if(r.ok && data.link) link = data.link;  // server is source of truth, and the rep is now saved
+      }catch(_){ /* fall back to the client-side link below */ }
+    }
+
+    $("ph").style.display="none";
+    $("out").classList.add("on");
+    $("who").textContent = (fn+" "+ln).trim() + " · " + em + (co? " · "+co:"");
+    $("link").value = link;
+
+    const canvas=$("qr");
+    new QRious({ element:canvas, value:link, size:260, background:"#ffffff", foreground:"#0f2546", level:"M" });
+    $("dl").href = canvas.toDataURL("image/png");
+
+    go.disabled=false; go.textContent="Generate my link & QR code";
+  });
+
+  $("copy").addEventListener("click", async ()=>{
+    const i=$("link");
+    try{ await navigator.clipboard.writeText(i.value); }catch(_){ i.select(); document.execCommand("copy"); }
+    const b=$("copy"); b.textContent="Copied!"; setTimeout(()=>b.textContent="Copy",1500);
+  });
+
+  $("yr").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

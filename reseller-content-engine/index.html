@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Automation Pitch Kit — Reseller Content Engine</title>
+<title>Automation Pitch Kit, Reseller Content Engine</title>
 <style>
   :root{
     --bg:#0b1020; --panel:#121a31; --panel2:#0f1730; --ink:#e8edf7; --muted:#9aa7c2;
@@ -89,11 +89,9 @@
   </header>
 
   <section class="hero">
-    <h1>Pick a trade. Get the <span>whole pitch</span> in one click.</h1>
-    <p>This is the engine you hand your sales team (or use yourself) to land small service businesses on automation.
-    Choose a trade below and you instantly get the cold-call script, the email, the text, the social post — plus the
-    exact messages their customers would receive, a slot-filling rescheduler, and an AI smart-estimate built for that trade.</p>
-    <div class="steps"><span><b>1.</b> Click a trade</span><span><b>2.</b> Copy the asset you need</span><span><b>3.</b> Show them the "missed-call" number</span><span><b>4.</b> Close.</span></div>
+    <h1>Pick a trade. Get the <span>whole kit</span> in one click.</h1>
+    <p>Choose a trade to instantly generate a complete content kit for it, a cold-call script, email, text message, social post, and an example homepage, plus the trade-specific automations: smart estimates, appointment reminders, review requests, and a slot-filling rescheduler.</p>
+    <div class="steps"><span><b>1.</b> Pick a trade</span><span><b>2.</b> Browse the kit</span><span><b>3.</b> Copy what you need</span><span><b>4.</b> See the missed-call cost</span></div>
   </section>
 
   <div class="grid" id="grid"></div>
@@ -118,7 +116,7 @@
   </div>
 
   <footer>
-    <div><b>Why this works — the five money leaks (sources):</b></div>
+    <div><b>Why this works, the five money leaks (sources):</b></div>
     <div class="src" style="margin-top:8px">
       78% of buyers choose the first business to respond; 5-minute response = 100× more likely to connect, 21× more likely to qualify
       (<a href="https://www.chilipiper.com/article/speed-to-lead-statistics" target="_blank">Chili Piper / InsideSales</a>,
@@ -138,7 +136,7 @@
 <script src="why-data.js"></script>
 <script src="smart-data.js"></script>
 <script>
-/* ============ CONTENT LIBRARY — 10 trades ============ */
+/* ============ CONTENT LIBRARY, 10 trades ============ */
 const TRADES = [
   {
     "id": "hvac",
@@ -147,37 +145,42 @@ const TRADES = [
     "tagline": "Heating & Cooling",
     "avgJob": 450,
     "missed": 8,
-    "stat": "Home-service companies miss ~62% of inbound calls — and 35–40% of HVAC calls come in after hours.",
+    "stat": "Home-service companies miss ~62% of inbound calls, and 35-40% of HVAC calls come in after hours.",
     "reasons": [
       "<b>Missed calls = lost installs.</b> A 'no AC' call on a 100° Saturday goes to whoever answers first. Miss it and a $6,000 system install walks next door.",
       "<b>Speed to lead.</b> 78% of homeowners book the first company that calls them back. AI answers in seconds, day or night.",
       "<b>Stop answering 'how much / when can you come.'</b> Free the techs to install, not field FAQs from the truck.",
       "<b>Appointment reminders.</b> Cut no-show tune-ups and seasonal maintenance gaps by up to 38%.",
-      "<b>Reviews on autopilot.</b> 'AC repair near me' is won on Google reviews — auto-ask every happy customer."
+      "<b>Reviews on autopilot.</b> 'AC repair near me' is won on Google reviews, auto-ask every happy customer."
     ],
-    "callScript": "Hey, is this [Owner]? Quick one — I help HVAC companies like yours stop losing the after-hours emergency calls. Real fast: do you know how many calls go to voicemail on a hot Saturday when the crew's slammed? Most shops I talk to are missing about 6 in 10 — and on an AC job that's a few hundred bucks a call, a new system is six grand. We put in an AI that answers every call in your company's name, books the job, and texts you the details. Owners usually book 2–3 extra jobs the first week. Can I send you a 90-second demo and a number you can call right now to hear it?",
+    "callScript": "Hey, is this [Owner]? Real quick. I help HVAC shops stop bleeding money on missed calls. One question. When it's 100 out on a Saturday and the phones are blowing up, how many calls go to voicemail? Most shops miss about 6 in 10. Each one is a few hundred bucks, or a six-grand install. We put an AI on your line that answers every call in your company's name, books the job, and texts you the details. Owners usually book 2 or 3 extra jobs the first week. Want me to text you a number you can call RIGHT NOW to hear it?",
     "email": {
       "subject": "the saturday calls you're not hearing",
-      "body": "[Owner] — quick question. When it's 98° out and the phones are blowing up, who's answering call number seven?\n\nMost HVAC shops miss about 62% of inbound calls during a heat wave, and 85% of those callers never leave a voicemail — they just dial the next company. On a system replacement that's a $6,000 job gone in one ring.\n\nWe set up an AI receptionist that answers every call in your company's name, 24/7, books the appointment, and texts your dispatcher the details. It also reminds customers about their tune-up and asks for a Google review after the job.\n\nWant me to send a number you can call right now to hear it answer? Takes 90 seconds.\n\n[Your name]"
+      "body": "[Owner], quick question. When it's 98 out and the phones are ringing off the hook, who's answering call number seven?\n\nMost HVAC shops miss about 62% of their calls in a heat wave. 85% of those callers never leave a voicemail. They just dial the next company. On a system replacement, that's a $6,000 job gone in one ring.\n\nWe put an AI receptionist on your line. It answers every call in your name, 24/7, books the appointment, and texts your dispatcher the details. It also reminds customers about the tune-up and asks for the Google review after the job.\n\nWant a number you can call right now to hear it answer? Takes 90 seconds.\n\n---[Your name]"
     },
-    "sms": "Hi [Owner], it's [Your name]. I help HVAC shops capture the after-hours \"no AC\" calls you're missing (most miss ~6 in 10). AI answers + books 24/7. Can I text you a demo line you can call right now?",
-    "social": "HVAC owners: it's going to hit 100° this week. Every call you miss is a $400 service ticket — or a $6,000 install — calling your competitor instead.\n\nWe put an AI receptionist on your line that answers 24/7, books the job, reminds customers about tune-ups, and asks for the Google review automatically.\n\nComment \"HOT\" and I'll send you a number you can call right now to hear it work. 🔧❄️",
+    "sms": "Hi [Owner], it's [Your name]. I help HVAC shops capture the after-hours \"no AC\" calls you miss (most miss about 6 in 10). AI answers and books 24/7. Want me to text you a demo line you can call right now?",
+    "social": "HVAC owners: it's about to hit 100 this week. Every call you miss is a $400 ticket (or a $6,000 install) calling your competitor instead.\n\nWe put an AI receptionist on your line. Answers 24/7. Books the job. Reminds customers about tune-ups. Asks for the Google review automatically.\n\nComment \"HOT\" and I'll send you a number you can call right now to hear it work. 🔧",
     "samples": {
-      "missed": "Hi! Thanks for calling [HVAC Co]. Sorry we missed you — all our techs are on calls. This is our automated line: what's going on with your system, and what's the address? I can get you on the schedule right now. 🛠️",
-      "reminder": "Reminder from [HVAC Co]: your A/C tune-up is tomorrow (Tue) between 1–3pm. Reply C to confirm or R to reschedule. We'll text you when the tech is 30 min out.",
+      "missed": "Hi! Thanks for calling [HVAC Co]. Sorry we missed you, all our techs are on calls. This is our automated line. What's going on with your system, and what's the address? I can get you on the schedule right now. 🛠️",
+      "reminder": "Reminder from [HVAC Co]: your A/C tune-up is tomorrow (Tue) between 1 and 3pm. Reply C to confirm or R to reschedule. We'll text you when the tech is 30 min out.",
       "review": "Thanks for choosing [HVAC Co], [Customer]! Hope you're cooling off nicely. 🧊 Mind leaving us a quick Google review? It really helps a local shop like us: [review link]"
     },
     "backfill": {
-      "desc": "The reminder goes out 48 hours ahead — not the night before — so a cancellation gives you two full days to fill the slot instead of eating an empty one. The instant someone cancels, the open time is auto-offered to your waitlist.",
-      "reminder48": "Reminder from [HVAC Co]: your service is booked for Saturday 1–3pm — that's 2 days out. Reply C to confirm or R if Saturday won't work. ❄️",
+      "desc": "The reminder goes out 48 hours ahead, not the night before. So a cancellation gives you two full days to fill the slot instead of eating it. The second someone cancels, the open time gets offered to your waitlist.",
+      "reminder48": "Reminder from [HVAC Co]: your service is booked for Saturday 1 to 3pm, that's 2 days out. Reply C to confirm or R if Saturday won't work. ❄️",
       "cancelReply": "No problem! Want me to move you to Mon or Tue? Reply with a day. I'll open your Saturday slot so we can fit another customer in.",
-      "waitlistOffer": "[HVAC Co]: a Saturday 1–3pm slot just opened up — you were on our waitlist. Want it? Reply YES and it's yours. ❄️"
+      "waitlistOffer": "[HVAC Co]: a Saturday 1 to 3pm slot just opened up. You were on our waitlist. Want it? Reply YES and it's yours. ❄️"
     },
     "smartEstimate": {
       "name": "Snap-the-unit instant estimate",
-      "desc": "Customer photographs the outdoor unit's model/serial plate. AI reads the model, age and tonnage so your tech rolls up with the right filter sizes, capacitor and parts — fewer return trips, and instant ballpark quotes on replacements.",
+      "desc": "Customer photographs the outdoor unit's model/serial plate. AI reads the model, age and tonnage so your tech rolls up with the right filter sizes, capacitor and parts, fewer return trips, and instant ballpark quotes on replacements.",
       "intake": "To quote you fast, snap a photo of the label on your outdoor A/C unit (and one of the whole unit). A tech will review it before we head out so we bring the right parts. 📸"
-    }
+    },
+    "jobMin": 100,
+    "jobMax": 12000,
+    "jobStep": 50,
+    "missMax": 25,
+    "jobLabel": "Average job value"
   },
   {
     "id": "lawn",
@@ -186,37 +189,42 @@ const TRADES = [
     "tagline": "Lawn care, mowing, design",
     "avgJob": 200,
     "missed": 10,
-    "stat": "In spring, quote requests pile up — but the owner is on a mower all day and can't pick up.",
+    "stat": "In spring, quote requests pile up, but the owner is on a mower all day and can't pick up.",
     "reasons": [
       "<b>You can't answer from the seat of a mower.</b> Every spring quote call you miss is a season-long account ($2,000+) gone to the next crew.",
       "<b>Speed to lead.</b> Homeowners getting 3 quotes hire whoever replies first. AI texts a quote-booking link in seconds.",
       "<b>Stop the 'do you do mulch / how much' calls.</b> Let AI answer the repeat questions so you keep cutting.",
       "<b>Recurring-service reminders.</b> Auto-confirm weekly visits and upsell seasonal cleanups, fertilizer, leaf removal.",
-      "<b>Reviews = the next street.</b> Auto-ask happy clients — neighbors hire the crew with the most 5-stars."
+      "<b>Reviews = the next street.</b> Auto-ask happy clients, neighbors hire the crew with the most 5-stars."
     ],
-    "callScript": "Hi [Owner], it's [Your name] — I work with lawn and landscaping crews. Real quick: in spring, when you're on the mower all day, how many quote calls go to voicemail? Most owners tell me a ton — and each one's a whole season of recurring money. We set up an AI that answers every call and text in your business name, sends them a booking link, and reminds your regulars about their weekly cut. Crews usually fill their route faster without hiring an office person. Can I send you a quick demo?",
+    "callScript": "Hi [Owner], it's [Your name]. I work with lawn and landscaping crews. Real quick. In spring, when you're on the mower all day, how many quote calls go to voicemail? Most owners tell me a ton. And each one is a whole season of recurring money. We set up an AI that answers every call and text in your business name, sends them a booking link, and reminds your regulars about their weekly cut. Crews fill their route faster without hiring an office person. Want me to send you a quick demo?",
     "email": {
       "subject": "the spring quotes going to voicemail",
-      "body": "[Owner] — spring's the make-or-break stretch, right? Here's the problem: the busier you are cutting, the more quote calls hit voicemail. And homeowners getting a few quotes just hire whoever answers first.\n\nWe set up an AI that picks up every call and text in your company's name, sends a booking link, and quotes the basics automatically — so you stay on the mower and still lock the account. It also confirms your recurring visits and asks happy clients for a Google review.\n\nOne missed season-long account is $2,000+. Want a 90-second demo line you can hear for yourself?\n\n[Your name]"
+      "body": "[Owner], spring's the make-or-break stretch, right? Here's the problem. The busier you are cutting, the more quote calls hit voicemail. And homeowners getting a few quotes just hire whoever answers first.\n\nWe set up an AI that picks up every call and text in your company's name, sends a booking link, and quotes the basics automatically. You stay on the mower and still lock the account. It also confirms your recurring visits and asks happy clients for a Google review.\n\nOne missed season-long account is $2,000-plus. Want a 90-second demo line you can hear for yourself?\n\n---[Your name]"
     },
     "sms": "Hey [Owner], [Your name] here. I help lawn crews stop losing spring quote calls when you're stuck on the mower. AI answers, sends a booking link, confirms weekly visits. Want a quick demo?",
-    "social": "Lawn care crews — it's quote season. Every call you can't grab from the mower is a whole season of recurring revenue mowing your competitor's route instead. 🌱\n\nAI receptionist answers every call + text, sends a booking link, confirms your weekly visits, and racks up the Google reviews.\n\nDrop a 🌿 and I'll send you a demo line.",
+    "social": "Lawn care crews: it's quote season. Every call you can't grab from the mower is a whole season of recurring revenue mowing your competitor's route instead. 🌱\n\nAI receptionist answers every call and text, sends a booking link, confirms your weekly visits, and racks up the Google reviews.\n\nDrop a \"🌿\" and I'll send you a demo line.",
     "samples": {
-      "missed": "Thanks for calling [Lawn Co]! We're out on a job. 🌳 Tell me your address and what you need (mow, cleanup, design?) and I'll text you a quote + the next open slot right now.",
-      "reminder": "[Lawn Co]: your lawn service is scheduled for tomorrow (Thu). Please make sure gates are unlocked & pets are in. Reply STOP to skip this week.",
-      "review": "Hope the yard's looking sharp, [Customer]! 🌿 A quick Google review helps us pick up more neighbors on your street: [review link] — thank you from the [Lawn Co] crew!"
+      "missed": "Thanks for calling [Lawn Co]! We're out on a job. 🌳 Tell me your address and what you need (mow, cleanup, design?) and I'll text you a quote and the next open slot right now.",
+      "reminder": "[Lawn Co]: your lawn service is scheduled for tomorrow (Thu). Please make sure gates are unlocked and pets are in. Reply STOP to skip this week.",
+      "review": "Hope the yard's looking sharp, [Customer]! 🌿 A quick Google review helps us pick up more neighbors on your street: [review link]. Thank you from the [Lawn Co] crew!"
     },
     "backfill": {
-      "desc": "The 48-hour-ahead reminder catches cancellations early, so a dropped visit becomes a slot you re-route to another yard on the same street — not a hole in the crew's day. Open slots auto-offer to your waitlist.",
-      "reminder48": "Reminder from [Lawn Co]: your service is set for Saturday — 2 days out. Reply C to confirm or R to move it. 🌿",
+      "desc": "The 48-hour-ahead reminder catches cancellations early, so a dropped visit becomes a slot you re-route to another yard on the same street, not a hole in the crew's day. Open slots auto-offer to your waitlist.",
+      "reminder48": "Reminder from [Lawn Co]: your service is set for Saturday, 2 days out. Reply C to confirm or R to move it. 🌿",
       "cancelReply": "All good! Want next Tue instead? Reply with a day. I'll free Saturday so the crew can pick up another yard nearby.",
-      "waitlistOffer": "[Lawn Co]: a Saturday slot just opened on your street's route — want us to add your yard? Reply YES. 🌿"
+      "waitlistOffer": "[Lawn Co]: a Saturday slot just opened on your street's route. Want us to add your yard? Reply YES. 🌿"
     },
     "smartEstimate": {
       "name": "Satellite lawn-size + mow-time estimator",
-      "desc": "Enter the address and AI measures the lawn from aerial/Google Maps imagery. Plug in which mowers you run and how many crew members — it estimates mow time, crew needed and a price, before anyone drives out. Quote spring leads in seconds instead of scheduling a visit.",
-      "intake": "Drop your address and I'll measure your lawn from the map and text you a quote in under a minute — no waiting for someone to come out. 🛰️🌿"
-    }
+      "desc": "Enter the address and AI measures the lawn from aerial/Google Maps imagery. Plug in which mowers you run and how many crew members, it estimates mow time, crew needed and a price, before anyone drives out. Quote spring leads in seconds instead of scheduling a visit.",
+      "intake": "Drop your address and I'll measure your lawn from the map and text you a quote in under a minute, no waiting for someone to come out. 🛰️🌿"
+    },
+    "jobMin": 40,
+    "jobMax": 3000,
+    "jobStep": 10,
+    "missMax": 25,
+    "jobLabel": "Average value of a new account"
   },
   {
     "id": "roofing",
@@ -227,35 +235,40 @@ const TRADES = [
     "missed": 6,
     "stat": "Roofing jobs run $9,000+. One missed storm-season call is a five-figure swing.",
     "reasons": [
-      "<b>Storm surges overwhelm the phone.</b> After hail, everyone calls at once — miss those and you miss your whole season in a weekend.",
-      "<b>Highest stakes per call.</b> A roof is a $9k–$20k decision. 78% go with the first company that responds professionally.",
+      "<b>Storm surges overwhelm the phone.</b> After hail, everyone calls at once, miss those and you miss your whole season in a weekend.",
+      "<b>Highest stakes per call.</b> A roof is a $9k-$20k decision. 78% go with the first company that responds professionally.",
       "<b>Filter tire-kickers from real jobs.</b> AI qualifies (insurance claim? leak? full replace?) before it ever reaches your sales rep.",
       "<b>Reminders for inspections & estimates.</b> Cut no-show estimate appointments and keep the pipeline moving.",
       "<b>Reviews build the trust a big spend needs.</b> Nobody hands $15k to a roofer with 4 reviews. Auto-collect them."
     ],
-    "callScript": "Hey [Owner], [Your name] here — I help roofing companies. Straight to it: after a hail storm, your phone rings off the hook for about 48 hours, then it's quiet for months. How many of those storm calls actually get answered live? Because each one's a $9,000-plus job, and homeowners sign with whoever calls back first and sounds buttoned-up. We put an AI on your line that answers every call, qualifies whether it's an insurance claim or a cash repair, and books the inspection — so no storm lead ever hits voicemail. Can I send you a demo?",
+    "callScript": "Hey [Owner], [Your name] here. I help roofing companies. Straight to it. After a hail storm your phone rings off the hook for about 48 hours, then it's quiet for months. How many of those storm calls actually get answered live? Because each one is a $9,000-plus job, and homeowners sign with whoever calls back first and sounds buttoned-up. We put an AI on your line that answers every call, sorts the insurance claims from the cash repairs, and books the inspection. No storm lead ever hits voicemail. Want me to send you a demo?",
     "email": {
       "subject": "what one missed storm call costs you",
-      "body": "[Owner] — after a hail event your phone goes nuts for a day or two, then dries up. The shops that win the season are the ones answering live during that window.\n\nProblem: nobody can answer every call during a surge, and a roof is a $9,000+ decision homeowners give to whoever responds first and sounds professional. Miss the call, miss the job — and 62% of those callers immediately try the next roofer.\n\nWe set up an AI that answers 24/7 in your name, qualifies the lead (insurance vs. cash, leak vs. full replace), books the inspection, and asks for a Google review after the work. Want a number you can call right now to hear it?\n\n[Your name]"
+      "body": "[Owner], after a hail event your phone goes nuts for a day or two, then dries up. The shops that win the season are the ones answering live during that window.\n\nHere's the problem. Nobody can answer every call during a surge. And a roof is a $9,000-plus decision homeowners give to whoever responds first and sounds professional. Miss the call, miss the job. 62% of those callers immediately try the next roofer.\n\nWe put an AI on your line. It answers 24/7 in your name, qualifies the lead (insurance vs. cash, leak vs. full replace), books the inspection, and asks for a Google review after the work.\n\nWant a number you can call right now to hear it? \n\n---[Your name]"
     },
-    "sms": "Hi [Owner], [Your name] here. After a storm, roofers can't answer every call — and each one's a $9k+ job. Our AI answers 24/7, qualifies the lead & books the inspection. Want a 90-sec demo?",
-    "social": "Roofers: the next hail storm will send your phone 200 calls in 48 hours. You'll answer maybe a third. The rest? Five-figure jobs ringing your competitor. ⛈️🏠\n\nAI answers every call 24/7, sorts insurance claims from cash repairs, and books the inspection automatically.\n\nComment \"ROOF\" for a live demo line.",
+    "sms": "Hi [Owner], [Your name] here. After a storm, roofers can't answer every call, and each one's a $9k-plus job. Our AI answers 24/7, qualifies the lead, and books the inspection. Want a 90-sec demo?",
+    "social": "Roofers: the next hail storm sends your phone 200 calls in 48 hours. You'll answer maybe a third. The rest? Five-figure jobs ringing your competitor. ⛈️\n\nAI answers every call 24/7, sorts insurance claims from cash repairs, and books the inspection automatically.\n\nComment \"ROOF\" for a live demo line.",
     "samples": {
-      "missed": "Thanks for calling [Roofing Co]! Our crew's on a roof right now. 🏠 Is this storm/leak damage or a planned replacement? Drop your address and I'll book your free inspection right now.",
+      "missed": "Thanks for calling [Roofing Co]! Our crew's on a roof right now. 🏠 Is this storm or leak damage, or a planned replacement? Drop your address and I'll book your free inspection right now.",
       "reminder": "[Roofing Co]: your free roof inspection is tomorrow at 10am. Our estimator will text when 30 min out. Reply C to confirm. Questions? Just reply here.",
       "review": "[Customer], thanks for trusting [Roofing Co] with your new roof! 🛠️ A quick Google review helps other neighbors feel confident choosing us: [review link]"
     },
     "backfill": {
       "desc": "A roof inspection that cancels last-minute wastes an estimator's whole morning. The 48-hour reminder surfaces cancellations in time to slot in another homeowner automatically from your waitlist.",
-      "reminder48": "[Roofing Co]: your roof inspection is Saturday at 10am — 2 days out. Reply C to confirm or R to reschedule. 🏠",
+      "reminder48": "[Roofing Co]: your roof inspection is Saturday at 10am, 2 days out. Reply C to confirm or R to reschedule. 🏠",
       "cancelReply": "No worries! Want Mon or Tue? Reply with a day. I'll open Saturday so our estimator can see another homeowner.",
-      "waitlistOffer": "[Roofing Co]: a Saturday 10am inspection slot just opened — want it? Reply YES. 🏠"
+      "waitlistOffer": "[Roofing Co]: a Saturday 10am inspection slot just opened. Want it? Reply YES. 🏠"
     },
     "smartEstimate": {
       "name": "Aerial roof measurement + material estimate",
-      "desc": "AI measures the roof from satellite/Google Maps — square footage, pitch and number of facets — and estimates squares of material and labor hours before anyone climbs a ladder. Faster, safer ballpark quotes that win the storm-season race.",
-      "intake": "Send your address and I'll measure your roof from satellite imagery and text you a ballpark estimate — no ladder, no waiting. 🛰️🏠"
-    }
+      "desc": "AI measures the roof from satellite/Google Maps, square footage, pitch and number of facets, and estimates squares of material and labor hours before anyone climbs a ladder. Faster, safer ballpark quotes that win the storm-season race.",
+      "intake": "Send your address and I'll measure your roof from satellite imagery and text you a ballpark estimate, no ladder, no waiting. 🛰️🏠"
+    },
+    "jobMin": 500,
+    "jobMax": 25000,
+    "jobStep": 250,
+    "missMax": 15,
+    "jobLabel": "Average job value"
   },
   {
     "id": "plumbing",
@@ -272,29 +285,34 @@ const TRADES = [
       "<b>Reminders for installs & maintenance.</b> Confirm appointments and resell annual water-heater flushes automatically.",
       "<b>Reviews win 'plumber near me.'</b> Auto-ask after every fix and climb the Google Map pack."
     ],
-    "callScript": "Hi [Owner], [Your name] here — I help plumbing companies. Quick question: when a pipe bursts at 2am, that customer calls plumber after plumber till someone answers, right? If that's not you, that emergency job is gone — and those after-hours calls are your best-paying work. We set up an AI that answers every call 24/7 in your name, books the emergency, and texts you the address. Most shops capture a few extra emergency jobs the first week. Can I send you a demo line you can call right now?",
+    "callScript": "Hi [Owner], [Your name] here. I help plumbing companies. Quick question. When a pipe bursts at 2am, that customer calls plumber after plumber till someone answers, right? If that's not you, that emergency job is gone. And those after-hours calls are your best-paying work. We set up an AI that answers every call 24/7 in your name, books the emergency, and texts you the address. Most shops capture a few extra emergency jobs the first week. Want me to send you a demo line you can call right now?",
     "email": {
       "subject": "the 2am calls paying your competitor",
-      "body": "[Owner] — when someone's basement is flooding at 2am, they call down the list until a human (or something that sounds like one) answers. If your line goes to voicemail, that emergency job — your highest-margin work — is gone, and 85% of those callers never try you again.\n\nWe put an AI receptionist on your line that answers 24/7 in your company's name, books the emergency, and texts the details straight to you. It also confirms scheduled installs and asks for a Google review after the job.\n\nWant a number you can call right now to hear it answer a 'burst pipe' call?\n\n[Your name]"
+      "body": "[Owner], when someone's basement is flooding at 2am, they call down the list until a human (or something that sounds like one) answers. If your line goes to voicemail, that emergency job, your highest-margin work, is gone. 85% of those callers never try you again.\n\nWe put an AI receptionist on your line. It answers 24/7 in your company's name, books the emergency, and texts the details straight to you. It also confirms scheduled installs and asks for a Google review after the job.\n\nWant a number you can call right now to hear it answer a \"burst pipe\" call?\n\n---[Your name]"
     },
-    "sms": "Hey [Owner], [Your name] here. The 2am burst-pipe calls you sleep through are your best-paying jobs — and they go to whoever answers first. Our AI answers 24/7 & books them. Quick demo?",
+    "sms": "Hey [Owner], [Your name] here. The 2am burst-pipe calls you sleep through are your best-paying jobs, and they go to whoever answers first. Our AI answers 24/7 and books them. Quick demo?",
     "social": "Plumbers: the burst-pipe call at 2am is your highest-margin job of the week. If it hits voicemail, your competitor's truck is already rolling. 🚰\n\nAI answers every call 24/7, books the emergency, texts you the address.\n\nComment \"FLOW\" and I'll send you a demo line to call right now.",
     "samples": {
-      "missed": "Thanks for calling [Plumbing Co]! We're on a job. 🚰 Is this an emergency (leak, no water, backup)? Tell me what's happening + your address and I'll get a plumber dispatched right now.",
-      "reminder": "[Plumbing Co]: your water heater install is tomorrow 9–11am. Please clear access to the unit. Reply C to confirm — we'll text when the plumber's on the way.",
+      "missed": "Thanks for calling [Plumbing Co]! We're on a job. 🚰 Is this an emergency (leak, no water, backup)? Tell me what's happening and your address and I'll get a plumber dispatched right now.",
+      "reminder": "[Plumbing Co]: your water heater install is tomorrow 9 to 11am. Please clear access to the unit. Reply C to confirm. We'll text when the plumber's on the way.",
       "review": "All fixed, [Customer]? 💧 Thanks for calling [Plumbing Co]. A 30-second Google review helps your neighbors find a plumber they can trust: [review link]"
     },
     "backfill": {
-      "desc": "The 48-hour reminder turns a last-minute cancellation into a two-day head start to refill the slot. The open time auto-offers to customers on your waitlist so the truck stays booked.",
-      "reminder48": "[Plumbing Co]: your appointment is Saturday 9–11am — 2 days out. Reply C to confirm or R to reschedule. 🚰",
+      "desc": "The 48-hour reminder turns a last-minute cancellation into a two-day head start to refill the slot. The open time auto-offers to customers on your waitlist, so the truck stays booked.",
+      "reminder48": "[Plumbing Co]: your appointment is Saturday 9 to 11am, 2 days out. Reply C to confirm or R to reschedule. 🚰",
       "cancelReply": "No problem! Want Mon or Tue instead? Reply with a day. I'll free Saturday so we can help another customer.",
-      "waitlistOffer": "[Plumbing Co]: a Saturday 9–11am slot just opened — you were on our list. Want it? Reply YES. 🚰"
+      "waitlistOffer": "[Plumbing Co]: a Saturday 9 to 11am slot just opened. You were on our list. Want it? Reply YES. 🚰"
     },
     "smartEstimate": {
       "name": "Photo-the-problem parts estimator",
-      "desc": "Customer texts photos of the leak, fixture or under-sink area. AI assesses pipe size, fittings and valve type so your plumber arrives with the right supplies — often a one-trip fix instead of a diagnose-now, return-later visit.",
-      "intake": "Text me 2–3 photos of the problem area (and anything leaking or dripping). Our plumber will know exactly what parts to bring — so we can often fix it in one visit. 📸🔧"
-    }
+      "desc": "Customer texts photos of the leak, fixture or under-sink area. AI assesses pipe size, fittings and valve type so your plumber arrives with the right supplies, often a one-trip fix instead of a diagnose-now, return-later visit.",
+      "intake": "Text me 2-3 photos of the problem area (and anything leaking or dripping). Our plumber will know exactly what parts to bring, so we can often fix it in one visit. 📸🔧"
+    },
+    "jobMin": 100,
+    "jobMax": 4000,
+    "jobStep": 25,
+    "missMax": 25,
+    "jobLabel": "Average job value"
   },
   {
     "id": "electrical",
@@ -303,37 +321,42 @@ const TRADES = [
     "tagline": "Panels, wiring, safety",
     "avgJob": 400,
     "missed": 7,
-    "stat": "Safety calls feel urgent — homeowners want someone reassuring on the line, now.",
+    "stat": "Safety calls feel urgent, homeowners want someone reassuring on the line, now.",
     "reasons": [
       "<b>Urgency + safety = instant calls.</b> Sparking outlet? They want a calm voice immediately, not voicemail.",
-      "<b>Big-ticket upgrades start on the phone.</b> Panel upgrades and EV chargers are $1,500–$4,000 jobs lost if you can't pick up.",
+      "<b>Big-ticket upgrades start on the phone.</b> Panel upgrades and EV chargers are $1,500-$4,000 jobs lost if you can't pick up.",
       "<b>Stop the permit / pricing questions mid-install.</b> AI answers the basics so you keep your hands on the work.",
       "<b>Reminders for scheduled work & inspections.</b> Keep the calendar full and reduce no-shows.",
       "<b>Reviews = trust for letting someone in your walls.</b> Auto-collect 5-stars after each job."
     ],
-    "callScript": "Hey [Owner], [Your name] here — I work with electricians. Quick one: when someone's got a sparking panel or needs an EV charger installed, they call around and hire whoever answers and sounds like they know their stuff. The calls you can't grab mid-install are $1,500-to-$4,000 jobs. We set up an AI that answers every call in your name, qualifies the work, and books it on your calendar — so nothing slips. Can I send you a 90-second demo?",
+    "callScript": "Hey [Owner], [Your name] here. I work with electricians. Quick one. When someone's got a sparking panel or needs an EV charger installed, they call around and hire whoever answers and sounds like they know their stuff. The calls you can't grab mid-install are $1,500-to-$4,000 jobs. We set up an AI that answers every call in your name, qualifies the work, and books it on your calendar. Nothing slips. Want me to send a quick demo?",
     "email": {
       "subject": "the panel-upgrade calls you can't grab mid-job",
-      "body": "[Owner] — when your hands are in a panel, the phone's still ringing. And the calls you miss aren't small: panel upgrades and EV chargers are $1,500–$4,000 jobs, and homeowners hire whoever answers first and sounds competent.\n\nWe set up an AI that answers every call in your company's name, qualifies the job (repair vs. upgrade vs. inspection), and books it straight to your calendar. It also reminds customers of scheduled work and asks for a Google review after.\n\nWant a number you can call right now to hear it handle a 'sparking outlet' call?\n\n[Your name]"
+      "body": "[Owner], when your hands are in a panel, the phone's still ringing. And the calls you miss aren't small. Panel upgrades and EV chargers are $1,500 to $4,000 jobs, and homeowners hire whoever answers first and sounds competent.\n\nWe set up an AI that answers every call in your company's name, qualifies the job (repair vs. upgrade vs. inspection), and books it straight to your calendar. It also reminds customers of scheduled work and asks for a Google review after.\n\nWant a number you can call right now to hear it handle a \"sparking outlet\" call?\n\n---[Your name]"
     },
-    "sms": "Hi [Owner], [Your name] here. The panel-upgrade & EV-charger calls you can't grab mid-install are $1,500+ jobs going to whoever answers first. Our AI answers & books 24/7. Quick demo?",
+    "sms": "Hi [Owner], [Your name] here. The panel-upgrade and EV-charger calls you can't grab mid-install are $1,500-plus jobs going to whoever answers first. Our AI answers and books 24/7. Quick demo?",
     "social": "Electricians: you can't answer the phone with your hands in a panel. But that ringing call might be a $3,000 EV-charger install hiring whoever picks up first. ⚡\n\nAI answers every call, qualifies the job, books it to your calendar.\n\nComment \"AMP\" for a demo line.",
     "samples": {
-      "missed": "Thanks for calling [Electric Co]! We're on a job. ⚡ Is this a safety issue (sparking, burning smell, no power)? Tell me what's happening + your address and I'll dispatch right away.",
-      "reminder": "[Electric Co]: your panel upgrade is scheduled for tomorrow 8–10am. Power will be off ~2 hrs. Reply C to confirm or R to reschedule.",
-      "review": "Thanks for choosing [Electric Co], [Customer]! ⚡ Letting someone work on your home's wiring takes trust — a quick Google review helps the next homeowner choose us: [review link]"
+      "missed": "Thanks for calling [Electric Co]! We're on a job. ⚡ Is this a safety issue (sparking, burning smell, no power)? Tell me what's happening and your address and I'll dispatch right away.",
+      "reminder": "[Electric Co]: your panel upgrade is scheduled for tomorrow 8 to 10am. Power will be off about 2 hrs. Reply C to confirm or R to reschedule.",
+      "review": "Thanks for choosing [Electric Co], [Customer]! ⚡ Letting someone work on your home's wiring takes trust. A quick Google review helps the next homeowner choose us: [review link]"
     },
     "backfill": {
       "desc": "Scheduled electrical work that cancels last-minute is a lost day. The 48-hour-ahead reminder catches it in time to auto-offer the slot to another customer on your waitlist.",
-      "reminder48": "[Electric Co]: your appointment is Saturday 8–10am — 2 days out. Reply C to confirm or R to reschedule. ⚡",
+      "reminder48": "[Electric Co]: your appointment is Saturday 8 to 10am, 2 days out. Reply C to confirm or R to reschedule. ⚡",
       "cancelReply": "All good! Want Mon or Tue? Reply with a day. I'll open Saturday so we can fit another customer in.",
-      "waitlistOffer": "[Electric Co]: a Saturday 8–10am slot just opened — want it? Reply YES and it's yours. ⚡"
+      "waitlistOffer": "[Electric Co]: a Saturday 8 to 10am slot just opened. Want it? Reply YES and it's yours. ⚡"
     },
     "smartEstimate": {
       "name": "Photo-the-panel materials estimator",
-      "desc": "Customer photos the panel, outlet or work area. AI estimates wire gauge and length, breaker type and materials so your electrician shows up stocked — fewer supply-run delays and return trips.",
-      "intake": "Snap a few photos — the panel, the outlet, and the room/wall area. Our electrician will know the wire and parts to bring before we arrive. 📸⚡"
-    }
+      "desc": "Customer photos the panel, outlet or work area. AI estimates wire gauge and length, breaker type and materials so your electrician shows up stocked, fewer supply-run delays and return trips.",
+      "intake": "Snap a few photos, the panel, the outlet, and the room/wall area. Our electrician will know the wire and parts to bring before we arrive. 📸⚡"
+    },
+    "jobMin": 100,
+    "jobMax": 6000,
+    "jobStep": 50,
+    "missMax": 25,
+    "jobLabel": "Average job value"
   },
   {
     "id": "pest",
@@ -344,35 +367,40 @@ const TRADES = [
     "missed": 8,
     "stat": "'I just saw roaches' is a same-day, emotional call. Answer it or lose it instantly.",
     "reasons": [
-      "<b>Pest calls are urgent and emotional.</b> 'There are wasps in my kids' room' won't wait for a callback — or a voicemail.",
+      "<b>Pest calls are urgent and emotional.</b> 'There are wasps in my kids' room' won't wait for a callback, or a voicemail.",
       "<b>Recurring revenue starts with one call.</b> A single missed call is a quarterly contract ($600+/yr) gone.",
       "<b>Stop answering 'do you treat termites' all day.</b> AI handles FAQs and books the inspection.",
       "<b>Auto-remind for quarterly treatments.</b> Keep recurring accounts on schedule without chasing them.",
       "<b>Reviews drive 'exterminator near me.'</b> Auto-ask after each service to dominate local search."
     ],
-    "callScript": "Hi [Owner], [Your name] here — I help pest control companies. Quick question: when someone calls saying 'I just saw roaches' or 'there's a wasp nest by my front door,' that's a same-day, gotta-have-it call, right? If it goes to voicemail, they call the next company in seconds — and you just lost a recurring account worth six hundred-plus a year. We set up an AI that answers every call, books the treatment, and keeps your quarterly customers on schedule automatically. Can I send you a quick demo?",
+    "callScript": "Hi [Owner], [Your name] here. I help pest control companies. Quick question. When someone calls saying \"I just saw roaches\" or \"there's a wasp nest by my front door,\" that's a same-day, gotta-have-it call, right? If it goes to voicemail, they call the next company in seconds. And you just lost a recurring account worth six hundred-plus a year. We set up an AI that answers every call, books the treatment, and keeps your quarterly customers on schedule automatically. Want me to send a quick demo?",
     "email": {
-      "subject": "'I just saw roaches' — and you missed the call",
-      "body": "[Owner] — pest calls are emotional and instant. 'There are wasps by the front door' or 'I saw a mouse' means they want someone today, and if you don't answer they're calling the next company before they hang up.\n\nThat's not a one-time loss — a missed call is a quarterly recurring account ($600+/yr) gone. We set up an AI that answers every call in your name, books the treatment, reminds your recurring customers about their next visit, and asks for a Google review after.\n\nWant a demo line you can call right now to hear it book a 'roach' call?\n\n[Your name]"
+      "subject": "\"I just saw roaches\" and you missed the call",
+      "body": "[Owner], pest calls are emotional and instant. \"There's a wasp nest by the front door\" or \"I saw a mouse\" means they want someone today. And if you don't answer, they're calling the next company before they hang up.\n\nThat's not a one-time loss. A missed call is a quarterly recurring account ($600-plus a year) gone. We set up an AI that answers every call in your name, books the treatment, reminds your recurring customers about their next visit, and asks for a Google review after.\n\nWant a demo line you can call right now to hear it book a \"roach\" call?\n\n---[Your name]"
     },
-    "sms": "Hey [Owner], [Your name] here. Pest calls are same-day & emotional — miss one and a $600/yr recurring account calls your competitor. Our AI answers & books 24/7. Want a quick demo?",
-    "social": "Pest control owners: \"I just saw roaches\" is the most urgent call in your business — and the easiest to lose. Miss it and a recurring account is gone in one ring. 🐜\n\nAI answers every call, books the treatment, keeps your quarterly customers on schedule.\n\nComment \"BUG\" for a demo line.",
+    "sms": "Hey [Owner], [Your name] here. Pest calls are same-day and emotional. Miss one and a $600/yr recurring account calls your competitor. Our AI answers and books 24/7. Want a quick demo?",
+    "social": "Pest control owners: \"I just saw roaches\" is the most urgent call in your business, and the easiest to lose. Miss it and a recurring account is gone in one ring. 🐜\n\nAI answers every call, books the treatment, keeps your quarterly customers on schedule.\n\nComment \"BUG\" for a demo line.",
     "samples": {
-      "missed": "Thanks for calling [Pest Co]! We're out treating. 🐜 What are you seeing (roaches, ants, rodents, wasps?) and what's your address? I can book your treatment right now — often same-day.",
-      "reminder": "[Pest Co]: your quarterly treatment is due! We've got you down for tomorrow 12–2pm. Reply C to confirm or R to reschedule. No need to be home for the exterior.",
+      "missed": "Thanks for calling [Pest Co]! We're out treating. 🐜 What are you seeing (roaches, ants, rodents, wasps?) and what's your address? I can book your treatment right now, often same-day.",
+      "reminder": "[Pest Co]: your quarterly treatment is due! We've got you down for tomorrow 12 to 2pm. Reply C to confirm or R to reschedule. No need to be home for the exterior.",
       "review": "Pest-free again, [Customer]? 🛡️ Thanks for trusting [Pest Co]. A quick Google review helps your neighbors find us fast when they need us: [review link]"
     },
     "backfill": {
       "desc": "The 48-hour reminder keeps recurring treatments on schedule and catches cancellations early enough to re-book the route. Open slots auto-offer to your waitlist.",
-      "reminder48": "[Pest Co]: your treatment is Saturday 12–2pm — 2 days out. Reply C to confirm or R to reschedule. No need to be home for the exterior. 🐜",
+      "reminder48": "[Pest Co]: your treatment is Saturday 12 to 2pm, 2 days out. Reply C to confirm or R to reschedule. No need to be home for the exterior. 🐜",
       "cancelReply": "No problem! Want Mon or Tue? Reply with a day. I'll free Saturday so we can fit another customer on the route.",
-      "waitlistOffer": "[Pest Co]: a Saturday slot just opened in your area — want us to come sooner? Reply YES. 🐜"
+      "waitlistOffer": "[Pest Co]: a Saturday slot just opened in your area. Want us to come sooner? Reply YES. 🐜"
     },
     "smartEstimate": {
       "name": "Photo-ID pest & severity estimator",
       "desc": "Customer sends a photo or short video of the pest or damage. AI identifies the species and infestation severity, so you load the right treatment and send an accurate quote without a separate inspection trip.",
-      "intake": "Send a photo or short video of what you're seeing (and where). I'll identify it and text you a treatment plan + quote — often same-day. 🐜📸"
-    }
+      "intake": "Send a photo or short video of what you're seeing (and where). I'll identify it and text you a treatment plan + quote, often same-day. 🐜📸"
+    },
+    "jobMin": 75,
+    "jobMax": 1500,
+    "jobStep": 25,
+    "missMax": 25,
+    "jobLabel": "Average value of a new account"
   },
   {
     "id": "cleaning",
@@ -387,31 +415,36 @@ const TRADES = [
       "<b>Speed to lead.</b> People booking a cleaner hire whoever responds first with a price and a slot.",
       "<b>Stop the 'how much for 3 bedrooms' calls.</b> AI quotes the basics and books it.",
       "<b>Two-way reminders cut no-shows.</b> Confirm recurring cleans so you never drive to a locked, empty house.",
-      "<b>Reviews = trust to enter a home.</b> People vet cleaners hard online — auto-collect 5-stars."
+      "<b>Reviews = trust to enter a home.</b> People vet cleaners hard online, auto-collect 5-stars."
     ],
-    "callScript": "Hi [Owner], [Your name] here — I work with cleaning companies. Quick question: while you and your team are inside houses cleaning, who's answering the phone? Because those quote calls are recurring clients — weekly or biweekly money — and they hire whoever answers first with a price. We put an AI on your line that answers every call, quotes the basics, books the job, and confirms your recurring cleans so you never show up to a locked house. Can I send you a quick demo?",
+    "callScript": "Hi [Owner], [Your name] here. I work with cleaning companies. Quick question. While you and your team are inside houses cleaning, who's answering the phone? Because those quote calls are recurring clients, weekly or biweekly money, and they hire whoever answers first with a price. We put an AI on your line that answers every call, quotes the basics, books the job, and confirms your recurring cleans. You never show up to a locked house again. Want me to send a quick demo?",
     "email": {
       "subject": "the quote calls you miss while cleaning",
-      "body": "[Owner] — here's the catch in your business: the busier you are (inside homes, cleaning), the more booking calls go to voicemail. And someone shopping for a cleaner just hires whoever calls back first with a price and an open slot.\n\nWe set up an AI that answers every call in your company's name, quotes the basics (bedrooms/baths), books the job, and confirms your recurring cleans the day before — so you never drive to a locked, empty house. It also asks happy clients for a Google review automatically.\n\nWant a demo line you can hear for yourself?\n\n[Your name]"
+      "body": "[Owner], here's the catch in your business. The busier you are (inside homes, cleaning), the more booking calls go to voicemail. And someone shopping for a cleaner just hires whoever calls back first with a price and an open slot.\n\nWe set up an AI that answers every call in your company's name, quotes the basics (bedrooms and baths), books the job, and confirms your recurring cleans the day before. You never drive to a locked, empty house. It also asks happy clients for a Google review automatically.\n\nWant a demo line you can hear for yourself?\n\n---[Your name]"
     },
-    "sms": "Hey [Owner], [Your name] here. The booking calls you miss while you're cleaning are recurring clients hiring whoever answers first. Our AI quotes, books & confirms 24/7. Quick demo?",
-    "social": "House cleaners: you can't answer the phone with your hands in a sink. But that missed call was a weekly client hiring whoever picked up first. 🧽✨\n\nAI answers, quotes, books, and confirms your recurring cleans so you never show up to a locked house.\n\nComment \"CLEAN\" for a demo line.",
+    "sms": "Hey [Owner], [Your name] here. The booking calls you miss while you're cleaning are recurring clients hiring whoever answers first. Our AI quotes, books, and confirms 24/7. Quick demo?",
+    "social": "House cleaners: you can't answer the phone with your hands in a sink. But that missed call was a weekly client hiring whoever picked up first. 🧽\n\nAI answers, quotes, books, and confirms your recurring cleans so you never show up to a locked house.\n\nComment \"CLEAN\" for a demo line.",
     "samples": {
-      "missed": "Thanks for calling [Cleaning Co]! We're in a home right now. 🧽 How many bedrooms/baths, and is this a one-time or recurring clean? Tell me your zip and I'll text a quote + open slots right now.",
-      "reminder": "[Cleaning Co]: your cleaning is tomorrow between 10–12. Please leave access/key info & secure pets. Reply C to confirm or R to reschedule. See you then! ✨",
-      "review": "Hope your home feels amazing, [Customer]! 🌟 A quick Google review helps other families trust [Cleaning Co] in their homes too: [review link] — thank you!"
+      "missed": "Thanks for calling [Cleaning Co]! We're in a home right now. 🧽 How many bedrooms and baths, and is this a one-time or recurring clean? Tell me your zip and I'll text a quote and open slots right now.",
+      "reminder": "[Cleaning Co]: your cleaning is tomorrow between 10 and 12. Please leave access or key info and secure pets. Reply C to confirm or R to reschedule. See you then! ✨",
+      "review": "Hope your home feels amazing, [Customer]! 🌟 A quick Google review helps other families trust [Cleaning Co] in their homes too: [review link]. Thank you!"
     },
     "backfill": {
-      "desc": "A cleaning that cancels the morning-of leaves a team idle. The 48-hour-ahead reminder surfaces it in time to fill the slot from your waitlist — and protects your recurring route.",
-      "reminder48": "[Cleaning Co]: your cleaning is Saturday 10–12 — 2 days out. Reply C to confirm or R to reschedule. ✨",
+      "desc": "A cleaning that cancels the morning-of leaves a team idle. The 48-hour-ahead reminder surfaces it in time to fill the slot from your waitlist, and it protects your recurring route.",
+      "reminder48": "[Cleaning Co]: your cleaning is Saturday 10 to 12, 2 days out. Reply C to confirm or R to reschedule. ✨",
       "cancelReply": "No problem! Want Mon or Tue instead? Reply with a day. I'll open Saturday so we can fit another home in.",
-      "waitlistOffer": "[Cleaning Co]: a Saturday 10–12 slot just opened — you'd asked for sooner. Want it? Reply YES. ✨"
+      "waitlistOffer": "[Cleaning Co]: a Saturday 10 to 12 slot just opened. You'd asked for sooner. Want it? Reply YES. ✨"
     },
     "smartEstimate": {
       "name": "Walkthrough-video instant quote",
-      "desc": "Customer sends a quick walkthrough video or enters square footage + room count. AI estimates hours, crew and supplies for an accurate quote — no in-person estimate visit, and faster booking.",
-      "intake": "Send a 30-second walkthrough video of your home (or just tell me bed/bath count) and I'll text you an exact quote and open slots — no in-home estimate needed. 🎥✨"
-    }
+      "desc": "Customer sends a quick walkthrough video or enters square footage + room count. AI estimates hours, crew and supplies for an accurate quote, no in-person estimate visit, and faster booking.",
+      "intake": "Send a 30-second walkthrough video of your home (or just tell me bed/bath count) and I'll text you an exact quote and open slots, no in-home estimate needed. 🎥✨"
+    },
+    "jobMin": 75,
+    "jobMax": 800,
+    "jobStep": 25,
+    "missMax": 25,
+    "jobLabel": "Average value of a recurring client"
   },
   {
     "id": "painting",
@@ -422,18 +455,18 @@ const TRADES = [
     "missed": 6,
     "stat": "Homeowners get 3 painting quotes. The slow-to-respond contractor is the one they cross off.",
     "reasons": [
-      "<b>Quote-heavy, comparison-shopped.</b> People get 2–3 painting bids. Respond last and you're the throwaway quote.",
+      "<b>Quote-heavy, comparison-shopped.</b> People get 2-3 painting bids. Respond last and you're the throwaway quote.",
       "<b>Speed to lead wins the job.</b> The first contractor to book the walkthrough usually gets the $3,000+ project.",
       "<b>Stop chasing tire-kickers.</b> AI qualifies (interior/exterior, sq ft, timeline) before you spend a day quoting.",
-      "<b>Follow-up nurture closes the maybes.</b> Auto follow-up on open quotes — most painters never follow up at all.",
+      "<b>Follow-up nurture closes the maybes.</b> Auto follow-up on open quotes, most painters never follow up at all.",
       "<b>Reviews + before/afters sell the next job.</b> Auto-request reviews and photos from happy clients."
     ],
-    "callScript": "Hey [Owner], [Your name] here — I help painting contractors. Quick question: when a homeowner's getting three quotes, the one who books the walkthrough first usually wins, right? And most painters never follow up on the quotes that don't answer right away. We set up an AI that answers every call, qualifies the project, books your estimate, and automatically follows up on open quotes so the maybes don't go cold. On a $3,000 job, one extra close a month pays for itself many times over. Can I send a demo?",
+    "callScript": "Hey [Owner], [Your name] here. I help painting contractors. Quick question. When a homeowner's getting three quotes, the one who books the walkthrough first usually wins, right? And most painters never follow up on the quotes that don't answer right away. We set up an AI that answers every call, qualifies the project, books your estimate, and automatically follows up on open quotes. The maybes don't go cold. On a $3,000 job, one extra close a month pays for itself many times over. Want me to send a demo?",
     "email": {
       "subject": "why you're the quote they cross off",
-      "body": "[Owner] — homeowners get two or three painting quotes. Here's the quiet truth: the contractor who responds last is the one they cross off, and the one who books the walkthrough first usually wins the job.\n\nMost painters also never follow up on a quote that goes quiet — that's money left on the table. We set up an AI that answers every call in your name, qualifies the project (interior/exterior, rooms, timeline), books the estimate, and auto-follows-up on open quotes so the maybes don't die. After the job it asks for a Google review and photos.\n\nOn $3,000 projects, one extra close a month is huge. Want a quick demo?\n\n[Your name]"
+      "body": "[Owner], homeowners get two or three painting quotes. Here's the quiet truth. The contractor who responds last is the one they cross off. And the one who books the walkthrough first usually wins the job.\n\nMost painters also never follow up on a quote that goes quiet. That's money left on the table. We set up an AI that answers every call in your name, qualifies the project (interior or exterior, rooms, timeline), books the estimate, and auto-follows-up on open quotes so the maybes don't die. After the job it asks for a Google review and photos.\n\nOn $3,000 projects, one extra close a month is huge. Want a quick demo?\n\n---[Your name]"
     },
-    "sms": "Hi [Owner], [Your name] here. Homeowners get 3 painting quotes — the slow responder gets crossed off. Our AI answers, books the walkthrough & follows up on open quotes. Quick demo?",
+    "sms": "Hi [Owner], [Your name] here. Homeowners get 3 painting quotes. The slow responder gets crossed off. Our AI answers, books the walkthrough, and follows up on open quotes. Quick demo?",
     "social": "Painters: when a homeowner gets 3 quotes, the contractor who answers last is the one they cross off. And most of you never follow up on the quotes that go quiet. 🎨\n\nAI answers every call, books the walkthrough, and auto-follows-up so the maybes turn into jobs.\n\nComment \"PAINT\" for a demo.",
     "samples": {
       "missed": "Thanks for calling [Painting Co]! We're on a job site. 🎨 Is this interior or exterior, and roughly how many rooms? Drop your address and I'll book your free estimate right now.",
@@ -442,15 +475,20 @@ const TRADES = [
     },
     "backfill": {
       "desc": "A canceled estimate or job start is an empty crew-day. The 48-hour reminder catches it early enough to slide another job forward from your waitlist.",
-      "reminder48": "[Painting Co]: your job/estimate is Saturday at 2pm — 2 days out. Reply C to confirm or R to reschedule. 🎨",
+      "reminder48": "[Painting Co]: your job or estimate is Saturday at 2pm, 2 days out. Reply C to confirm or R to reschedule. 🎨",
       "cancelReply": "No problem! Want Mon or Tue? Reply with a day. I'll open Saturday so we can move another job up.",
-      "waitlistOffer": "[Painting Co]: a Saturday slot just opened — want to move your project up? Reply YES. 🎨"
+      "waitlistOffer": "[Painting Co]: a Saturday slot just opened. Want to move your project up? Reply YES. 🎨"
     },
     "smartEstimate": {
       "name": "Photo-the-walls paint estimator",
-      "desc": "Customer photographs the rooms/walls. AI estimates square footage, number of coats and gallons of paint plus labor hours — so you quote accurately and order the right amount: no wasted trips, no leftover cans.",
+      "desc": "Customer photographs the rooms/walls. AI estimates square footage, number of coats and gallons of paint plus labor hours, so you quote accurately and order the right amount: no wasted trips, no leftover cans.",
       "intake": "Snap photos of each room/wall you want painted (and tell me the colors if you've picked them). I'll estimate the paint and a price and text it over. 📸🎨"
-    }
+    },
+    "jobMin": 300,
+    "jobMax": 10000,
+    "jobStep": 100,
+    "missMax": 15,
+    "jobLabel": "Average job value"
   },
   {
     "id": "auto",
@@ -465,31 +503,36 @@ const TRADES = [
       "<b>Speed to lead.</b> A driver with a check-engine light books whoever answers and gives a time first.",
       "<b>Stop 'is my car ready' from eating your day.</b> AI handles status questions and frees the front desk.",
       "<b>Reminders cut no-shows & resell service.</b> Auto-remind for appointments, oil changes, inspections due.",
-      "<b>Reviews win 'mechanic near me.'</b> Trust is everything in auto repair — auto-collect 5-stars."
+      "<b>Reviews win 'mechanic near me.'</b> Trust is everything in auto repair, auto-collect 5-stars."
     ],
-    "callScript": "Hi [Owner], [Your name] here — I work with auto shops. Quick one: when the bays are slammed, the phone's ringing with two kinds of calls — 'is my car ready' and brand-new customers. The status calls eat your front desk and the new customers go to voicemail and call the next shop. We set up an AI that answers every call, handles the 'is it ready' questions, books new appointments, and reminds people about oil changes and inspections due. Keeps the bays full without adding a service writer. Can I send a demo?",
+    "callScript": "Hi [Owner], [Your name] here. I work with auto shops. Quick one. When the bays are slammed, the phone's ringing with two kinds of calls. \"Is my car ready\" and brand-new customers. The status calls eat your front desk and the new customers go to voicemail and call the next shop. We set up an AI that answers every call, handles the \"is it ready\" questions, books new appointments, and reminds people about oil changes and inspections due. Keeps the bays full without adding a service writer. Want me to send a demo?",
     "email": {
-      "subject": "the new customers buried under 'is my car ready'",
-      "body": "[Owner] — when your bays are full, your phone is ringing with two things: existing customers asking 'is my car ready?' and brand-new business. The status calls bury your front desk, and the new customers hit voicemail and dial the next shop.\n\nWe set up an AI that answers every call in your shop's name, handles the status questions automatically, books new appointments, and sends reminders for oil changes and inspections coming due. It also asks for a Google review after each visit.\n\nWant a number you can call right now to hear it handle both kinds of calls?\n\n[Your name]"
+      "subject": "the new customers buried under \"is my car ready\"",
+      "body": "[Owner], when your bays are full, your phone is ringing with two things. Existing customers asking \"is my car ready?\" and brand-new business. The status calls bury your front desk, and the new customers hit voicemail and dial the next shop.\n\nWe set up an AI that answers every call in your shop's name, handles the status questions automatically, books new appointments, and sends reminders for oil changes and inspections coming due. It also asks for a Google review after each visit.\n\nWant a number you can call right now to hear it handle both kinds of calls?\n\n---[Your name]"
     },
-    "sms": "Hey [Owner], [Your name] here. When the bays are slammed, 'is my car ready' calls bury your new customers — who then call the next shop. Our AI answers both & books 24/7. Quick demo?",
-    "social": "Auto shops: your busiest days are when you lose the most new customers. 'Is my car ready' calls clog the desk while first-timers go to voicemail and call the shop down the road. 🚗\n\nAI answers every call, handles status questions, books new work, and reminds people what's due.\n\nComment \"AUTO\" for a demo line.",
+    "sms": "Hey [Owner], [Your name] here. When the bays are slammed, \"is my car ready\" calls bury your new customers, who then call the next shop. Our AI answers both and books 24/7. Quick demo?",
+    "social": "Auto shops: your busiest days are when you lose the most new customers. \"Is my car ready\" calls clog the desk while first-timers go to voicemail and call the shop down the road. 🚗\n\nAI answers every call, handles status questions, books new work, and reminds people what's due.\n\nComment \"AUTO\" for a demo line.",
     "samples": {
-      "missed": "Thanks for calling [Auto Co]! The team's in the bays. 🚗 Checking on your car, or need to book service? Tell me your name or what's going on and I'll get you an answer / a time right now.",
+      "missed": "Thanks for calling [Auto Co]! The team's in the bays. 🚗 Checking on your car, or need to book service? Tell me your name or what's going on and I'll get you an answer or a time right now.",
       "reminder": "[Auto Co]: your appointment is tomorrow at 9am. Reply C to confirm or R to reschedule. We'll text you an estimate before any work starts. 🔧",
-      "review": "Running smooth, [Customer]? 🚗 Thanks for trusting [Auto Co]. A quick Google review helps other drivers find an honest shop: [review link] — much appreciated!"
+      "review": "Running smooth, [Customer]? 🚗 Thanks for trusting [Auto Co]. A quick Google review helps other drivers find an honest shop: [review link]. Much appreciated!"
     },
     "backfill": {
       "desc": "A no-show or cancellation leaves a bay empty. The 48-hour-ahead reminder catches it in time to pull another appointment forward from your waitlist.",
-      "reminder48": "[Auto Co]: your appointment is Saturday at 9am — 2 days out. Reply C to confirm or R to reschedule. 🚗",
+      "reminder48": "[Auto Co]: your appointment is Saturday at 9am, 2 days out. Reply C to confirm or R to reschedule. 🚗",
       "cancelReply": "No problem! Want Mon or Tue? Reply with a day. I'll open Saturday so we can get another car in.",
-      "waitlistOffer": "[Auto Co]: a Saturday 9am bay just opened — want to bring your car in sooner? Reply YES. 🚗"
+      "waitlistOffer": "[Auto Co]: a Saturday 9am bay just opened. Want to bring your car in sooner? Reply YES. 🚗"
     },
     "smartEstimate": {
       "name": "Photo/VIN pre-diagnosis",
-      "desc": "Customer sends photos or a video of the issue (or the dashboard warning light) plus the VIN or plate. AI pre-diagnoses likely parts so you pre-order before they arrive — cutting the 'we have to order that part' delay.",
+      "desc": "Customer sends photos or a video of the issue (or the dashboard warning light) plus the VIN or plate. AI pre-diagnoses likely parts so you pre-order before they arrive, cutting the 'we have to order that part' delay.",
       "intake": "Text me a photo or video of the issue (or the dash light) and your VIN or plate. We'll pre-check likely parts so your car's fixed faster. 📸🚗"
-    }
+    },
+    "jobMin": 100,
+    "jobMax": 4000,
+    "jobStep": 50,
+    "missMax": 25,
+    "jobLabel": "Average job value"
   },
   {
     "id": "law",
@@ -500,19 +543,19 @@ const TRADES = [
     "missed": 7,
     "stat": "For PI & family law, the first firm to respond signs the client. Most intake calls go unanswered.",
     "reasons": [
-      "<b>First firm to respond signs the case.</b> Injury & family-law leads call multiple firms — speed to lead literally wins the retainer.",
+      "<b>First firm to respond signs the case.</b> Injury & family-law leads call multiple firms, speed to lead literally wins the retainer.",
       "<b>After-hours intake is lost revenue.</b> People research lawyers at night; voicemail loses a case worth thousands.",
       "<b>Stop paralegals drowning in 'do you handle…' calls.</b> AI screens and routes only qualified intakes.",
       "<b>Reminders cut consult no-shows.</b> Confirm consultations so booked time doesn't evaporate.",
       "<b>Reviews build credibility for a high-trust decision.</b> Auto-request (within bar rules) to win the next client."
     ],
-    "callScript": "Hi [Owner / Attorney], [Your name] here — I work with small firms. Quick point: for injury and family-law leads, the first firm that responds is usually the one that signs them — they're calling three or four offices. If your intake calls hit voicemail after hours, that's a retainer worth thousands gone. We set up a compliant AI intake line that answers 24/7 in your firm's name, screens the matter, captures the details, and books the consult — your paralegals only touch qualified intakes. Can I walk you through how we keep it within your state bar's rules?",
+    "callScript": "Hi [Name], [Your name] here. I work with small firms. Quick point. For injury and family-law leads, the first firm that responds is usually the one that signs them. They're calling three or four offices. If your intake calls hit voicemail after hours, that's a retainer worth thousands gone. We set up a compliant AI intake line that answers 24/7 in your firm's name, screens the matter, captures the details, and books the consult. Your paralegals only touch qualified intakes. Could I walk you through how we keep it inside your state bar's rules?",
     "email": {
       "subject": "the intake calls that signed at another firm",
-      "body": "[Attorney] — for personal injury and family law, the prospect is calling several firms, and the data is blunt: the first to respond usually signs the client. After-hours and overflow intake calls that hit voicemail are retainers worth thousands going to the firm across town.\n\nWe set up a compliant AI intake line that answers 24/7 in your firm's name, screens the matter type, captures the details, and books the consultation — so your paralegals only handle qualified intakes. It also sends consult reminders to cut no-shows.\n\nWe build it to respect attorney advertising and solicitation rules in your state. Could I show you a 90-second demo and how the compliance piece works?\n\n[Your name]"
+      "body": "[Name], for personal injury and family law, the prospect is calling several firms. And the data is blunt. The first to respond usually signs the client. After-hours and overflow intake calls that hit voicemail are retainers worth thousands going to the firm across town.\n\nWe set up a compliant AI intake line that answers 24/7 in your firm's name, screens the matter type, captures the details, and books the consultation. Your paralegals only handle qualified intakes. It also sends consult reminders to cut no-shows.\n\nWe build it to respect attorney advertising and solicitation rules in your state. Could I show you a 90-second demo and how the compliance piece works?\n\n---[Your name]"
     },
-    "sms": "Hi [Attorney], [Your name] here. For PI & family law, the first firm to respond signs the client — and after-hours intake calls go to voicemail. Our compliant AI intake answers 24/7. Open to a quick demo?",
-    "social": "Small firms: in personal injury and family law, the first firm to respond usually signs the client. Your competitors aren't better lawyers — they just answered the phone first. ⚖️\n\nCompliant AI intake answers 24/7, screens the matter, books the consult — paralegals only see qualified leads.\n\nComment \"INTAKE\" to see how it works (and stays within bar rules).",
+    "sms": "Hi [Name], [Your name] here. For PI and family law, the first firm to respond signs the client, and after-hours intake calls go to voicemail. Our compliant AI intake answers 24/7. Open to a quick demo?",
+    "social": "Small firms: in personal injury and family law, the first firm to respond usually signs the client. Your competitors aren't better lawyers. They just answered the phone first. ⚖️\n\nCompliant AI intake answers 24/7, screens the matter, books the consult. Paralegals only see qualified leads.\n\nComment \"INTAKE\" to see how it works (and stays inside bar rules).",
     "compliance": "⚖️ Compliance note for this vertical: law firms are bound by state bar rules on attorney advertising, solicitation, and client confidentiality. Don't pitch mass-texting or unsolicited outreach to a firm's prospects. Position the AI as inbound intake capture + consult scheduling + reminders. Review-request automation must follow the firm's state bar guidance (some states restrict soliciting client reviews). Always have the firm's compliance counsel sign off.",
     "samples": {
       "missed": "Thank you for calling [Firm Name]. Our attorneys are with clients. To help you fastest: is this regarding a new matter? I can take some quick details confidentially and schedule your consultation. What type of matter is it?",
@@ -520,16 +563,21 @@ const TRADES = [
       "review": "Thank you for trusting [Firm Name], [Client]. If you're comfortable, a brief Google review helps others find us during a difficult time: [review link]. (No pressure at all.)"
     },
     "backfill": {
-      "desc": "A canceled consultation is billable time lost. The 48-hour-ahead reminder catches it in time to offer the slot to another prospect waiting to be seen — keeping the attorney's calendar productive.",
-      "reminder48": "[Firm Name]: reminder of your consultation Saturday 3pm with [Attorney] — 2 days out. Reply C to confirm or R to reschedule. ⚖️",
+      "desc": "A canceled consultation is billable time lost. The 48-hour-ahead reminder catches it in time to offer the slot to another prospect waiting to be seen, keeping the attorney's calendar productive.",
+      "reminder48": "[Firm Name]: reminder of your consultation Saturday 3pm with [Attorney], 2 days away. Reply C to confirm or R to reschedule. ⚖️",
       "cancelReply": "Understood. Would Monday or Tuesday work better? Reply with a day. We'll open your Saturday time for another client.",
-      "waitlistOffer": "[Firm Name]: a consultation slot opened Saturday at 3pm. You'd asked to be seen sooner — shall we book it? Reply YES."
+      "waitlistOffer": "[Firm Name]: a consultation slot opened Saturday at 3pm. You'd asked to be seen sooner. Shall we book it? Reply YES."
     },
     "smartEstimate": {
       "name": "AI intake triage & case pre-screen",
-      "desc": "Prospect uploads documents or photos (accident scene, contract, filing) with a short description. AI summarizes the matter and flags whether it fits the firm's practice areas — so the attorney's limited consult time goes only to viable cases. Always attorney-reviewed; the AI never gives the prospect legal advice.",
+      "desc": "Prospect uploads documents or photos (accident scene, contract, filing) with a short description. AI summarizes the matter and flags whether it fits the firm's practice areas, so the attorney's limited consult time goes only to viable cases. Always attorney-reviewed; the AI never gives the prospect legal advice.",
       "intake": "If you'd like, upload any relevant documents or photos here with a brief description. We'll review confidentially before your consultation so we make the most of your time. (This isn't legal advice.)"
-    }
+    },
+    "jobMin": 200,
+    "jobMax": 10000,
+    "jobStep": 100,
+    "missMax": 15,
+    "jobLabel": "Average value of a new client"
   },
   {
     "id": "gym",
@@ -538,7 +586,7 @@ const TRADES = [
     "tagline": "Gyms, studios & personal training",
     "avgJob": 500,
     "missed": 8,
-    "stat": "A missed inquiry is a lost membership — and a member is worth hundreds to thousands over their lifetime, not a one-time sale.",
+    "stat": "A missed inquiry is a lost membership, and a member is worth hundreds to thousands over their lifetime, not a one-time sale.",
     "reasons": [
       "<b>Missed inquiries are lost memberships.</b> A 'how much is it?' call or DM that goes unanswered while your team is coaching is a recurring member joining the studio down the street.",
       "<b>Speed to lead on trials and tours.</b> People ready to start want to book a tour or trial now, and they go with whoever answers first. AI responds in seconds, day or night.",
@@ -546,29 +594,34 @@ const TRADES = [
       "<b>No-show tours and quiet members cost growth.</b> Reminders cut no-shows up to 38%, and automated win-backs re-engage members who stopped showing up before they cancel.",
       "<b>Reviews fill the class and referrals keep it full.</b> 88% read reviews before joining a gym. Automation asks happy members for reviews and referrals at the right moment."
     ],
-    "callScript": "Hey, is this [Owner]? Quick one — I help gyms and studios stop losing membership inquiries. Real fast: how many 'how much is it' calls and DMs come in while your team is coaching on the floor? Most owners miss a bunch, and each one is a recurring member worth a thousand-plus a year. We put in an AI that answers every call, text, and DM in your gym's name, books the tour or starts the free trial, and even wins back members who stopped showing up. Owners usually add a handful of memberships the first month. Can I send you a 90-second demo?",
+    "callScript": "Hey, is this [Owner]? Real quick. I help gyms and studios stop losing membership inquiries. One question. How many \"how much is it\" calls and DMs come in while your team is coaching on the floor? Most owners miss a bunch. And each one is a recurring member worth a thousand-plus a year. We put in an AI that answers every call, text, and DM in your gym's name, books the tour or starts the free trial, and even wins back members who stopped showing up. Owners usually add a handful of memberships the first month. Want me to send you a 90-second demo?",
     "email": {
       "subject": "the membership inquiries your front desk is missing",
-      "body": "[Owner] — when your team is on the floor coaching, who is answering 'how much is a membership?' Those calls and DMs are recurring members, and they join whoever answers first.\n\nMost studios miss a chunk of them, and a missed inquiry is not a one-time sale — it is a member worth a thousand-plus a year. We set up an AI that answers every call, text, and Instagram DM in your gym's name, books the tour or kicks off a free trial, and re-engages members who have gone quiet before they cancel.\n\nWant a number you can call right now to hear it book a tour? Takes 90 seconds.\n\n[Your name]"
+      "body": "[Owner], when your team is on the floor coaching, who's answering \"how much is a membership?\" Those calls and DMs are recurring members, and they join whoever answers first.\n\nMost studios miss a chunk of them, and a missed inquiry isn't a one-time sale. It's a member worth a thousand-plus a year. We set up an AI that answers every call, text, and Instagram DM in your gym's name, books the tour or kicks off a free trial, and re-engages members who've gone quiet before they cancel.\n\nWant a number you can call right now to hear it book a tour? Takes 90 seconds.\n\n---[Your name]"
     },
-    "sms": "Hi [Owner], it's [Your name]. I help gyms capture the membership inquiries you miss while coaching (calls, texts & DMs). AI answers, books tours, starts trials & wins back quiet members. Quick demo?",
+    "sms": "Hi [Owner], it's [Your name]. I help gyms capture the membership inquiries you miss while coaching (calls, texts, and DMs). AI answers, books tours, starts trials, and wins back quiet members. Quick demo?",
     "social": "Gym owners: every \"how much is a membership?\" call you miss while you're coaching is recurring revenue joining the studio down the street. 🏋️\n\nAI answers every call, text, and DM, books the tour, starts the free trial, and wins back members before they cancel.\n\nComment \"FIT\" for a demo line.",
     "samples": {
-      "missed": "Thanks for reaching out to [Gym Name]! 💪 Want to book a free tour or start a trial? Tell me your name and a good time and I'll set it up — and answer anything about classes, hours, or pricing.",
-      "reminder": "[Gym Name]: your tour/intro session is tomorrow at 5:30pm with our team. Reply C to confirm or R to reschedule. Bring water and we'll show you around! 💪",
-      "review": "Loving your workouts, [Member]? 🙌 A quick Google review helps other locals find [Gym Name]: [review link] — thank you!"
+      "missed": "Thanks for reaching out to [Gym Name]! 💪 Want to book a free tour or start a trial? Tell me your name and a good time and I'll set it up, and answer anything about classes, hours, or pricing.",
+      "reminder": "[Gym Name]: your tour or intro session is tomorrow at 5:30pm with our team. Reply C to confirm or R to reschedule. Bring water and we'll show you around! 💪",
+      "review": "Loving your workouts, [Member]? 🙌 A quick Google review helps other locals find [Gym Name]: [review link]. Thank you!"
     },
     "backfill": {
-      "desc": "The 48-hour reminder keeps tours, intro sessions, and personal-training slots confirmed, and the instant someone cancels, the open time is auto-offered to your waitlist or trial list — so a coach's hour never sits empty.",
-      "reminder48": "[Gym Name]: your session is booked for Saturday 9am — that's 2 days out. Reply C to confirm or R if it won't work. 💪",
+      "desc": "The 48-hour reminder keeps tours, intro sessions, and personal-training slots confirmed. The instant someone cancels, the open time is offered to your waitlist or trial list. A coach's hour never sits empty.",
+      "reminder48": "[Gym Name]: your session is booked for Saturday 9am, that's 2 days out. Reply C to confirm or R if it won't work. 💪",
       "cancelReply": "No problem! Want Mon or Tue instead? Reply with a day. I'll open your Saturday slot for another member.",
-      "waitlistOffer": "[Gym Name]: a Saturday 9am training slot just opened — you were on the list. Want it? Reply YES. 💪"
+      "waitlistOffer": "[Gym Name]: a Saturday 9am training slot just opened. You were on the list. Want it? Reply YES. 💪"
     },
     "smartEstimate": {
       "name": "Smart membership matchmaker & lead capture",
       "desc": "Captures every call, text, and DM, qualifies the prospect's goals, recommends the right membership or class package, and books the tour or trial, then nurtures until they join.",
-      "intake": "Hey! What are you looking to work on — weight loss, strength, classes, or personal training? Tell me that and your name, and I'll recommend a plan and book your free tour. 💪"
-    }
+      "intake": "Hey! What are you looking to work on, weight loss, strength, classes, or personal training? Tell me that and your name, and I'll recommend a plan and book your free tour. 💪"
+    },
+    "jobMin": 100,
+    "jobMax": 1500,
+    "jobStep": 25,
+    "missMax": 25,
+    "jobLabel": "Average value of a new member"
   },
   {
     "id": "therapist",
@@ -578,37 +631,42 @@ const TRADES = [
     "avgJob": 1200,
     "missed": 5,
     "stat": "Someone working up the courage to call for help won't leave a voicemail and try again. If no one answers warmly, they may not reach out anywhere else.",
-    "compliance": "🧠 Sensitive vertical — handle with care. A mental-health intake assistant must be warm, never diagnose or give clinical advice, protect privacy (HIPAA, signed BAA), and escalate any crisis immediately: if a caller mentions self-harm or is in distress, it shares the 988 Suicide & Crisis Lifeline (call or text 988), urges contacting emergency services or a trusted person, and offers an urgent human callback. Any tone or emotional-state read is a consented screening aid for the clinician — never a diagnosis. Review requests must follow the clinician's licensing-board rules.",
+    "compliance": "🧠 Sensitive vertical, handle with care. A mental-health intake assistant must be warm, never diagnose or give clinical advice, protect privacy (HIPAA, signed BAA), and escalate any crisis immediately: if a caller mentions self-harm or is in distress, it shares the 988 Suicide & Crisis Lifeline (call or text 988), urges contacting emergency services or a trusted person, and offers an urgent human callback. Any tone or emotional-state read is a consented screening aid for the clinician, never a diagnosis. Review requests must follow the clinician's licensing-board rules.",
     "reasons": [
-      "<b>A voicemail can end the search for help.</b> Someone who finally called rarely leaves a message and tries again. A warm voice that answers — day or night — can be the difference in whether they get care at all.",
+      "<b>A voicemail can end the search for help.</b> Someone who finally called rarely leaves a message and tries again. A warm voice that answers, day or night, can be the difference in whether they get care at all.",
       "<b>Warmth and speed matter most when reaching out is hardest.</b> The practice that responds first, and kindly, books the client. AI answers immediately and gently gathers the basics.",
       "<b>Clinicians shouldn't live at the front desk.</b> Returning insurance and availability calls is time not spent with clients. AI handles intake and scheduling so therapists focus on care.",
       "<b>No-shows break continuity of care.</b> Reminders cut no-shows up to 38%, protecting the client's progress and the practice's calendar; open slots are gently re-offered to the waitlist.",
       "<b>Trust is chosen on reputation.</b> People choose a therapist carefully. Automation requests feedback ethically (within licensing rules) and keeps clients gently engaged between sessions."
     ],
-    "callScript": "Hi [Name], [Your name] here — I work with therapy and counseling practices. Quick, important point: when someone finally works up the nerve to call for help and gets voicemail, they often don't try again. A warm, around-the-clock intake line means no one reaching out falls through the cracks. We set up a HIPAA-conscious AI intake that answers gently, gathers the basics, books the first session, and gives you a short, consented summary of the caller's concern and emotional state before the appointment, so you walk in prepared. And if someone is in crisis, it immediately shares 988 and urges emergency help. Could I show you how it works and how we keep it compliant?",
+    "callScript": "Hi [Name], [Your name] here. I work with therapy and counseling practices. Quick, important point. When someone finally works up the nerve to call for help and gets voicemail, they often don't try again. A warm, around-the-clock intake line means no one reaching out falls through the cracks. We set up a HIPAA-conscious AI intake that answers gently, gathers the basics, books the first session, and gives you a short, consented summary of the caller's concern and emotional state before the appointment, so you walk in prepared. And if someone's in crisis, it immediately shares 988 and urges emergency help. Could I show you how it works and how we keep it compliant?",
     "email": {
       "subject": "the calls for help that hit your voicemail",
-      "body": "[Name] — here's the hard truth in private practice: when someone finally calls and reaches voicemail, they often don't call the next name on the list. A warm intake line that answers around the clock can be the difference in whether they get care.\n\nWe set up a HIPAA-conscious AI intake assistant that answers gently in your practice's name, gathers the basics, and books the first session — and gives you a short, consented summary of the caller's presenting concern and emotional state before the appointment, so your time together starts further along. If a caller is in crisis, it immediately shares the 988 Lifeline and urges emergency help, then flags it for an urgent human callback.\n\nCould I show you how it works, and how we keep it compliant and caring?\n\n[Your name]"
+      "body": "[Name], here's the hard truth in private practice. When someone finally calls and reaches voicemail, they often don't call the next name on the list. A warm intake line that answers around the clock can be the difference in whether they get care.\n\nWe set up a HIPAA-conscious AI intake assistant that answers gently in your practice's name, gathers the basics, and books the first session. It also gives you a short, consented summary of the caller's presenting concern and emotional state before the appointment, so your time together starts further along. If a caller is in crisis, it immediately shares the 988 Lifeline and urges emergency help, then flags it for an urgent human callback.\n\nCould I show you how it works, and how we keep it compliant and caring?\n\n---[Your name]"
     },
     "sms": "Hi [Name], [Your name] here. I help counseling practices make sure no one reaching out for help hits voicemail. HIPAA-conscious AI intake answers warmly, books the first session, and escalates crises to 988. Open to a careful demo?",
-    "social": "Therapists & counselors: when someone finally calls for help and gets voicemail, they often don't try again. 🧠\n\nA warm, HIPAA-conscious AI intake answers around the clock, books the first session, summarizes the caller's concern for you (with consent), and escalates any crisis to the 988 Lifeline.\n\nComment \"CARE\" to see how it works.",
+    "social": "Therapists and counselors: when someone finally calls for help and gets voicemail, they often don't try again. 🧠\n\nA warm, HIPAA-conscious AI intake answers around the clock, books the first session, summarizes the caller's concern for you (with consent), and escalates any crisis to the 988 Lifeline.\n\nComment \"CARE\" to see how it works.",
     "samples": {
       "missed": "Thank you for reaching out to [Practice Name]. Calling takes courage. 💙 I can help you schedule a first appointment and answer questions about availability or insurance. May I start with your first name? (If you're in crisis right now, please call or text 988 for the Suicide & Crisis Lifeline.)",
-      "reminder": "[Practice Name]: a gentle reminder of your appointment tomorrow at 2pm with [Clinician]. Reply C to confirm or R to reschedule — no problem either way. We're glad you're coming in. 💙",
-      "review": "Thank you for trusting [Practice Name], [First name]. If you're comfortable, a brief review helps others take the first step toward support: [review link]. Only if it feels right — no pressure at all."
+      "reminder": "[Practice Name]: a gentle reminder of your appointment tomorrow at 2pm with [Clinician]. Reply C to confirm or R to reschedule, no problem either way. We're glad you're coming in. 💙",
+      "review": "Thank you for trusting [Practice Name], [First name]. If you're comfortable, a brief review helps others take the first step toward support: [review link]. Only if it feels right, no pressure at all."
     },
     "backfill": {
-      "desc": "The 48-hour reminder keeps sessions confirmed and protects continuity of care. If a client needs to cancel, the slot is gently re-offered to clients on the waitlist — so a clinician's hour stays available to someone who needs it.",
-      "reminder48": "[Practice Name]: a gentle reminder of your session Saturday at 11am with [Clinician] — 2 days away. Reply C to confirm or R to reschedule. 💙",
-      "cancelReply": "Of course — taking care of yourself comes first. Would Monday or Tuesday work better? Reply with a day and I'll open your Saturday time for another client.",
-      "waitlistOffer": "[Practice Name]: an earlier session opened Saturday at 11am with [Clinician]. You'd asked to be seen sooner — would you like it? Reply YES."
+      "desc": "The 48-hour reminder keeps sessions confirmed and protects continuity of care. If a client needs to cancel, the slot is gently re-offered to clients on the waitlist, so a clinician's hour stays available to someone who needs it.",
+      "reminder48": "[Practice Name]: a gentle reminder of your session Saturday at 11am with [Clinician], 2 days away. Reply C to confirm or R to reschedule. 💙",
+      "cancelReply": "Of course, taking care of yourself comes first. Would Monday or Tuesday work better? Reply with a day and I'll open your Saturday time for another client.",
+      "waitlistOffer": "[Practice Name]: an earlier session opened Saturday at 11am with [Clinician]. You'd asked to be seen sooner. Would you like it? Reply YES."
     },
     "smartEstimate": {
       "name": "Tone & psychological-state analysis (a clinician's prep tool)",
-      "desc": "During intake, the assistant gently gauges the caller's tone, pacing, and word choice to sense emotional state — adapting its warmth, flagging urgency, and preparing a consented summary for the clinician. Never a diagnosis; always human-reviewed; crises escalate to 988 immediately.",
-      "intake": "Whenever you're ready, tell me a little about what's bringing you in — there's no wrong way to say it. I'll listen, help you book a first session, and (only with your okay) pass a short summary to your clinician so you don't have to start over. If you're in crisis right now, please call or text 988."
-    }
+      "desc": "During intake, the assistant gently gauges the caller's tone, pacing, and word choice to sense emotional state, adapting its warmth, flagging urgency, and preparing a consented summary for the clinician. Never a diagnosis; always human-reviewed; crises escalate to 988 immediately.",
+      "intake": "Whenever you're ready, tell me a little about what's bringing you in, there's no wrong way to say it. I'll listen, help you book a first session, and (only with your okay) pass a short summary to your clinician so you don't have to start over. If you're in crisis right now, please call or text 988."
+    },
+    "jobMin": 100,
+    "jobMax": 6000,
+    "jobStep": 100,
+    "missMax": 15,
+    "jobLabel": "Average value of a new client"
   }
 ];
 
@@ -647,7 +705,7 @@ function selectTrade(id){
   document.getElementById('placeholder').classList.remove('show');
   const p = document.getElementById('panel'); p.classList.add('show');
   document.getElementById('pIco').textContent = current.ico;
-  document.getElementById('pName').textContent = current.name + " — automation pitch kit";
+  document.getElementById('pName').textContent = current.name + ", automation pitch kit";
   document.getElementById('pSub').textContent = current.tagline;
   document.getElementById('pStat').textContent = "⚠ " + current.stat;
   renderTabs(); renderBody();
@@ -684,7 +742,7 @@ function renderBody(){
       h+=wy.leaks.map(function(l,i){return `<div class="card"><h4 style="text-transform:none;letter-spacing:0;font-size:14px;color:var(--brand2)">${i+1}. ${escapeHtml(l.t)}</h4><div style="font-size:14px;line-height:1.6;color:var(--ink)">${escapeHtml(l.b)}</div></div>`;}).join('');
       h+=`<div class="card" style="border-color:var(--brand)"><h4 style="text-transform:none;letter-spacing:0;font-size:14px;color:var(--brand)">The bottom line</h4><div style="font-size:14px;line-height:1.6;color:var(--ink)">${escapeHtml(wy.bottomLine)}</div></div>`;
       h+=`<div class="note" style="margin-top:10px"><b>The numbers behind it:</b> ${escapeHtml(WHY_STATS)}</div>`;
-      h+=`<button class="copybtn" style="margin-top:10px" onclick="copyWhy('${c.id}')">📋 Copy this whole pitch</button>`;
+      h+=`<button class="copybtn" style="margin-top:10px" onclick="copyWhy('${c.id}')">📋 Copy this section</button>`;
       b.innerHTML=h;
     } else {
       b.innerHTML = `${c.compliance?`<div class="compliance">${escapeHtml(c.compliance)}</div>`:''}<ul class="reasons">${c.reasons.map(r=>`<li>${r}</li>`).join('')}</ul>`;
@@ -692,28 +750,28 @@ function renderBody(){
   }
   else if(activeTab==="calc"){ renderCalc(b); }
   else if(activeTab==="call"){
-    b.innerHTML = card("Cold-call / voicemail script","~35 seconds. Open with the pain, name the dollar number, ask for the demo.", c.callScript);
+    b.innerHTML = card("Cold-call / voicemail script","A ~35-second cold-call or voicemail script.", c.callScript);
   }
   else if(activeTab==="email"){
-    b.innerHTML = card("Outreach email — subject line","Pattern-interrupt, lowercase, specific.", c.email.subject)
-      + card("Outreach email — body","Short paragraphs, one ask, signs with your name.", c.email.body);
+    b.innerHTML = card("Outreach email, subject line","Pattern-interrupt, lowercase, specific.", c.email.subject)
+      + card("Outreach email, body","Short paragraphs, one ask, signs with your name.", c.email.body);
   }
   else if(activeTab==="sms"){
-    b.innerHTML = card("Text message (SMS)","Under 320 characters. Get consent before texting prospects.", c.sms);
+    b.innerHTML = card("Text message (SMS)","Short SMS, get the recipient's consent before texting.", c.sms);
   }
   else if(activeTab==="social"){
-    b.innerHTML = card("Social post (Facebook / LinkedIn)","Hook → pain → fix → comment-to-DM CTA.", c.social);
+    b.innerHTML = card("Social post (Facebook / LinkedIn)","Social post for Facebook or LinkedIn.", c.social);
   }
   else if(activeTab==="samples"){
-    b.innerHTML = `<div class="note" style="margin-bottom:12px">🎁 <b>Your closing ammo.</b> Show the owner the exact messages <i>their</i> customers would receive. This is what makes automation feel real in the meeting.</div>`
+    b.innerHTML = `<div class="note" style="margin-bottom:12px">🎁 <b>Sample automations.</b> The exact messages this business's customers would receive, a missed-call text-back, an appointment reminder, and a review request.</div>`
       + card("Missed-call text-back","Fires automatically the instant a call is missed.", c.samples.missed)
       + card("Appointment reminder","Cuts no-shows by up to 38%.", c.samples.reminder)
-      + card("Review request","Sent after the job — fuels the Google ranking.", c.samples.review);
+      + card("Review request","Sent after the job, fuels the Google ranking.", c.samples.review);
   }
   else if(activeTab==="reschedule"){
     b.innerHTML = `<div class="note" style="margin-bottom:12px">🔁 <b>Turn a cancellation into a swap, not an empty slot.</b> ${escapeHtml(c.backfill.desc)}</div>`
-      + card("48-hour-ahead reminder","Goes out 2 days early — enough lead time to refill if they cancel.", c.backfill.reminder48)
-      + card("If they cancel — reschedule + free the slot","Re-books them and releases the time automatically.", c.backfill.cancelReply)
+      + card("48-hour-ahead reminder","Goes out 2 days early, enough lead time to refill if they cancel.", c.backfill.reminder48)
+      + card("If they cancel, reschedule + free the slot","Re-books them and releases the time automatically.", c.backfill.cancelReply)
       + card("Waitlist auto-offer","The freed slot is instantly offered to the next customer in line.", c.backfill.waitlistOffer);
   }
   else if(activeTab==="estimate"){
@@ -723,10 +781,10 @@ function renderBody(){
       h+=`<div style="font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);font-weight:700;margin:12px 0 6px">How the AI actually does it</div>`;
       h+=`<ol style="margin:0 0 6px;padding-left:20px">`+sm.how.map(function(s){return `<li style="font-size:14px;line-height:1.6;color:var(--ink);margin-bottom:6px">${escapeHtml(s)}</li>`;}).join('')+`</ol>`;
       h+=`<div class="card" style="background:#0c1b2e;border-color:var(--brand2)"><h4 style="text-transform:none;letter-spacing:0;color:var(--brand2);font-size:13px">${escapeHtml(sm.sample.title)}</h4><div style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;line-height:1.75;color:var(--ink)">`+sm.sample.lines.map(function(x){return '• '+escapeHtml(x);}).join('<br>')+`</div></div>`;
-      h+=card("The message that collects what the AI needs","Sent to the customer — it asks the right questions, so the estimate is real.", sm.intake);
+      h+=card("The message that collects what the AI needs","Sent to the customer, it asks the right questions, so the estimate is real.", sm.intake);
       h+=`<div style="font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);font-weight:700;margin:6px 0 6px">And it doesn't stop there</div>`;
       h+=`<ul style="margin:0;padding-left:20px">`+sm.more.map(function(s){return `<li style="font-size:14px;line-height:1.6;color:var(--ink);margin-bottom:5px">${escapeHtml(s)}</li>`;}).join('')+`</ul>`;
-      h+=`<button class="copybtn" style="margin-top:12px" onclick="copySmart('${c.id}')">📋 Copy this for your pitch</button>`;
+      h+=`<button class="copybtn" style="margin-top:12px" onclick="copySmart('${c.id}')">📋 Copy this section</button>`;
       b.innerHTML=h;
     } else {
       b.innerHTML = `<div class="note">${escapeHtml(c.name)} AI estimate details.</div>`;
@@ -735,11 +793,11 @@ function renderBody(){
   else if(activeTab==="homepage"){
     var ex = HOMEPAGES[c.id];
     if(ex){
-      b.innerHTML = `<div class="note" style="margin-bottom:12px">🏠 <b>The example site you show the owner.</b> This is ${escapeHtml(c.name)} as their <i>own</i> website — with a 24/7 AI receptionist (bottom-right corner) and the automations built right in. Pull it up on your laptop or send the link: "imagine this is your business."</div>`
+      b.innerHTML = `<div class="note" style="margin-bottom:12px">🏠 <b>Example homepage.</b> This is ${escapeHtml(c.name)} as their <i>own</i> website, with a 24/7 AI receptionist (bottom-right corner) and the automations built right in.</div>`
         + `<div style="margin-bottom:12px"><a class="copybtn" style="text-decoration:none;display:inline-block" href="${ex}" target="_blank">↗ Open full page in a new tab</a></div>`
         + `<div style="border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff"><iframe src="${ex}" style="width:100%;height:600px;border:0;display:block" title="${escapeHtml(c.name)} example homepage"></iframe></div>`;
     } else {
-      b.innerHTML = `<div class="note">🏠 Example homepages are built for <b>HVAC</b>, <b>Roofing</b>, <b>Lawn &amp; Landscaping</b>, and <b>Plumbing</b> so far. Want one for <b>${escapeHtml(c.name)}</b> too? It is a quick add — just ask.</div>`;
+      b.innerHTML = `<div class="note">🏠 Example homepages are built for <b>HVAC</b>, <b>Roofing</b>, <b>Lawn &amp; Landscaping</b>, and <b>Plumbing</b> so far. Want one for <b>${escapeHtml(c.name)}</b> too? It is a quick add, just ask.</div>`;
     }
   }
 }
@@ -750,15 +808,15 @@ function renderCalc(b){
   b.innerHTML=`
     <div class="card">
       <h4>What missed calls are costing this ${c.name} owner</h4>
-      <div class="meta">Adjust the sliders live in the meeting. Defaults are typical for this trade.</div>
+      <div class="meta">Adjust the sliders to a business's real numbers. Defaults are typical for this trade.</div>
       <div class="calc">
         <div>
-          <label>Average job value: <span class="val" id="vJob">$${c.avgJob}</span></label>
-          <input type="range" id="rJob" min="75" max="20000" step="25" value="${c.avgJob}">
+          <label>${c.jobLabel||'Average job value'}: <span class="val" id="vJob">$${c.avgJob}</span></label>
+          <input type="range" id="rJob" min="${c.jobMin||75}" max="${c.jobMax||20000}" step="${c.jobStep||25}" value="${c.avgJob}">
         </div>
         <div>
           <label>Calls missed per week: <span class="val" id="vMiss">${c.missed}</span></label>
-          <input type="range" id="rMiss" min="1" max="40" step="1" value="${c.missed}">
+          <input type="range" id="rMiss" min="1" max="${c.missMax||40}" step="1" value="${c.missed}">
         </div>
       </div>
       <div class="loss">

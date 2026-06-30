@@ -1,0 +1,8 @@
+{
+  "name": "wintech-partner-portal",
+  "version": "1.0.0",
+  "description": "Partner registration page — generates a tracked demo link + QR to services.getthedrix.com",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" }
+}

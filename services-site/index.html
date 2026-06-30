@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FrontDesk AI — Never Miss Another Call</title>
+<meta name="description" content="Pick your trade and see what an AI receptionist does for your business: the revenue you're losing to missed calls, and a live AI you can talk to right now.">
+<style>
+  :root{
+    --navy:#0f2546; --blue:#2563eb; --blue-d:#1e40af; --orange:#f97316; --orange-d:#ea580c;
+    --ink:#0f172a; --body:#334155; --muted:#64748b; --line:#e2e8f0; --bg:#ffffff;
+    --soft:#f1f5f9; --soft2:#f8fafc; --green:#16a34a; --red:#dc2626; --gold:#f59e0b;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--body);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{color:var(--ink);line-height:1.15;margin:0 0 .4em}
+  h2{font-size:30px;font-weight:800;letter-spacing:-.02em}
+  h3{font-size:19px;font-weight:700}
+  p{margin:0 0 1em}
+  a{color:var(--blue);text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+  .btn{display:inline-block;background:var(--orange);color:#fff;font-weight:700;padding:14px 26px;border-radius:10px;
+    border:none;cursor:pointer;font-size:16px;box-shadow:0 8px 20px rgba(249,115,22,.28);transition:.15s}
+  .btn:hover{background:var(--orange-d);transform:translateY(-2px)}
+  .btn.ghost{background:#fff;color:var(--blue-d);border:2px solid var(--line);box-shadow:none}
+  .btn.ghost:hover{border-color:var(--blue);background:var(--soft2)}
+  .btn.big{font-size:18px;padding:17px 34px}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav .row{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:900;color:var(--ink);font-size:18px}
+  .brand .dot{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--blue),var(--orange));display:grid;place-items:center;color:#fff;font-size:15px}
+  .brand small{display:block;font-size:10px;font-weight:600;color:var(--muted);letter-spacing:.5px;text-transform:uppercase}
+  nav .links{display:flex;gap:20px;align-items:center;font-size:14px;font-weight:600;color:var(--body)}
+  nav .links a{color:var(--body)}
+  .refchip{font-size:12px;font-weight:600;color:var(--blue-d);background:#eef4ff;border:1px solid #d8e6ff;padding:6px 12px;border-radius:999px;display:none}
+  .refchip.on{display:inline-block}
+  @media(max-width:760px){nav .links a:not(.btn){display:none}}
+
+  /* HERO */
+  .hero{background:linear-gradient(180deg,#fff 0%,var(--soft2) 100%);padding:46px 0 38px;border-bottom:1px solid var(--line)}
+  .hero .eyebrow{display:inline-block;background:#fde7d4;color:var(--orange-d);font-weight:700;font-size:13px;padding:6px 13px;border-radius:999px;margin-bottom:16px}
+  .hero h1{font-size:46px;font-weight:900;letter-spacing:-.03em;max-width:15ch}
+  .hero h1 .hl{color:var(--orange)}
+  .hero p.sub{font-size:19px;max-width:50ch;color:var(--body)}
+  .hero .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px}
+  .hero .trust{margin-top:18px;font-size:13px;color:var(--muted)}
+  @media(max-width:760px){.hero h1{font-size:33px}.hero p.sub{font-size:17px}}
+
+  /* VERTICAL SELECTOR */
+  .picker{background:var(--navy);padding:18px 0;position:sticky;top:64px;z-index:40;box-shadow:0 6px 18px rgba(15,37,70,.18)}
+  .picker .lab{color:#9fb3d1;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+  .pills{display:flex;gap:9px;flex-wrap:wrap}
+  .pill{display:inline-flex;align-items:center;gap:7px;background:#15315c;color:#cdddf3;border:1px solid #27497d;border-radius:999px;
+    padding:9px 15px;font-size:14px;font-weight:700;cursor:pointer;transition:.14s;white-space:nowrap}
+  .pill:hover{background:#1c3d6f;color:#fff;transform:translateY(-1px)}
+  .pill.active{background:var(--orange);border-color:var(--orange);color:#fff;box-shadow:0 6px 16px rgba(249,115,22,.4)}
+  .pill .e{font-size:16px}
+
+  section{padding:50px 0}
+  .center{text-align:center}
+  .kicker{color:var(--orange);font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:13px;margin-bottom:8px}
+  .lead{font-size:18px;color:var(--body);max-width:62ch;margin:0 auto 8px}
+
+  /* WHY (customer-facing per-trade info) */
+  .why{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:28px}
+  @media(max-width:760px){.why{grid-template-columns:1fr}}
+  .why .card{background:#fff;border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:14px;padding:20px 22px;font-size:15.5px;color:var(--body);box-shadow:0 2px 10px rgba(15,37,70,.04)}
+  .why .card b{color:var(--ink)}
+  .statline{background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:16px 20px;margin-top:22px;font-size:16px;color:#9a3412;text-align:center;font-weight:600}
+
+  /* CALCULATOR */
+  .calcwrap{background:var(--navy);color:#dbe4f3;border-radius:20px;padding:34px;display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center}
+  @media(max-width:760px){.calcwrap{grid-template-columns:1fr;padding:24px}}
+  .calcwrap h2{color:#fff;font-size:22px}
+  .calcwrap .fld{margin-top:18px}
+  .calcwrap label{display:block;font-size:14px;color:#9fb3d1;margin-bottom:8px;font-weight:600}
+  .ipt{display:flex;align-items:center;background:#0b1c38;border:1px solid #27497d;border-radius:11px;padding:0 14px}
+  .ipt:focus-within{border-color:var(--orange)}
+  .ipt .pre{color:#7e93b4;font-weight:700}
+  .ipt input{width:100%;background:transparent;border:none;outline:none;color:#fff;font-weight:800;font-size:22px;padding:13px 6px;font-variant-numeric:tabular-nums}
+  .ipt input::-webkit-outer-spin-button,.ipt input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+  .ipt input{-moz-appearance:textfield}
+  .lossbox{background:linear-gradient(135deg,#3b1414,#4a1f0f);border:1px solid #7a2d2d;border-radius:16px;padding:24px;text-align:center}
+  .lossbox .cap{color:#e7b9b9;font-size:13px}
+  .lossbox .big{font-size:46px;font-weight:900;color:#ff8a8a;line-height:1;margin:6px 0 4px;font-variant-numeric:tabular-nums}
+  .lossbox .sub2{color:#e7b9b9;font-size:13px}
+  .lossbox .yr{margin-top:14px;font-size:15px;color:#fff}
+  .lossbox .yr b{color:var(--gold);font-size:22px;font-variant-numeric:tabular-nums}
+
+  /* DEMO */
+  .demo{background:linear-gradient(135deg,#eff6ff,#fff7ed);border:1px solid var(--line);border-radius:20px;padding:34px;text-align:center}
+  .demo .pulse{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 18px;font-weight:700;color:var(--ink);box-shadow:0 6px 18px rgba(15,37,70,.07);margin-top:10px}
+  .demo .pulse .live{width:10px;height:10px;border-radius:50%;background:var(--green);animation:lp 1.6s infinite}
+  @keyframes lp{0%{box-shadow:0 0 0 0 rgba(22,163,74,.55)}70%{box-shadow:0 0 0 12px rgba(22,163,74,0)}100%{box-shadow:0 0 0 0 rgba(22,163,74,0)}}
+
+  /* STACK */
+  .stack{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}
+  @media(max-width:900px){.stack{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.stack{grid-template-columns:1fr}}
+  .feat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;transition:.15s}
+  .feat:hover{border-color:var(--blue);box-shadow:0 10px 24px rgba(37,99,235,.08);transform:translateY(-2px)}
+  .feat .ic{font-size:22px}
+  .feat h3{margin:8px 0 4px;font-size:15px}
+  .feat p{font-size:13.5px;color:var(--muted);margin:0}
+
+  footer{background:var(--ink);color:#94a3b8;padding:38px 0;font-size:13px}
+  footer a{color:#cbd5e1;text-decoration:underline}
+  footer .src{margin-top:12px;font-size:11.5px;line-height:1.7}
+  .note-wl{background:#fffbeb;border:1px dashed #f59e0b;color:#92400e;border-radius:10px;padding:11px 15px;font-size:12.5px;margin-top:14px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap row">
+    <div class="brand"><span class="dot">📞</span><div>FrontDesk&nbsp;AI<small>Automation for service pros</small></div></div>
+    <div class="links">
+      <span class="refchip" id="refchip"></span>
+      <a href="#cost">The cost</a>
+      <a href="#hear">Hear the AI</a>
+      <a href="#book" class="btn" style="padding:10px 18px;font-size:14px">Book My Demo</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow" id="eyebrow">Built for the trades</span>
+    <h1>Your phone is your best salesperson. <span class="hl">Stop sending it to voicemail.</span></h1>
+    <p class="sub" id="heroSub">An AI receptionist answers every call in your company's name — 24/7 — books the job, fills cancellations, and chases the review. The next emergency rings <em>your</em> register, not your competitor's.</p>
+    <div class="cta">
+      <a href="#hear" class="btn big">▶ Hear the AI answer</a>
+      <a href="#cost" class="btn ghost big">See what you're losing</a>
+    </div>
+    <div class="trust">No contracts to start · Live in about a week · See your missed-call number before you pay</div>
+  </div>
+</header>
+
+<!-- VERTICAL SELECTOR -->
+<div class="picker">
+  <div class="wrap">
+    <div class="lab">👇 Pick your line of work — everything below tailors to you</div>
+    <div class="pills" id="pills"></div>
+  </div>
+</div>
+
+<!-- WHY THIS TRADE (customer-facing info) -->
+<section id="why">
+  <div class="wrap">
+    <div class="center">
+      <div class="kicker" id="whyKicker">Why it matters</div>
+      <h2 id="whyTitle">What an AI receptionist does for your business</h2>
+      <p class="lead" id="whyLead">Here's exactly what changes the day it goes live on your line.</p>
+    </div>
+    <div class="statline" id="statline"></div>
+    <div class="why" id="whyGrid"></div>
+  </div>
+</section>
+
+<!-- COST / CALCULATOR -->
+<section id="cost" style="background:var(--soft2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="center" style="margin-bottom:6px">
+      <div class="kicker">The math nobody shows you</div>
+      <h2>Every missed call is a customer you already paid to get</h2>
+      <p class="lead">You paid for the truck wrap, the Google ad, the yard sign. Then the call comes in while you're on a job — and it's gone. Put in your real numbers.</p>
+    </div>
+    <div class="calcwrap" style="margin-top:26px">
+      <div>
+        <h2>What you're losing right now</h2>
+        <div class="fld">
+          <label>Average job value</label>
+          <div class="ipt"><span class="pre">$</span><input id="iJob" type="number" min="0" inputmode="numeric" value="450"></div>
+        </div>
+        <div class="fld">
+          <label>Calls you miss per week</label>
+          <div class="ipt"><input id="iMiss" type="number" min="0" inputmode="numeric" value="8"></div>
+        </div>
+        <p style="font-size:12.5px;color:#9fb3d1;margin-top:14px">We even assume only about half of missed calls were real buyers — and the number's still ugly.</p>
+      </div>
+      <div class="lossbox">
+        <div class="cap">Walking to your competitor every month:</div>
+        <div class="big" id="lossM">$0</div>
+        <div class="sub2" id="lossW">$0 / week</div>
+        <div class="yr">That's <b id="lossY">$0</b> a year in jobs you earned the right to win.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE DEMO -->
+<section id="hear">
+  <div class="wrap">
+    <div class="demo">
+      <div class="kicker">Don't take our word for it</div>
+      <h2 id="demoTitle">Talk to the AI right now</h2>
+      <p class="lead" id="demoLead" style="margin:0 auto">Tap the call button in the bottom-right corner and talk to it like you're a customer with a problem. It answers as a business in your trade, handles the questions, and books the appointment — exactly what your customers would experience. <strong>(Turn your sound on.)</strong></p>
+      <div class="pulse"><span class="live"></span> Live AI receptionist · bottom-right corner 👉</div>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section style="background:var(--soft2);border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="center">
+      <div class="kicker">Way more than an answering machine</div>
+      <h2>Working in the background while you work</h2>
+    </div>
+    <div class="stack">
+      <div class="feat"><div class="ic">📞</div><h3>24/7 receptionist</h3><p>Answers every call in your name, qualifies it, and books it — nights, weekends, overflow.</p></div>
+      <div class="feat"><div class="ic">⚡</div><h3>Missed-call text-back</h3><p>If a call slips through, it texts the lead instantly before they dial the next company.</p></div>
+      <div class="feat"><div class="ic">🔁</div><h3>Fills cancellations</h3><p>Catches cancellations early and offers the open slot to your waitlist. No empty days.</p></div>
+      <div class="feat"><div class="ic">⭐</div><h3>Chases reviews</h3><p>Asks every happy customer for a Google review and helps you climb local search.</p></div>
+    </div>
+    <div class="center" style="margin-top:18px"><a href="#book" class="btn">Book my 15-minute demo</a></div>
+  </div>
+</section>
+
+<!-- BOOK -->
+<section id="book">
+  <div class="wrap">
+    <div class="calcwrap" style="display:block;text-align:center">
+      <div style="display:inline-flex;gap:10px;align-items:center;background:rgba(22,163,74,.15);border:1px solid #2f7d4f;color:#a7f3c4;padding:11px 18px;border-radius:12px;font-weight:700;margin-bottom:18px">🛡️ See your real missed-call number before you pay a cent</div>
+      <h2 style="color:#fff;font-size:28px">Less than the cost of the jobs you're missing</h2>
+      <p style="color:#9fb3d1;max-width:54ch;margin:0 auto 18px">One missed job can be worth more than a month of this. We'll pull your numbers, show you what you're losing, and you decide.</p>
+      <a id="bookBtn" href="mailto:hello@example.com?subject=FrontDesk%20AI%20Demo" class="btn big">Book My 15-Minute Demo</a>
+    </div>
+    <div class="note-wl">⚙️ White-label demo — swap the brand name, pricing and the <code>mailto:</code> before you present this.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand" style="color:#fff;margin-bottom:10px"><span class="dot">📞</span><div style="color:#fff">FrontDesk&nbsp;AI<small style="color:#94a3b8">Automation for service pros</small></div></div>
+    <div>Demo site · brand name, pricing and quotes are placeholders — swap in your own before presenting.</div>
+    <div class="src">
+      Stats: service businesses miss ~62% of inbound calls; 85% of voicemail callers never call back
+      (<a href="https://www.getaira.io/blog/missed-business-calls-statistics" target="_blank">Aira</a>,
+      <a href="https://www.invoca.com/blog/how-much-missed-sales-calls-cost-home-services-businesses" target="_blank">Invoca</a>).
+      78% hire the first business to respond; 5-min response = 100× more likely to connect
+      (<a href="https://www.chilipiper.com/article/speed-to-lead-statistics" target="_blank">Chili Piper / InsideSales</a>).
+    </div>
+  </div>
+</footer>
+
+<!-- Voice agent: ONE universal agent, re-fed the selected trade's knowledge as dynamic variables. -->
+<elevenlabs-convai id="ava-widget" agent-id="agent_3701kvy7e4mqebyr89m8sryfx7bm"></elevenlabs-convai>
+
+<script>
+/* ---------------- trade data (customer-facing) ---------------- */
+const TRADES = [
+  {id:"hvac",e:"❄️",name:"HVAC",eyebrow:"Built for HVAC pros",avgJob:450,miss:8,
+   stat:"Home-service companies miss ~62% of inbound calls — and 35–40% of HVAC calls come in after hours.",
+   reasons:[
+     "<b>Missed calls = lost installs.</b> A 'no AC' call on a 100° Saturday goes to whoever answers first — miss it and a $6,000 system walks next door.",
+     "<b>Speed to lead.</b> 78% of homeowners book the first company that calls back. The AI answers in seconds, day or night.",
+     "<b>Free up your techs.</b> It handles the 'how much / when can you come' calls so your crew installs instead of fielding FAQs.",
+     "<b>Reminders + reviews.</b> Cuts no-show tune-ups and auto-asks happy customers for the Google review that wins 'AC repair near me'."],
+   kb:{business_name:"Summit Comfort Heating & Air",trade:"HVAC",services:"AC and heating repair, new system installation, and maintenance tune-ups",service_area:"the greater metro area, about a 30-mile radius",hours:"8am-6pm Mon-Sat, with 24/7 emergency service for no-heat and no-cooling calls",pricing_notes:"diagnostic about $89 (waived with a booked repair), tune-up about $99, free in-home estimate on new installs, financing available",booking_notes:"usually same-day or next-day; collect name, address, the problem, and a preferred day and time window",emergency_examples:"no AC in a heat wave, no heat in the cold, a burning smell, or a water leak"}},
+
+  {id:"plumbing",e:"🚰",name:"Plumbing",eyebrow:"Built for plumbers",avgJob:350,miss:9,
+   stat:"Burst pipe at 2am? The customer calls down the list until someone picks up. Be that someone.",
+   reasons:[
+     "<b>Emergencies don't leave voicemails.</b> A flooding-basement caller dials the next plumber in 10 seconds — 85% never call back.",
+     "<b>After-hours is premium work.</b> The 2am calls you sleep through are the highest-margin jobs of the week.",
+     "<b>Stop FAQ interruptions.</b> AI handles 'do you do water heaters' so you only get pinged for real jobs.",
+     "<b>Reminders + reviews.</b> Confirms installs, resells annual flushes, and auto-asks for the review that wins 'plumber near me'."],
+   kb:{business_name:"Patriot Plumbing Co.",trade:"plumbing",services:"drain cleaning, leak and pipe repair, water heater repair and installation, and fixture work",service_area:"the metro area and nearby suburbs",hours:"7am-6pm Mon-Sat, with 24/7 emergency service",pricing_notes:"service call fee around $69 (applied to the repair), free estimates on installs, financing on water heaters",booking_notes:"same-day for emergencies; collect name, address, what's happening, and whether water is actively leaking",emergency_examples:"a burst pipe, no water, a sewage backup, or a water heater leaking"}},
+
+  {id:"roofing",e:"🏠",name:"Roofing",eyebrow:"Built for roofers",avgJob:9000,miss:6,
+   stat:"Roofing jobs run $9,000+. One missed storm-season call is a five-figure swing.",
+   reasons:[
+     "<b>Storm surges overwhelm the phone.</b> After hail everyone calls at once — miss those and you miss your whole season in a weekend.",
+     "<b>Highest stakes per call.</b> A roof is a $9k–$20k decision, and 78% go with the first company that responds professionally.",
+     "<b>Qualify before your rep calls.</b> AI sorts insurance claims from cash repairs and leaks from full replacements.",
+     "<b>Reviews build the trust a big spend needs.</b> Nobody hands $15k to a roofer with 4 reviews — auto-collect them."],
+   kb:{business_name:"Summit Ridge Roofing",trade:"roofing",services:"roof repair, full replacement, storm and hail damage, and free inspections",service_area:"the metro area and surrounding counties",hours:"7am-7pm Mon-Sat, with emergency tarping for active leaks",pricing_notes:"free inspections and estimates; works with insurance claims; financing available on replacements",booking_notes:"book a free inspection; collect name, address, whether it's storm/leak damage or a planned replacement",emergency_examples:"an active leak, storm or hail damage, or missing shingles after high wind"}},
+
+  {id:"electrical",e:"⚡",name:"Electrical",eyebrow:"Built for electricians",avgJob:400,miss:7,
+   stat:"Safety calls feel urgent — homeowners want a calm, reassuring voice on the line, now.",
+   reasons:[
+     "<b>Urgency + safety = instant calls.</b> A sparking outlet caller wants a calm voice immediately, not voicemail.",
+     "<b>Big-ticket upgrades start on the phone.</b> Panel upgrades and EV chargers are $1,500–$4,000 jobs lost if you can't pick up mid-install.",
+     "<b>Stop interruptions mid-job.</b> AI answers the permit and pricing basics so you keep your hands on the work.",
+     "<b>Reminders + reviews.</b> Keeps the calendar full and auto-collects the 5-stars that earn trust to work in someone's walls."],
+   kb:{business_name:"Volt Brothers Electric",trade:"electrical",services:"panel upgrades, wiring and outlets, EV charger installation, lighting, and safety inspections",service_area:"the metro area, about a 25-mile radius",hours:"8am-6pm Mon-Sat, with emergency service for safety issues",pricing_notes:"diagnostic about $89, free estimates on upgrades and EV chargers, financing on big installs",booking_notes:"collect name, address, and whether it's a safety issue, a repair, or an upgrade",emergency_examples:"a sparking outlet, a burning smell, loss of power, or a panel that's hot to the touch"}},
+
+  {id:"pest",e:"🐜",name:"Pest Control",eyebrow:"Built for pest control",avgJob:150,miss:8,
+   stat:"'I just saw roaches' is a same-day, emotional call. Answer it or lose it instantly.",
+   reasons:[
+     "<b>Pest calls are urgent and emotional.</b> 'There are wasps in my kids' room' won't wait for a callback — or a voicemail.",
+     "<b>Recurring revenue starts with one call.</b> A single missed call is a quarterly contract ($600+/yr) gone.",
+     "<b>Stop FAQ overload.</b> AI handles 'do you treat termites' all day and books the inspection.",
+     "<b>Keeps recurring accounts on schedule.</b> Auto-reminds for quarterly treatments and auto-asks for the review that wins 'exterminator near me'."],
+   kb:{business_name:"ShieldGuard Pest Control",trade:"pest control",services:"treatment for roaches, ants, rodents, wasps, and recurring quarterly service",service_area:"the metro area and nearby suburbs",hours:"8am-6pm Mon-Sat",pricing_notes:"initial treatment from about $150, quarterly plans available, free quotes",booking_notes:"often same-day; collect name, address, what they're seeing, and where",emergency_examples:"a wasp nest by the door, a rodent inside, or a sudden roach problem"}},
+
+  {id:"cleaning",e:"🧽",name:"House Cleaning",eyebrow:"Built for cleaning companies",avgJob:180,miss:9,
+   stat:"Quote requests and recurring scheduling pile up — but the owner is inside a home and can't pick up.",
+   reasons:[
+     "<b>You're cleaning, not answering.</b> Every quote call missed while you're in a home is a recurring client gone.",
+     "<b>Speed to lead.</b> People booking a cleaner hire whoever responds first with a price and a slot.",
+     "<b>Instant quotes.</b> AI quotes the basics by bed/bath count and books it — no playing phone tag.",
+     "<b>Confirms recurring cleans.</b> Two-way reminders mean you never drive to a locked, empty house, and reviews earn trust to enter homes."],
+   kb:{business_name:"Sparkle & Shine Cleaning",trade:"house cleaning",services:"one-time, move-in/move-out, and recurring weekly or biweekly cleaning",service_area:"the metro area",hours:"8am-5pm Mon-Sat",pricing_notes:"quotes by bedroom and bathroom count; recurring discounts; free estimates",booking_notes:"collect zip, number of bedrooms and bathrooms, and whether it's one-time or recurring",emergency_examples:"a last-minute move-out clean or a pre-event same-week request"}},
+
+  {id:"painting",e:"🎨",name:"Painting",eyebrow:"Built for painting contractors",avgJob:3000,miss:6,
+   stat:"Homeowners get 3 painting quotes. The slow-to-respond contractor is the one they cross off.",
+   reasons:[
+     "<b>Comparison-shopped.</b> People get 2–3 bids — respond last and you're the throwaway quote.",
+     "<b>Speed to lead wins the job.</b> The first contractor to book the walkthrough usually gets the $3,000+ project.",
+     "<b>Qualify before you spend a day quoting.</b> AI captures interior/exterior, square footage and timeline up front.",
+     "<b>Auto follow-up closes the maybes.</b> Most painters never follow up on open quotes — the AI does, automatically."],
+   kb:{business_name:"TrueColor Painting",trade:"painting",services:"interior and exterior painting, cabinets, and trim",service_area:"the metro area",hours:"8am-5pm Mon-Sat",pricing_notes:"free in-home estimates; financing on large projects",booking_notes:"book a free estimate; collect address, interior or exterior, and roughly how many rooms",emergency_examples:"a rush repaint before a move or a listing going on the market"}},
+
+  {id:"auto",e:"🚗",name:"Auto Repair",eyebrow:"Built for auto shops",avgJob:500,miss:8,
+   stat:"Bays are loud and busy. 'Is my car ready?' calls bury the new-customer calls.",
+   reasons:[
+     "<b>Busy bays = missed new customers.</b> When the shop's slammed, the phone wins or loses you tomorrow's work.",
+     "<b>Speed to lead.</b> A driver with a check-engine light books whoever answers and gives a time first.",
+     "<b>Stop status calls eating your day.</b> AI handles 'is my car ready' and frees the front desk.",
+     "<b>Reminders + reviews.</b> Auto-reminds for oil changes and inspections due, and collects the 5-stars that win 'mechanic near me'."],
+   kb:{business_name:"Mainline Auto Repair",trade:"auto repair",services:"diagnostics, brakes, oil changes, engine and transmission work, and inspections",service_area:"the local area; shop and some mobile service",hours:"8am-6pm Mon-Sat",pricing_notes:"free estimates before any work; diagnostic fee applied to the repair",booking_notes:"collect name, vehicle year/make/model, and the symptom or service needed",emergency_examples:"a car that won't start, a check-engine light, brakes grinding, or an overheating engine"}},
+
+  {id:"law",e:"⚖️",name:"Law Firm",eyebrow:"Built for small firms",avgJob:3000,miss:7,
+   stat:"For PI & family law, the first firm to respond signs the client. Most intake calls go unanswered.",
+   reasons:[
+     "<b>First firm to respond signs the case.</b> Injury and family-law leads call several firms — speed to lead wins the retainer.",
+     "<b>After-hours intake is lost revenue.</b> People research lawyers at night; voicemail loses a case worth thousands.",
+     "<b>Paralegals only see qualified intakes.</b> Compliant AI screens the matter and routes only real cases.",
+     "<b>Cuts consult no-shows.</b> Confirms consultations so booked time doesn't evaporate (review requests follow your state bar rules)."],
+   kb:{business_name:"Hartwell & Associates",trade:"legal intake",services:"personal injury and family law consultations and case intake",service_area:"the local jurisdiction",hours:"intake answered 24/7; office hours 9am-5pm Mon-Fri",pricing_notes:"free initial consultation; the AI never gives legal advice and only schedules and screens",booking_notes:"collect the caller's name, the type of matter, and a brief description, then book a consultation",emergency_examples:"a recent accident, an urgent family matter, or a time-sensitive filing deadline"}},
+
+  {id:"lawn",e:"🌿",name:"Lawn & Landscaping",eyebrow:"Built for lawn & landscaping crews",avgJob:200,miss:10,
+   stat:"In spring, quote requests pile up — but the owner is on a mower all day and can't pick up.",
+   reasons:[
+     "<b>You can't answer from a mower.</b> Every spring quote you miss is a season-long account ($2,000+) gone to the next crew.",
+     "<b>Speed to lead.</b> Homeowners getting 3 quotes hire whoever replies first — the AI texts a booking link in seconds.",
+     "<b>Stop the 'do you do mulch / how much' calls.</b> AI answers the repeats so you keep cutting.",
+     "<b>Recurring reminders + reviews.</b> Auto-confirms weekly visits, upsells seasonal cleanups, and racks up neighborhood reviews."],
+   kb:{business_name:"GreenScape Lawn & Landscape",trade:"lawn care and landscaping",services:"mowing, weekly maintenance, cleanups, mulch, and landscape design",service_area:"the local area",hours:"7am-6pm Mon-Sat",pricing_notes:"free quotes; recurring weekly/biweekly plans; measures lawn from the map for fast quotes",booking_notes:"collect address and what they need (mow, cleanup, design), then send a quote and book",emergency_examples:"a fast turnaround before an event or a new account wanting to start this week"}}
+];
+
+/* ---------------- helpers ---------------- */
+const $ = (id)=>document.getElementById(id);
+const params = new URLSearchParams(location.search);
+const REF = (params.get("ref")||params.get("rep")||"").trim();
+if(REF){ const c=$("refchip"); c.textContent="Presented by "+REF; c.classList.add("on");
+  $("bookBtn").href = "mailto:hello@example.com?subject="+encodeURIComponent("FrontDesk AI Demo (ref: "+REF+")")+"&body="+encodeURIComponent("Referred by: "+REF+"\n\nI'd like to see a demo for my business."); }
+
+/* ---------------- capture / attribution ---------------- */
+// Set to your capture-api URL (e.g. "https://capture.up.railway.app") to log visits/demos. "" = off.
+const CAPTURE_API = "";
+let _trackTimer, _demoLogged=false;
+function track(type,payload){
+  if(!CAPTURE_API) return;
+  try{ fetch(CAPTURE_API.replace(/\/$/,"")+"/api/track",{method:"POST",headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({ref:REF||null,type,payload:payload||null}),keepalive:true}); }catch(_){}
+}
+function logDemo(){ if(_demoLogged) return; _demoLogged=true; track("demo_start",{trade:CUR.id}); }
+
+const money = (n)=>"$"+Math.round(n).toLocaleString("en-US");
+let CUR = TRADES[0];
+
+/* build pills */
+const pillWrap = $("pills");
+TRADES.forEach((t,i)=>{
+  const b=document.createElement("button");
+  b.className="pill"+(i===0?" active":"");
+  b.dataset.id=t.id;
+  b.innerHTML='<span class="e">'+t.e+'</span>'+t.name;
+  b.addEventListener("click",()=>setTrade(t.id,true));
+  pillWrap.appendChild(b);
+});
+
+/* calculator */
+function calc(){
+  const job=Math.max(0,+$("iJob").value||0);
+  const miss=Math.max(0,+$("iMiss").value||0);
+  const weekly = miss*job*0.5;            // assume ~half of missed calls were real buyers
+  $("lossW").textContent=money(weekly)+" / week";
+  $("lossM").textContent=money(weekly*4.3);
+  $("lossY").textContent=money(weekly*52);
+}
+["iJob","iMiss"].forEach(id=>$(id).addEventListener("input",()=>{
+  calc();
+  clearTimeout(_trackTimer);
+  _trackTimer=setTimeout(()=>track("calc",{job:+$("iJob").value,miss:+$("iMiss").value,trade:CUR.id}),1200);
+}));
+// demo intent: clicking "Hear the AI" or the demo block
+document.querySelectorAll('a[href="#hear"]').forEach(a=>a.addEventListener("click",logDemo));
+const demoEl=document.querySelector(".demo"); if(demoEl) demoEl.addEventListener("click",logDemo);
+
+/* voice widget (re-create per trade so the agent speaks as that business) */
+let embedLoaded=false;
+function mountWidget(profile){
+  const old=$("ava-widget"); if(old) old.remove();
+  const el=document.createElement("elevenlabs-convai");
+  el.id="ava-widget";
+  el.setAttribute("agent-id","agent_3701kvy7e4mqebyr89m8sryfx7bm");
+  try{ el.setAttribute("dynamic-variables", JSON.stringify(profile)); }catch(e){}
+  document.body.appendChild(el);
+  if(!embedLoaded){
+    const s=document.createElement("script");
+    s.src="https://unpkg.com/@elevenlabs/convai-widget-embed"; s.async=true;
+    document.body.appendChild(s); embedLoaded=true;
+  }
+}
+
+/* the master switch */
+function setTrade(id,scroll){
+  const t=TRADES.find(x=>x.id===id)||TRADES[0]; CUR=t;
+  document.querySelectorAll(".pill").forEach(p=>p.classList.toggle("active",p.dataset.id===id));
+  $("eyebrow").textContent=t.eyebrow;
+  $("whyKicker").textContent="Why "+t.name+" needs this";
+  $("whyTitle").textContent="What an AI receptionist does for a "+t.name.toLowerCase()+" business";
+  $("statline").innerHTML="📊 "+t.stat;
+  const g=$("whyGrid"); g.innerHTML="";
+  t.reasons.forEach(r=>{ const d=document.createElement("div"); d.className="card"; d.innerHTML=r; g.appendChild(d); });
+  $("demoTitle").textContent="Talk to a "+t.name+" AI receptionist right now";
+  $("iJob").value=t.avgJob; $("iMiss").value=t.miss; calc();
+  mountWidget(t.kb);
+  if(scroll) $("why").scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+/* init — honor ?trade= */
+const startTrade = (params.get("trade")||"").toLowerCase();
+setTrade(TRADES.some(t=>t.id===startTrade)?startTrade:"hvac",false);
+track("visit",{trade:CUR.id,path:location.pathname});
+</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "name": "getthedrix-capture-api",
+  "version": "1.0.0",
+  "description": "Partner registration + demo-event capture (Railway Postgres) for the getthedrix sites",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" },
+  "dependencies": { "pg": "^8.11.5" }
+}
